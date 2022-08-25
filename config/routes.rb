@@ -208,6 +208,7 @@ Rails.application.routes.draw do
 
     resources :action_logs, only: [:index]
     resources :warning_presets, except: [:new]
+    resources :registration_filters, except: [:show]
 
     resources :announcements, except: [:show] do
       member do
