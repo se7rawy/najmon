@@ -227,7 +227,9 @@ module Mastodon::CLI
         end
       end
 
+    ensure
       say 'Restoring index_accounts_on_username_and_domain_lower…'
+
       if ActiveRecord::Migrator.current_version < 2020_06_20_164023
         ActiveRecord::Base.connection.add_index :accounts, 'lower (username), lower(domain)', name: 'index_accounts_on_username_and_domain_lower', unique: true
       else
@@ -266,7 +268,9 @@ module Mastodon::CLI
       deduplicate_users_process_remember_token
       deduplicate_users_process_password_token
 
+    ensure
       say 'Restoring users indexes…'
+
       ActiveRecord::Base.connection.add_index :users, ['confirmation_token'], name: 'index_users_on_confirmation_token', unique: true
       ActiveRecord::Base.connection.add_index :users, ['email'], name: 'index_users_on_email', unique: true
       ActiveRecord::Base.connection.add_index :users, ['remember_token'], name: 'index_users_on_remember_token', unique: true if ActiveRecord::Migrator.current_version < 2022_01_18_183010
@@ -322,8 +326,9 @@ module Mastodon::CLI
       ActiveRecord::Base.connection.select_all("SELECT string_agg(id::text, ',') AS ids FROM account_domain_blocks GROUP BY account_id, domain HAVING count(*) > 1").each do |row|
         AccountDomainBlock.where(id: row['ids'].split(',').drop(1)).delete_all
       end
-
+    ensure
       say 'Restoring account domain blocks indexes…'
+
       ActiveRecord::Base.connection.add_index :account_domain_blocks, %w(account_id domain), name: 'index_account_domain_blocks_on_account_id_and_domain', unique: true
     end
 
@@ -336,6 +341,8 @@ module Mastodon::CLI
       ActiveRecord::Base.connection.select_all("SELECT string_agg(id::text, ',') AS ids FROM account_identity_proofs GROUP BY account_id, provider, provider_username HAVING count(*) > 1").each do |row|
         AccountIdentityProof.where(id: row['ids'].split(',')).sort_by(&:id).reverse.drop(1).each(&:destroy)
       end
+    ensure
+      return unless ActiveRecord::Base.connection.table_exists?(:account_identity_proofs)
 
       say 'Restoring account identity proofs indexes…'
       ActiveRecord::Base.connection.add_index :account_identity_proofs, %w(account_id provider provider_username), name: 'index_account_proofs_on_account_and_provider_and_username', unique: true
@@ -350,6 +357,8 @@ module Mastodon::CLI
       ActiveRecord::Base.connection.select_all("SELECT string_agg(id::text, ',') AS ids FROM announcement_reactions GROUP BY account_id, announcement_id, name HAVING count(*) > 1").each do |row|
         AnnouncementReaction.where(id: row['ids'].split(',')).sort_by(&:id).reverse.drop(1).each(&:destroy)
       end
+    ensure
+      return unless ActiveRecord::Base.connection.table_exists?(:announcement_reactions)
 
       say 'Restoring announcement_reactions indexes…'
       ActiveRecord::Base.connection.add_index :announcement_reactions, %w(account_id announcement_id name), name: 'index_announcement_reactions_on_account_id_and_announcement_id', unique: true
@@ -369,8 +378,9 @@ module Mastodon::CLI
           other.destroy
         end
       end
-
+    ensure
       say 'Restoring conversations indexes…'
+
       if ActiveRecord::Migrator.current_version < 2022_03_07_083603
         ActiveRecord::Base.connection.add_index :conversations, ['uri'], name: 'index_conversations_on_uri', unique: true
       else
@@ -392,8 +402,9 @@ module Mastodon::CLI
           other.destroy
         end
       end
-
+    ensure
       say 'Restoring custom_emojis indexes…'
+
       ActiveRecord::Base.connection.add_index :custom_emojis, %w(shortcode domain), name: 'index_custom_emojis_on_shortcode_and_domain', unique: true
     end
 
@@ -411,8 +422,9 @@ module Mastodon::CLI
           other.destroy
         end
       end
-
+    ensure
       say 'Restoring custom_emoji_categories indexes…'
+
       ActiveRecord::Base.connection.add_index :custom_emoji_categories, ['name'], name: 'index_custom_emoji_categories_on_name', unique: true
     end
 
@@ -423,8 +435,9 @@ module Mastodon::CLI
       ActiveRecord::Base.connection.select_all("SELECT string_agg(id::text, ',') AS ids FROM domain_allows GROUP BY domain HAVING count(*) > 1").each do |row|
         DomainAllow.where(id: row['ids'].split(',')).sort_by(&:id).reverse.drop(1).each(&:destroy)
       end
-
+    ensure
       say 'Restoring domain_allows indexes…'
+
       ActiveRecord::Base.connection.add_index :domain_allows, ['domain'], name: 'index_domain_allows_on_domain', unique: true
     end
 
@@ -447,8 +460,9 @@ module Mastodon::CLI
 
         domain_blocks.each(&:destroy)
       end
-
+    ensure
       say 'Restoring domain_blocks indexes…'
+
       ActiveRecord::Base.connection.add_index :domain_blocks, ['domain'], name: 'index_domain_blocks_on_domain', unique: true
     end
 
@@ -461,6 +475,8 @@ module Mastodon::CLI
       ActiveRecord::Base.connection.select_all("SELECT string_agg(id::text, ',') AS ids FROM unavailable_domains GROUP BY domain HAVING count(*) > 1").each do |row|
         UnavailableDomain.where(id: row['ids'].split(',')).sort_by(&:id).reverse.drop(1).each(&:destroy)
       end
+    ensure
+      return unless ActiveRecord::Base.connection.table_exists?(:unavailable_domains)
 
       say 'Restoring domain_allows indexes…'
       ActiveRecord::Base.connection.add_index :unavailable_domains, ['domain'], name: 'index_unavailable_domains_on_domain', unique: true
@@ -474,8 +490,9 @@ module Mastodon::CLI
         domain_blocks = EmailDomainBlock.where(id: row['ids'].split(',')).sort_by { |b| b.parent.nil? ? 1 : 0 }.to_a
         domain_blocks.drop(1).each(&:destroy)
       end
-
+    ensure
       say 'Restoring email_domain_blocks indexes…'
+
       ActiveRecord::Base.connection.add_index :email_domain_blocks, ['domain'], name: 'index_email_domain_blocks_on_domain', unique: true
     end
 
@@ -486,8 +503,9 @@ module Mastodon::CLI
       ActiveRecord::Base.connection.select_all("SELECT string_agg(id::text, ',') AS ids FROM media_attachments WHERE shortcode IS NOT NULL GROUP BY shortcode HAVING count(*) > 1").each do |row|
         MediaAttachment.where(id: row['ids'].split(',').drop(1)).update_all(shortcode: nil)
       end
-
+    ensure
       say 'Restoring media_attachments indexes…'
+
       if ActiveRecord::Migrator.current_version < 2022_03_10_060626
         ActiveRecord::Base.connection.add_index :media_attachments, ['shortcode'], name: 'index_media_attachments_on_shortcode', unique: true
       else
@@ -502,8 +520,9 @@ module Mastodon::CLI
       ActiveRecord::Base.connection.select_all("SELECT string_agg(id::text, ',') AS ids FROM preview_cards GROUP BY url HAVING count(*) > 1").each do |row|
         PreviewCard.where(id: row['ids'].split(',')).sort_by(&:id).reverse.drop(1).each(&:destroy)
       end
-
+    ensure
       say 'Restoring preview_cards indexes…'
+
       ActiveRecord::Base.connection.add_index :preview_cards, ['url'], name: 'index_preview_cards_on_url', unique: true
     end
 
@@ -519,8 +538,9 @@ module Mastodon::CLI
           status.destroy
         end
       end
-
+    ensure
       say 'Restoring statuses indexes…'
+
       if ActiveRecord::Migrator.current_version < 2022_03_10_060706
         ActiveRecord::Base.connection.add_index :statuses, ['uri'], name: 'index_statuses_on_uri', unique: true
       else
@@ -541,8 +561,9 @@ module Mastodon::CLI
           tag.destroy
         end
       end
-
+    ensure
       say 'Restoring tags indexes…'
+
       if ActiveRecord::Migrator.current_version < 2021_04_21_121431
         ActiveRecord::Base.connection.add_index :tags, 'lower((name)::text)', name: 'index_tags_on_name_lower', unique: true
       else
@@ -559,6 +580,8 @@ module Mastodon::CLI
       ActiveRecord::Base.connection.select_all("SELECT string_agg(id::text, ',') AS ids FROM webauthn_credentials GROUP BY external_id HAVING count(*) > 1").each do |row|
         WebauthnCredential.where(id: row['ids'].split(',')).sort_by(&:id).reverse.drop(1).each(&:destroy)
       end
+    ensure
+      return unless ActiveRecord::Base.connection.table_exists?(:webauthn_credentials)
 
       say 'Restoring webauthn_credentials indexes…'
       ActiveRecord::Base.connection.add_index :webauthn_credentials, ['external_id'], name: 'index_webauthn_credentials_on_external_id', unique: true
@@ -573,6 +596,8 @@ module Mastodon::CLI
       ActiveRecord::Base.connection.select_all("SELECT string_agg(id::text, ',') AS ids FROM webhooks GROUP BY url HAVING count(*) > 1").each do |row|
         Webhooks.where(id: row['ids'].split(',')).sort_by(&:id).reverse.drop(1).each(&:destroy)
       end
+    ensure
+      return unless ActiveRecord::Base.connection.table_exists?(:webhooks)
 
       say 'Restoring webhooks indexes…'
       ActiveRecord::Base.connection.add_index :webhooks, ['url'], name: 'index_webhooks_on_url', unique: true
