@@ -23,6 +23,8 @@ const messages = defineMessages({
   unlisted_short: { id: 'privacy.unlisted.short', defaultMessage: 'Unlisted' },
   private_short: { id: 'privacy.private.short', defaultMessage: 'Followers-only' },
   direct_short: { id: 'privacy.direct.short', defaultMessage: 'Direct' },
+  canonical_link: { id: 'link.canonical', defaultMessage: 'Link to canonical resource' },
+  external_link: { id: 'link.external', defaultMessage: 'External link' },
 });
 
 export default  @injectIntl
@@ -124,6 +126,7 @@ class DetailedStatus extends ImmutablePureComponent {
     let reblogIcon = 'retweet';
     let favouriteLink = '';
     let edited = '';
+    let externalLink = '';
 
     if (this.props.measureHeight) {
       outerStyle.height = `${this.state.height}px`;
@@ -258,6 +261,15 @@ class DetailedStatus extends ImmutablePureComponent {
       );
     }
 
+    if (status.getIn(['account', 'username']) !== status.getIn(['account', 'acct'])) {
+      externalLink = (
+        <React.Fragment>
+          <React.Fragment> </React.Fragment>
+          <Icon id='external-link' title='${intl.formatMessage(messages.external_link)}' aria-label='${intl.formatMessage(messages.external_link)}' />
+        </React.Fragment>
+      );
+    }
+
     return (
       <div style={outerStyle}>
         <div ref={this.setRef} className={classNames('detailed-status', `detailed-status-${status.get('visibility')}`, { compact })}>
@@ -276,8 +288,9 @@ class DetailedStatus extends ImmutablePureComponent {
           {media}
 
           <div className='detailed-status__meta'>
-            <a className='detailed-status__datetime' href={`/@${status.getIn(['account', 'acct'])}/${status.get('id')}`} target='_blank' rel='noopener noreferrer'>
+            <a className='detailed-status__datetime' href={`${status.get('url')}`} target='_blank' rel='noopener noreferrer' title='${intl.formatMessage(messages.canonical_link)}' aria-label='${intl.formatMessage(messages.canonical_link)}'>
               <FormattedDate value={new Date(status.get('created_at'))} hour12={false} year='numeric' month='short' day='2-digit' hour='2-digit' minute='2-digit' />
+              {externalLink}
             </a>{edited}{visibilityLink}{applicationLink}{reblogLink} · {favouriteLink}
           </div>
         </div>

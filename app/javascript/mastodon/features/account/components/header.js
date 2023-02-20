@@ -350,14 +350,14 @@ class Header extends ImmutablePureComponent {
             )}
           </div>
 
-          <div className='account__header__tabs__name'>
+          <a className='account__header__tabs__name' href={`${account.get('url')}`} target='_blank' rel='noopener noreferrer'>
             <h1>
               <span dangerouslySetInnerHTML={displayNameHtml} /> {badge}
               <small>
                 <span>@{acct}</span> {lockedIcon}
               </small>
             </h1>
-          </div>
+          </a>
 
           {!(suspended || hidden) && (
             <div className='account__header__extra'>
