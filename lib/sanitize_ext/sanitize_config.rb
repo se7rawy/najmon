@@ -59,6 +59,23 @@ class Sanitize
       current_node.wrap('<p></p>')
     end
 
+    MENTION_LINKS_TRANSFORMER = lambda do |env|
+      return unless env[:node_name] == 'a' && env[:config][:mentions_map].present?
+
+      node = env[:node]
+      return unless node['class']&.split(/[\t\n\f\r ]/)&.include?('mention')
+
+      href = node['href']
+      account = env[:config][:mentions_map][href]
+      return if account.nil?
+
+      # Replace contents altogether
+      node.children.remove
+      node.add_child(<<~HTML.squish)
+        @<span>#{ERB::Util.h(account.username)}</span>
+      HTML
+    end
+
     MASTODON_STRICT ||= freeze_config(
       elements: %w(p br span a del pre blockquote code b strong u i em ul ol li),
 
@@ -79,6 +96,7 @@ class Sanitize
       protocols: {},
 
       transformers: [
+        MENTION_LINKS_TRANSFORMER,
         CLASS_WHITELIST_TRANSFORMER,
         UNSUPPORTED_ELEMENTS_TRANSFORMER,
         UNSUPPORTED_HREF_TRANSFORMER,
