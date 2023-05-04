@@ -29,7 +29,27 @@ class HtmlAwareFormatter
   private
 
   def reformat
-    Sanitize.fragment(text, Sanitize::Config::MASTODON_STRICT)
+    config = Sanitize::Config::MASTODON_STRICT
+    html = text
+
+    if @options[:preloaded_accounts]
+      mentions_map = @options[:preloaded_accounts].index_by { |account| ActivityPub::TagManager.instance.url_for(account) }
+      mentions_map.merge!(@options[:preloaded_accounts].index_by(&:uri))
+      mentions_map.transform_values! do |account|
+        [
+          ActivityPub::TagManager.instance.url_for(account),
+          "@<span>#{ERB::Util.h(account.username)}</span>",
+        ]
+      end
+
+      config = config.merge(mentions_map: mentions_map)
+
+      # Hubzilla-specific rewriting
+      url_re = Regexp.union(mentions_map.keys.compact)
+      html = html.gsub(/@<a class="zrl" href="(#{url_re})"/, '<a class="mention" href="\1"')
+    end
+
+    Sanitize.fragment(html, config)
   end
 
   def linkify
