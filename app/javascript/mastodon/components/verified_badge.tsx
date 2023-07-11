@@ -1,5 +1,7 @@
 import { ReactComponent as CheckIcon } from '@material-symbols/svg-600/outlined/check.svg';
 
+import { sanitize } from 'mastodon/utils/sanitize';
+
 import { Icon } from './icon';
 
 const domParser = new DOMParser();
@@ -15,7 +17,7 @@ const stripRelMe = (html: string) => {
   });
 
   const body = document.querySelector('body');
-  return body ? { __html: body.innerHTML } : undefined;
+  return body ? { __html: sanitize(body.innerHTML) } : undefined;
 };
 
 interface Props {
