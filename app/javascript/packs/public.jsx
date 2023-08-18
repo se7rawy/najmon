@@ -307,6 +307,18 @@ function loaded() {
     input.readonly = oldReadOnly;
   });
 
+  delegate(document, '#user_settings_attributes_theme, #form_admin_settings_theme', 'change', (evt) => {
+    const themeTags = document.querySelectorAll('link[data-theme-preview]');
+
+    for (const themeTag of themeTags) {
+      if (themeTag.getAttribute('data-theme-preview') === evt.target.value) {
+        themeTag.setAttribute('rel', 'stylesheet');
+      } else {
+        themeTag.setAttribute('rel', 'preload');
+      }
+    }
+  });
+
   const toggleSidebar = () => {
     const sidebar = document.querySelector('.sidebar ul');
     const toggleButton = document.querySelector('.sidebar__toggle__icon');
