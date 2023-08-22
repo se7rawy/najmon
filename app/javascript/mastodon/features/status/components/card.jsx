@@ -35,7 +35,7 @@ const getHostname = url => {
 
 const domParser = new DOMParser();
 
-const handleIframeUrl = (html, url) => {
+const handleIframeUrl = (html, url, providerName) => {
   const document = domParser.parseFromString(html, 'text/html').documentElement;
   const iframe = document.querySelector('iframe');
   const startTime = new URL(url).searchParams.get('t')
@@ -46,7 +46,7 @@ const handleIframeUrl = (html, url) => {
     iframeUrl.searchParams.set('autoplay', 1)
     iframeUrl.searchParams.set('auto_play', 1)
 
-    if (startTime) iframeUrl.searchParams.set('start', startTime)
+    if (startTime && providerName === "YouTube") iframeUrl.searchParams.set('start', startTime)
 
     iframe.src = iframeUrl.href
 
@@ -110,7 +110,7 @@ export default class Card extends PureComponent {
 
   renderVideo () {
     const { card } = this.props;
-    const content = { __html: handleIframeUrl(card.get('html'), card.get('url')) };
+    const content = { __html: handleIframeUrl(card.get('html'), card.get('url'), card.get('provider_name')) };
 
     return (
       <div
