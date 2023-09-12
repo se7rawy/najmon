@@ -16,6 +16,7 @@ import { HotKeys } from 'react-hotkeys';
 
 import { Icon }  from 'mastodon/components/icon';
 import { LoadingIndicator } from 'mastodon/components/loading_indicator';
+import { TimelineHint } from 'mastodon/components/timeline_hint';
 import ScrollContainer from 'mastodon/containers/scroll_container';
 import BundleColumnError from 'mastodon/features/ui/components/bundle_column_error';
 import { WithRouterPropTypes } from 'mastodon/utils/react_router';
@@ -185,6 +186,14 @@ const titleFromStatus = (intl, status) => {
   const attachmentCount = status.get('media_attachments').size;
 
   return text ? `${user}: "${truncate(text, 30)}"` : intl.formatMessage(messages.statusTitleWithAttachments, { user, attachmentCount });
+};
+
+const RemoteHint = ({ url }) => (
+  <TimelineHint url={url} resource={<FormattedMessage id='timeline_hint.resources.replies' defaultMessage='Some replies' />} />
+);
+
+RemoteHint.propTypes = {
+  url: PropTypes.string.isRequired,
 };
 
 class Status extends ImmutablePureComponent {
@@ -637,7 +646,7 @@ class Status extends ImmutablePureComponent {
   };
 
   render () {
-    let ancestors, descendants;
+    let ancestors, descendants, remoteHint;
     const { isLoading, status, ancestorsIds, descendantsIds, intl, domain, multiColumn, pictureInPicture } = this.props;
     const { fullscreen } = this.state;
 
@@ -665,6 +674,10 @@ class Status extends ImmutablePureComponent {
 
     const isLocal = status.getIn(['account', 'acct'], '').indexOf('@') === -1;
     const isIndexable = !status.getIn(['account', 'noindex']);
+
+    if (!isLocal) {
+      remoteHint = <RemoteHint url={status.get('url')} />
+    }
 
     const handlers = {
       moveUp: this.handleHotkeyMoveUp,
@@ -734,6 +747,7 @@ class Status extends ImmutablePureComponent {
             </HotKeys>
 
             {descendants}
+            {remoteHint}
           </div>
         </ScrollContainer>
 
