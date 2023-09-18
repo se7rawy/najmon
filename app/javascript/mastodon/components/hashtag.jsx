@@ -15,7 +15,6 @@ import { ShortNumber } from 'mastodon/components/short_number';
 import { Skeleton } from 'mastodon/components/skeleton';
 
 class SilentErrorBoundary extends Component {
-
   static propTypes = {
     children: PropTypes.node,
   };
@@ -35,7 +34,6 @@ class SilentErrorBoundary extends Component {
 
     return this.props.children;
   }
-
 }
 
 /**
@@ -59,9 +57,16 @@ export const ImmutableHashtag = ({ hashtag }) => (
   <Hashtag
     name={hashtag.get('name')}
     to={`/tags/${hashtag.get('name')}`}
-    people={hashtag.getIn(['history', 0, 'accounts']) * 1 + hashtag.getIn(['history', 1, 'accounts']) * 1}
-    // @ts-expect-error
-    history={hashtag.get('history').reverse().map((day) => day.get('uses')).toArray()}
+    people={
+      hashtag.getIn(['history', 0, 'accounts']) * 1 +
+      hashtag.getIn(['history', 1, 'accounts']) * 1
+    }
+    history={hashtag
+      .get('history')
+      .reverse()
+      // @ts-expect-error
+      .map((day) => day.get('uses'))
+      .toArray()}
   />
 );
 
@@ -69,18 +74,42 @@ ImmutableHashtag.propTypes = {
   hashtag: ImmutablePropTypes.map.isRequired,
 };
 
-// @ts-expect-error
-const Hashtag = ({ name, to, people, uses, history, className, description, withGraph }) => (
+const Hashtag = ({
+  // @ts-expect-error
+  name,
+  // @ts-expect-error
+  to,
+  // @ts-expect-error
+  people,
+  // @ts-expect-error
+  uses,
+  // @ts-expect-error
+  history,
+  // @ts-expect-error
+  className,
+  // @ts-expect-error
+  description,
+  // @ts-expect-error
+  withGraph,
+}) => (
   <div className={classNames('trends__item', className)}>
     <div className='trends__item__name'>
       <Link to={to}>
-        {name ? <>#<span>{name}</span></> : <Skeleton width={50} />}
+        {name ? (
+          <>
+            #<span>{name}</span>
+          </>
+        ) : (
+          <Skeleton width={50} />
+        )}
       </Link>
 
       {description ? (
         <span>{description}</span>
+      ) : typeof people !== 'undefined' ? (
+        <ShortNumber value={people} renderer={accountsCountRenderer} />
       ) : (
-        typeof people !== 'undefined' ? <ShortNumber value={people} renderer={accountsCountRenderer} /> : <Skeleton width={100} />
+        <Skeleton width={100} />
       )}
     </div>
 
@@ -93,7 +122,11 @@ const Hashtag = ({ name, to, people, uses, history, className, description, with
     {withGraph && (
       <div className='trends__item__sparkline'>
         <SilentErrorBoundary>
-          <Sparklines width={50} height={28} data={history ? history : Array.from(Array(7)).map(() => 0)}>
+          <Sparklines
+            width={50}
+            height={28}
+            data={history ? history : Array.from(Array(7)).map(() => 0)}
+          >
             <SparklinesCurve style={{ fill: 'none' }} />
           </Sparklines>
         </SilentErrorBoundary>

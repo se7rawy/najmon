@@ -35,14 +35,14 @@ const subscriptionCounters = {};
 /**
  * @param {Subscription} subscription
  */
-const addSubscription = subscription => {
+const addSubscription = (subscription) => {
   subscriptions.push(subscription);
 };
 
 /**
  * @param {Subscription} subscription
  */
-const removeSubscription = subscription => {
+const removeSubscription = (subscription) => {
   const index = subscriptions.indexOf(subscription);
 
   if (index !== -1) {
@@ -60,7 +60,9 @@ const subscribe = ({ channelName, params, onConnect }) => {
 
   if (subscriptionCounters[key] === 0) {
     // @ts-expect-error
-    sharedConnection.send(JSON.stringify({ type: 'subscribe', stream: channelName, ...params }));
+    sharedConnection.send(
+      JSON.stringify({ type: 'subscribe', stream: channelName, ...params }),
+    );
   }
 
   subscriptionCounters[key] += 1;
@@ -75,10 +77,15 @@ const unsubscribe = ({ channelName, params, onDisconnect }) => {
 
   subscriptionCounters[key] = subscriptionCounters[key] || 1;
 
-  // @ts-expect-error
-  if (subscriptionCounters[key] === 1 && sharedConnection.readyState === WebSocketClient.OPEN) {
+  if (
+    subscriptionCounters[key] === 1 &&
     // @ts-expect-error
-    sharedConnection.send(JSON.stringify({ type: 'unsubscribe', stream: channelName, ...params }));
+    sharedConnection.readyState === WebSocketClient.OPEN
+  ) {
+    // @ts-expect-error
+    sharedConnection.send(
+      JSON.stringify({ type: 'unsubscribe', stream: channelName, ...params }),
+    );
   }
 
   subscriptionCounters[key] -= 1;
@@ -87,40 +94,46 @@ const unsubscribe = ({ channelName, params, onDisconnect }) => {
 
 const sharedCallbacks = {
   connected() {
-    subscriptions.forEach(subscription => subscribe(subscription));
+    subscriptions.forEach((subscription) => subscribe(subscription));
   },
 
   // @ts-expect-error
   received(data) {
     const { stream } = data;
 
-    subscriptions.filter(({ channelName, params }) => {
-      const streamChannelName = stream[0];
+    subscriptions
+      .filter(({ channelName, params }) => {
+        const streamChannelName = stream[0];
 
-      if (stream.length === 1) {
-        return channelName === streamChannelName;
-      }
+        if (stream.length === 1) {
+          return channelName === streamChannelName;
+        }
 
-      const streamIdentifier = stream[1];
+        const streamIdentifier = stream[1];
 
-      if (['hashtag', 'hashtag:local'].includes(channelName)) {
-        return channelName === streamChannelName && params.tag === streamIdentifier;
-      } else if (channelName === 'list') {
-        return channelName === streamChannelName && params.list === streamIdentifier;
-      }
+        if (['hashtag', 'hashtag:local'].includes(channelName)) {
+          return (
+            channelName === streamChannelName && params.tag === streamIdentifier
+          );
+        } else if (channelName === 'list') {
+          return (
+            channelName === streamChannelName &&
+            params.list === streamIdentifier
+          );
+        }
 
-      return false;
-    }).forEach(subscription => {
-      subscription.onReceive(data);
-    });
+        return false;
+      })
+      .forEach((subscription) => {
+        subscription.onReceive(data);
+      });
   },
 
   disconnected() {
-    subscriptions.forEach(subscription => unsubscribe(subscription));
+    subscriptions.forEach((subscription) => unsubscribe(subscription));
   },
 
-  reconnected() {
-  },
+  reconnected() {},
 };
 
 /**
@@ -133,7 +146,9 @@ const channelNameWithInlineParams = (channelName, params) => {
     return channelName;
   }
 
-  return `${channelName}&${Object.keys(params).map(key => `${key}=${params[key]}`).join('&')}`;
+  return `${channelName}&${Object.keys(params)
+    .map((key) => `${key}=${params[key]}`)
+    .join('&')}`;
 };
 
 /**
@@ -142,62 +157,77 @@ const channelNameWithInlineParams = (channelName, params) => {
  * @param {function(Function, Function): { onConnect: (function(): void), onReceive: (function(StreamEvent): void), onDisconnect: (function(): void) }} callbacks
  * @returns {function(): void}
  */
-// @ts-expect-error
-export const connectStream = (channelName, params, callbacks) => (dispatch, getState) => {
-  const streamingAPIBaseURL = getState().getIn(['meta', 'streaming_api_base_url']);
-  const accessToken = getState().getIn(['meta', 'access_token']);
-  const { onConnect, onReceive, onDisconnect } = callbacks(dispatch, getState);
 
-  // If we cannot use a websockets connection, we must fall back
-  // to using individual connections for each channel
-  if (!streamingAPIBaseURL.startsWith('ws')) {
-    const connection = createConnection(streamingAPIBaseURL, accessToken, channelNameWithInlineParams(channelName, params), {
-      connected() {
-        onConnect();
-      },
+export const connectStream =
+  // @ts-expect-error
+  (channelName, params, callbacks) => (dispatch, getState) => {
+    const streamingAPIBaseURL = getState().getIn([
+      'meta',
+      'streaming_api_base_url',
+    ]);
+    const accessToken = getState().getIn(['meta', 'access_token']);
+    const { onConnect, onReceive, onDisconnect } = callbacks(
+      dispatch,
+      getState,
+    );
 
-      received(data) {
-        onReceive(data);
-      },
+    // If we cannot use a websockets connection, we must fall back
+    // to using individual connections for each channel
+    if (!streamingAPIBaseURL.startsWith('ws')) {
+      const connection = createConnection(
+        streamingAPIBaseURL,
+        accessToken,
+        channelNameWithInlineParams(channelName, params),
+        {
+          connected() {
+            onConnect();
+          },
 
-      disconnected() {
-        onDisconnect();
-      },
+          received(data) {
+            onReceive(data);
+          },
 
-      reconnected() {
-        onConnect();
-      },
-    });
+          disconnected() {
+            onDisconnect();
+          },
+
+          reconnected() {
+            onConnect();
+          },
+        },
+      );
+
+      return () => {
+        connection.close();
+      };
+    }
+
+    const subscription = {
+      channelName,
+      params,
+      onConnect,
+      onReceive,
+      onDisconnect,
+    };
+
+    addSubscription(subscription);
+
+    // If a connection is open, we can execute the subscription right now. Otherwise,
+    // because we have already registered it, it will be executed on connect
+
+    if (!sharedConnection) {
+      sharedConnection = /** @type {WebSocketClient} */ (
+        createConnection(streamingAPIBaseURL, accessToken, '', sharedCallbacks)
+      );
+    } else if (sharedConnection.readyState === WebSocketClient.OPEN) {
+      subscribe(subscription);
+    }
 
     return () => {
-      connection.close();
+      removeSubscription(subscription);
+      unsubscribe(subscription);
     };
-  }
-
-  const subscription = {
-    channelName,
-    params,
-    onConnect,
-    onReceive,
-    onDisconnect,
   };
-
-  addSubscription(subscription);
-
-  // If a connection is open, we can execute the subscription right now. Otherwise,
-  // because we have already registered it, it will be executed on connect
-
-  if (!sharedConnection) {
-    sharedConnection = /** @type {WebSocketClient} */ (createConnection(streamingAPIBaseURL, accessToken, '', sharedCallbacks));
-  } else if (sharedConnection.readyState === WebSocketClient.OPEN) {
-    subscribe(subscription);
-  }
-
-  return () => {
-    removeSubscription(subscription);
-    unsubscribe(subscription);
-  };
-};
 
 const KNOWN_EVENT_TYPES = [
   'update',
@@ -229,19 +259,27 @@ const handleEventSourceMessage = (e, received) => {
  * @param {{ connected: Function, received: function(StreamEvent): void, disconnected: Function, reconnected: Function }} callbacks
  * @returns {WebSocketClient | EventSource}
  */
-const createConnection = (streamingAPIBaseURL, accessToken, channelName, { connected, received, disconnected, reconnected }) => {
+const createConnection = (
+  streamingAPIBaseURL,
+  accessToken,
+  channelName,
+  { connected, received, disconnected, reconnected },
+) => {
   const params = channelName.split('&');
 
   // @ts-expect-error
   channelName = params.shift();
 
   if (streamingAPIBaseURL.startsWith('ws')) {
-    // @ts-expect-error
-    const ws = new WebSocketClient(`${streamingAPIBaseURL}/api/v1/streaming/?${params.join('&')}`, accessToken);
+    const ws = new WebSocketClient(
+      `${streamingAPIBaseURL}/api/v1/streaming/?${params.join('&')}`,
+      // @ts-expect-error
+      accessToken,
+    );
 
     // @ts-expect-error
     ws.onopen = connected;
-    ws.onmessage = e => received(JSON.parse(e.data));
+    ws.onmessage = (e) => received(JSON.parse(e.data));
     // @ts-expect-error
     ws.onclose = disconnected;
     // @ts-expect-error
@@ -259,14 +297,20 @@ const createConnection = (streamingAPIBaseURL, accessToken, channelName, { conne
 
   params.push(`access_token=${accessToken}`);
 
-  const es = new EventSource(`${streamingAPIBaseURL}/api/v1/streaming/${channelName}?${params.join('&')}`);
+  const es = new EventSource(
+    `${streamingAPIBaseURL}/api/v1/streaming/${channelName}?${params.join(
+      '&',
+    )}`,
+  );
 
   es.onopen = () => {
     connected();
   };
 
-  KNOWN_EVENT_TYPES.forEach(type => {
-    es.addEventListener(type, e => handleEventSourceMessage(/** @type {MessageEvent} */(e), received));
+  KNOWN_EVENT_TYPES.forEach((type) => {
+    es.addEventListener(type, (e) =>
+      handleEventSourceMessage(/** @type {MessageEvent} */ (e), received),
+    );
   });
 
   es.onerror = /** @type {function(): void} */ (disconnected);
