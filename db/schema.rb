@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_07_150100) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_24_194120) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -212,6 +212,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_07_150100) do
     t.string "route_param"
     t.string "permalink"
     t.index ["account_id"], name: "index_admin_action_logs_on_account_id"
+    t.index ["route_param"], name: "index_admin_action_logs_on_route_param"
     t.index ["target_type", "target_id"], name: "index_admin_action_logs_on_target_type_and_target_id"
   end
 

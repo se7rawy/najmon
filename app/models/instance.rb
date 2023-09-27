@@ -54,6 +54,7 @@ class Instance < ApplicationRecord
   end
 
   alias to_log_human_identifier to_param
+  alias to_log_route_param to_param
 
   delegate :exhausted_deliveries_days, to: :delivery_failure_tracker
 
