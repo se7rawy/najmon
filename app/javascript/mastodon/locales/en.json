@@ -654,6 +654,7 @@
   "status.edited_x_times": "Edited {count, plural, one {{count} time} other {{count} times}}",
   "status.embed": "Embed",
   "status.favourite": "Favorite",
+  "status.remove_favourite": "Remove from favorites",
   "status.filter": "Filter this post",
   "status.filtered": "Filtered",
   "status.hide": "Hide post",
