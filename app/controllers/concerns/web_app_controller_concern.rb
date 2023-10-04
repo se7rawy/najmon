@@ -8,6 +8,12 @@ module WebAppControllerConcern
     before_action :set_app_body_class
 
     vary_by 'Accept, Accept-Language, Cookie'
+
+    content_security_policy do |p|
+      include Rails.application.routes.url_helpers
+
+      p.form_action -> { destroy_user_session_url(host: request.host) }
+    end
   end
 
   def skip_csrf_meta_tags?
