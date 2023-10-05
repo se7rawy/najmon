@@ -175,6 +175,7 @@ GEM
     bundler-audit (0.9.1)
       bundler (>= 1.2.0, < 3)
       thor (~> 1.0)
+    camertron-eprun (1.1.1)
     capistrano (3.17.3)
       airbrussh (>= 1.0.0)
       i18n
@@ -208,6 +209,7 @@ GEM
       elasticsearch (>= 7.12.0, < 7.14.0)
       elasticsearch-dsl
     chunky_png (1.4.0)
+    cldr-plurals-runtime-rb (1.1.0)
     climate_control (0.2.0)
     cocoon (1.2.15)
     color_diff (0.1)
@@ -766,6 +768,10 @@ GEM
     twitter-text (3.1.0)
       idn-ruby
       unf (~> 0.1.0)
+    twitter_cldr (6.12.0)
+      camertron-eprun
+      cldr-plurals-runtime-rb (~> 1.1)
+      tzinfo
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     tzinfo-data (1.2023.3)
@@ -942,6 +948,7 @@ DEPENDENCIES
   thor (~> 1.2)
   tty-prompt (~> 0.23)
   twitter-text (~> 3.1.0)
+  twitter_cldr (~> 6.12.0)
   tzinfo-data (~> 1.2023)
   webauthn (~> 3.0)
   webmock (~> 3.18)
