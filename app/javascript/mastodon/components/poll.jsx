@@ -115,18 +115,10 @@ class Poll extends ImmutablePureComponent {
   };
 
   handleVote = () => {
-    if (this.props.disabled) {
-      return;
-    }
-
     this.props.onVote(Object.keys(this.state.selected));
   };
 
   handleRefresh = () => {
-    if (this.props.disabled) {
-      return;
-    }
-
     this.props.refresh();
   };
 
@@ -218,6 +210,7 @@ class Poll extends ImmutablePureComponent {
     const timeRemaining = expired ? intl.formatMessage(messages.closed) : <RelativeTimestamp timestamp={poll.get('expires_at')} futureDate />;
     const showResults   = poll.get('voted') || revealed || expired;
     const disabled      = this.props.disabled || Object.entries(this.state.selected).every(item => !item);
+    const showRefresh   = showResults && !poll.get('final') && !this.props.disabled;
 
     let votesCount = null;
 
@@ -236,7 +229,7 @@ class Poll extends ImmutablePureComponent {
         <div className='poll__footer'>
           {!showResults && <button className='button button-secondary' disabled={disabled || !this.context.identity.signedIn} onClick={this.handleVote}><FormattedMessage id='poll.vote' defaultMessage='Vote' /></button>}
           {!showResults && <><button className='poll__link' onClick={this.handleReveal}><FormattedMessage id='poll.reveal' defaultMessage='See results' /></button> · </>}
-          {showResults && !this.props.disabled && <><button className='poll__link' onClick={this.handleRefresh}><FormattedMessage id='poll.refresh' defaultMessage='Refresh' /></button> · </>}
+          {showRefresh && <span><button className='poll__link' onClick={this.handleRefresh}><FormattedMessage id='poll.refresh' defaultMessage='Refresh' /></button> · </span>}
           {votesCount}
           {poll.get('expires_at') && <> · {timeRemaining}</>}
         </div>
