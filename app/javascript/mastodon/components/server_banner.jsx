@@ -8,8 +8,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { fetchServer } from 'mastodon/actions/server';
+import { GenericCounter } from 'mastodon/components/counters';
 import { ServerHeroImage } from 'mastodon/components/server_hero_image';
-import { ShortNumber } from 'mastodon/components/short_number';
 import { Skeleton } from 'mastodon/components/skeleton';
 import Account from 'mastodon/containers/account_container';
 import { domain } from 'mastodon/initial_state';
@@ -77,7 +77,7 @@ class ServerBanner extends PureComponent {
               </>
             ) : (
               <>
-                <strong className='server-banner__number'><ShortNumber value={server.getIn(['usage', 'users', 'active_month'])} /></strong>
+                <strong className='server-banner__number'><GenericCounter value={server.getIn(['usage', 'users', 'active_month'])} /></strong>
                 <br />
                 <span className='server-banner__number-label' title={intl.formatMessage(messages.aboutActiveUsers)}><FormattedMessage id='server_banner.active_users' defaultMessage='active users' /></span>
               </>
