@@ -1,18 +1,25 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+
+import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
+
+import classNames from 'classnames';
+import { Link, withRouter } from 'react-router-dom';
+
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import ImmutablePureComponent from 'react-immutable-pure-component';
-import StatusContent from 'mastodon/components/status_content';
-import AttachmentList from 'mastodon/components/attachment_list';
-import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
-import DropdownMenuContainer from 'mastodon/containers/dropdown_menu_container';
-import AvatarComposite from 'mastodon/components/avatar_composite';
-import { Link } from 'react-router-dom';
-import IconButton from 'mastodon/components/icon_button';
-import RelativeTimestamp from 'mastodon/components/relative_timestamp';
+
+import { ReactComponent as MoreHorizIcon } from '@material-symbols/svg-600/outlined/more_horiz.svg';
+import { ReactComponent as ReplyIcon } from '@material-symbols/svg-600/outlined/reply.svg';
 import { HotKeys } from 'react-hotkeys';
+
+import AttachmentList from 'mastodon/components/attachment_list';
+import AvatarComposite from 'mastodon/components/avatar_composite';
+import { IconButton } from 'mastodon/components/icon_button';
+import { RelativeTimestamp } from 'mastodon/components/relative_timestamp';
+import StatusContent from 'mastodon/components/status_content';
+import DropdownMenuContainer from 'mastodon/containers/dropdown_menu_container';
 import { autoPlayGif } from 'mastodon/initial_state';
-import classNames from 'classnames';
+import { WithRouterPropTypes } from 'mastodon/utils/react_router';
 
 const messages = defineMessages({
   more: { id: 'status.more', defaultMessage: 'More' },
@@ -24,12 +31,7 @@ const messages = defineMessages({
   unmuteConversation: { id: 'status.unmute_conversation', defaultMessage: 'Unmute conversation' },
 });
 
-export default @injectIntl
 class Conversation extends ImmutablePureComponent {
-
-  static contextTypes = {
-    router: PropTypes.object,
-  };
 
   static propTypes = {
     conversationId: PropTypes.string.isRequired,
@@ -42,6 +44,7 @@ class Conversation extends ImmutablePureComponent {
     markRead: PropTypes.func.isRequired,
     delete: PropTypes.func.isRequired,
     intl: PropTypes.object.isRequired,
+    ...WithRouterPropTypes,
   };
 
   handleMouseEnter = ({ currentTarget }) => {
@@ -71,7 +74,7 @@ class Conversation extends ImmutablePureComponent {
   };
 
   handleClick = () => {
-    if (!this.context.router) {
+    if (!this.props.history) {
       return;
     }
 
@@ -81,7 +84,7 @@ class Conversation extends ImmutablePureComponent {
       markRead();
     }
 
-    this.context.router.history.push(`/@${lastStatus.getIn(['account', 'acct'])}/${lastStatus.get('id')}`);
+    this.props.history.push(`/@${lastStatus.getIn(['account', 'acct'])}/${lastStatus.get('id')}`);
   };
 
   handleMarkAsRead = () => {
@@ -89,7 +92,7 @@ class Conversation extends ImmutablePureComponent {
   };
 
   handleReply = () => {
-    this.props.reply(this.props.lastStatus, this.context.router.history);
+    this.props.reply(this.props.lastStatus, this.props.history);
   };
 
   handleDelete = () => {
@@ -145,7 +148,7 @@ class Conversation extends ImmutablePureComponent {
 
     return (
       <HotKeys handlers={handlers}>
-        <div className={classNames('conversation focusable muted', { 'conversation--unread': unread })} tabIndex='0'>
+        <div className={classNames('conversation focusable muted', { 'conversation--unread': unread })} tabIndex={0}>
           <div className='conversation__avatar' onClick={this.handleClick} role='presentation'>
             <AvatarComposite accounts={accounts} size={48} />
           </div>
@@ -166,7 +169,7 @@ class Conversation extends ImmutablePureComponent {
               onClick={this.handleClick}
               expanded={!lastStatus.get('hidden')}
               onExpandedToggle={this.handleShowMore}
-              collapsable
+              collapsible
             />
 
             {lastStatus.get('media_attachments').size > 0 && (
@@ -177,7 +180,7 @@ class Conversation extends ImmutablePureComponent {
             )}
 
             <div className='status__action-bar'>
-              <IconButton className='status__action-bar-button' title={intl.formatMessage(messages.reply)} icon='reply' onClick={this.handleReply} />
+              <IconButton className='status__action-bar-button' title={intl.formatMessage(messages.reply)} icon='reply' iconComponent={ReplyIcon} onClick={this.handleReply} />
 
               <div className='status__action-bar-dropdown'>
                 <DropdownMenuContainer
@@ -185,6 +188,7 @@ class Conversation extends ImmutablePureComponent {
                   status={lastStatus}
                   items={menu}
                   icon='ellipsis-h'
+                  iconComponent={MoreHorizIcon}
                   size={18}
                   direction='right'
                   title={intl.formatMessage(messages.more)}
@@ -198,3 +202,5 @@ class Conversation extends ImmutablePureComponent {
   }
 
 }
+
+export default withRouter(injectIntl(Conversation));

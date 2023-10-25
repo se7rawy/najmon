@@ -1,20 +1,22 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { fetchStatus } from 'mastodon/actions/statuses';
-import { fetchFilters, createFilter, createFilterStatus } from 'mastodon/actions/filters';
 import PropTypes from 'prop-types';
+
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
+
 import ImmutablePureComponent from 'react-immutable-pure-component';
-import IconButton from 'mastodon/components/icon_button';
-import SelectFilter from 'mastodon/features/filters/select_filter';
+import { connect } from 'react-redux';
+
+import { ReactComponent as CloseIcon } from '@material-symbols/svg-600/outlined/close.svg';
+
+import { fetchFilters, createFilter, createFilterStatus } from 'mastodon/actions/filters';
+import { fetchStatus } from 'mastodon/actions/statuses';
+import { IconButton } from 'mastodon/components/icon_button';
 import AddedToFilter from 'mastodon/features/filters/added_to_filter';
+import SelectFilter from 'mastodon/features/filters/select_filter';
 
 const messages = defineMessages({
   close: { id: 'lightbox.close', defaultMessage: 'Close' },
 });
 
-export default @connect(undefined)
-@injectIntl
 class FilterModal extends ImmutablePureComponent {
 
   static propTypes = {
@@ -120,7 +122,7 @@ class FilterModal extends ImmutablePureComponent {
     return (
       <div className='modal-root__modal report-dialog-modal'>
         <div className='report-modal__target'>
-          <IconButton className='report-modal__close' title={intl.formatMessage(messages.close)} icon='times' onClick={onClose} size={20} />
+          <IconButton className='report-modal__close' title={intl.formatMessage(messages.close)} icon='times' iconComponent={CloseIcon} onClick={onClose} size={20} />
           <FormattedMessage id='filter_modal.title.status' defaultMessage='Filter a post' />
         </div>
 
@@ -132,3 +134,5 @@ class FilterModal extends ImmutablePureComponent {
   }
 
 }
+
+export default connect()(injectIntl(FilterModal));

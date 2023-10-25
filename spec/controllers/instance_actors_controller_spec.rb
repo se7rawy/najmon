@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe InstanceActorsController, type: :controller do
+RSpec.describe InstanceActorsController do
   describe 'GET #show' do
-    context 'as JSON' do
+    context 'with JSON' do
       let(:format) { 'json' }
 
       shared_examples 'shared behavior' do

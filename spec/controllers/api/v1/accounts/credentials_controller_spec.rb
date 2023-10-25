@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Api::V1::Accounts::CredentialsController do
@@ -39,11 +41,10 @@ describe Api::V1::Accounts::CredentialsController do
           }
         end
 
-        it 'returns http success' do
+        it 'updates account info', :aggregate_failures do
           expect(response).to have_http_status(200)
-        end
 
-        it 'updates account info' do
+          user.reload
           user.account.reload
 
           expect(user.account.display_name).to eq("Alice Isn't Dead")
@@ -52,9 +53,7 @@ describe Api::V1::Accounts::CredentialsController do
           expect(user.account.header).to exist
           expect(user.setting_default_privacy).to eq('unlisted')
           expect(user.setting_default_sensitive).to be(true)
-        end
 
-        it 'queues up an account update distribution' do
           expect(ActivityPub::UpdateDistributionWorker).to have_received(:perform_async).with(user.account_id)
         end
       end

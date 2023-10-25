@@ -1,8 +1,10 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+
+import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
+
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import ImmutablePureComponent from 'react-immutable-pure-component';
-import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
+
 import Hashtag from 'mastodon/components/hashtag';
 
 const messages = defineMessages({
@@ -10,12 +12,7 @@ const messages = defineMessages({
   empty: { id: 'account.featured_tags.last_status_never', defaultMessage: 'No posts' },
 });
 
-export default @injectIntl
 class FeaturedTags extends ImmutablePureComponent {
-
-  static contextTypes = {
-    router: PropTypes.object,
-  };
 
   static propTypes = {
     account: ImmutablePropTypes.map,
@@ -50,3 +47,5 @@ class FeaturedTags extends ImmutablePureComponent {
   }
 
 }
+
+export default injectIntl(FeaturedTags);

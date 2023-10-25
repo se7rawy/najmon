@@ -1,12 +1,16 @@
-import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { PureComponent } from 'react';
+
 import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
+
+import { connect } from 'react-redux';
+
 import Toggle from 'react-toggle';
-import Button from '../../../components/button';
-import { closeModal } from '../../../actions/modal';
+
 import { muteAccount } from '../../../actions/accounts';
+import { closeModal } from '../../../actions/modal';
 import { toggleHideNotifications, changeMuteDuration } from '../../../actions/mutes';
+import { Button } from '../../../components/button';
 
 const messages = defineMessages({
   minutes: { id: 'intervals.full.minutes', defaultMessage: '{number, plural, one {# minute} other {# minutes}}' },
@@ -30,7 +34,10 @@ const mapDispatchToProps = dispatch => {
     },
 
     onClose() {
-      dispatch(closeModal());
+      dispatch(closeModal({
+        modalType: undefined,
+        ignoreFocus: false,
+      }));
     },
 
     onToggleNotifications() {
@@ -43,9 +50,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default @connect(mapStateToProps, mapDispatchToProps)
-@injectIntl
-class MuteModal extends React.PureComponent {
+class MuteModal extends PureComponent {
 
   static propTypes = {
     account: PropTypes.object.isRequired,
@@ -58,10 +63,6 @@ class MuteModal extends React.PureComponent {
     onChangeMuteDuration: PropTypes.func.isRequired,
   };
 
-  componentDidMount() {
-    this.button.focus();
-  }
-
   handleClick = () => {
     this.props.onClose();
     this.props.onConfirm(this.props.account, this.props.notifications, this.props.muteDuration);
@@ -69,10 +70,6 @@ class MuteModal extends React.PureComponent {
 
   handleCancel = () => {
     this.props.onClose();
-  };
-
-  setRef = (c) => {
-    this.button = c;
   };
 
   toggleNotifications = () => {
@@ -129,7 +126,7 @@ class MuteModal extends React.PureComponent {
           <Button onClick={this.handleCancel} className='mute-modal__cancel-button'>
             <FormattedMessage id='confirmation_modal.cancel' defaultMessage='Cancel' />
           </Button>
-          <Button onClick={this.handleClick} ref={this.setRef}>
+          <Button onClick={this.handleClick} autoFocus>
             <FormattedMessage id='confirmations.mute.confirm' defaultMessage='Mute' />
           </Button>
         </div>
@@ -138,3 +135,5 @@ class MuteModal extends React.PureComponent {
   }
 
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(MuteModal));

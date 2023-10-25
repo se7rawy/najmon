@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe Api::V2::Filters::StatusesController, type: :controller do
+RSpec.describe Api::V2::Filters::StatusesController do
   render_views
 
   let(:user)         { Fabricate(:user) }
@@ -39,16 +41,12 @@ RSpec.describe Api::V2::Filters::StatusesController, type: :controller do
       post :create, params: { filter_id: filter_id, status_id: status.id }
     end
 
-    it 'returns http success' do
+    it 'creates a filter', :aggregate_failures do
       expect(response).to have_http_status(200)
-    end
 
-    it 'returns a status filter' do
       json = body_as_json
       expect(json[:status_id]).to eq status.id.to_s
-    end
 
-    it 'creates a status filter' do
       filter = user.account.custom_filters.first
       expect(filter).to_not be_nil
       expect(filter.statuses.pluck(:status_id)).to eq [status.id]
@@ -71,11 +69,9 @@ RSpec.describe Api::V2::Filters::StatusesController, type: :controller do
       get :show, params: { id: status_filter.id }
     end
 
-    it 'returns http success' do
+    it 'responds with the filter', :aggregate_failures do
       expect(response).to have_http_status(200)
-    end
 
-    it 'returns expected data' do
       json = body_as_json
       expect(json[:status_id]).to eq status_filter.status_id.to_s
     end
@@ -97,11 +93,9 @@ RSpec.describe Api::V2::Filters::StatusesController, type: :controller do
       delete :destroy, params: { id: status_filter.id }
     end
 
-    it 'returns http success' do
+    it 'destroys the filter', :aggregate_failures do
       expect(response).to have_http_status(200)
-    end
 
-    it 'removes the filter' do
       expect { status_filter.reload }.to raise_error ActiveRecord::RecordNotFound
     end
 

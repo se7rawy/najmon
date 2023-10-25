@@ -1,16 +1,21 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import { PureComponent } from 'react';
+
 import { defineMessages, injectIntl } from 'react-intl';
-import IconButton from 'mastodon/components/icon_button';
+
+import classNames from 'classnames';
+
+import { ReactComponent as CloseIcon } from '@material-symbols/svg-600/outlined/close.svg';
+
+import { IconButton } from 'mastodon/components/icon_button';
+
 import ImageLoader from './image_loader';
 
 const messages = defineMessages({
   close: { id: 'lightbox.close', defaultMessage: 'Close' },
 });
 
-export default @injectIntl
-class ImageModal extends React.PureComponent {
+class ImageModal extends PureComponent {
 
   static propTypes = {
     src: PropTypes.string.isRequired,
@@ -50,10 +55,12 @@ class ImageModal extends React.PureComponent {
         </div>
 
         <div className={navigationClassName}>
-          <IconButton className='media-modal__close' title={intl.formatMessage(messages.close)} icon='times' onClick={onClose} size={40} />
+          <IconButton className='media-modal__close' title={intl.formatMessage(messages.close)} icon='times' iconComponent={CloseIcon} onClick={onClose} size={40} />
         </div>
       </div>
     );
   }
 
 }
+
+export default injectIntl(ImageModal);

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe ActivityPub::Activity::Add do
@@ -24,7 +26,7 @@ RSpec.describe ActivityPub::Activity::Add do
     end
 
     context 'when status was not known before' do
-      let(:service_stub) { double }
+      let(:service_stub) { instance_double(ActivityPub::FetchRemoteStatusService) }
 
       let(:json) do
         {

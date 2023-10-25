@@ -1,9 +1,13 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import Check from 'mastodon/components/check';
+import { PureComponent } from 'react';
 
-export default class Option extends React.PureComponent {
+import classNames from 'classnames';
+
+import { ReactComponent as CheckIcon } from '@material-symbols/svg-600/outlined/done.svg';
+
+import { Icon }  from 'mastodon/components/icon';
+
+export default class Option extends PureComponent {
 
   static propTypes = {
     name: PropTypes.string.isRequired,
@@ -40,12 +44,12 @@ export default class Option extends React.PureComponent {
 
         <span
           className={classNames('poll__input', { active: checked, checkbox: multiple })}
-          tabIndex='0'
+          tabIndex={0}
           role='radio'
           onKeyPress={this.handleKeyPress}
           aria-checked={checked}
           aria-label={label}
-        >{checked && <Check />}</span>
+        >{checked && <Icon icon={CheckIcon} />}</span>
 
         {labelComponent ? labelComponent : (
           <span className='poll__option__text'>

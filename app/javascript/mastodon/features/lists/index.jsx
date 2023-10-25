@@ -1,18 +1,24 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+
+import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
+
 import { Helmet } from 'react-helmet';
+
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import ImmutablePureComponent from 'react-immutable-pure-component';
-import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
+
+import { ReactComponent as ListAltIcon } from '@material-symbols/svg-600/outlined/list_alt.svg';
+
 import { fetchLists } from 'mastodon/actions/lists';
-import LoadingIndicator from 'mastodon/components/loading_indicator';
-import ScrollableList from 'mastodon/components/scrollable_list';
 import Column from 'mastodon/components/column';
 import ColumnHeader from 'mastodon/components/column_header';
+import { LoadingIndicator } from 'mastodon/components/loading_indicator';
+import ScrollableList from 'mastodon/components/scrollable_list';
 import ColumnLink from 'mastodon/features/ui/components/column_link';
 import ColumnSubheading from 'mastodon/features/ui/components/column_subheading';
+
 import NewListForm from './components/new_list_form';
 
 const messages = defineMessages({
@@ -32,8 +38,6 @@ const mapStateToProps = state => ({
   lists: getOrderedLists(state),
 });
 
-export default @connect(mapStateToProps)
-@injectIntl
 class Lists extends ImmutablePureComponent {
 
   static propTypes = {
@@ -44,7 +48,7 @@ class Lists extends ImmutablePureComponent {
     multiColumn: PropTypes.bool,
   };
 
-  componentWillMount () {
+  UNSAFE_componentWillMount () {
     this.props.dispatch(fetchLists());
   }
 
@@ -63,7 +67,7 @@ class Lists extends ImmutablePureComponent {
 
     return (
       <Column bindToDocument={!multiColumn} label={intl.formatMessage(messages.heading)}>
-        <ColumnHeader title={intl.formatMessage(messages.heading)} icon='list-ul' multiColumn={multiColumn} showBackButton />
+        <ColumnHeader title={intl.formatMessage(messages.heading)} icon='list-ul' iconComponent={ListAltIcon} multiColumn={multiColumn} />
 
         <NewListForm />
 
@@ -74,7 +78,7 @@ class Lists extends ImmutablePureComponent {
           bindToDocument={!multiColumn}
         >
           {lists.map(list =>
-            <ColumnLink key={list.get('id')} to={`/lists/${list.get('id')}`} icon='list-ul' text={list.get('title')} />,
+            <ColumnLink key={list.get('id')} to={`/lists/${list.get('id')}`} icon='list-ul' iconComponent={ListAltIcon} text={list.get('title')} />,
           )}
         </ScrollableList>
 
@@ -87,3 +91,5 @@ class Lists extends ImmutablePureComponent {
   }
 
 }
+
+export default connect(mapStateToProps)(injectIntl(Lists));

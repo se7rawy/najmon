@@ -1,24 +1,31 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import { PureComponent } from 'react';
+
 import { FormattedMessage, injectIntl } from 'react-intl';
-import Icon from 'mastodon/components/icon';
-import DropdownMenu from './containers/dropdown_menu_container';
+
 import { connect } from 'react-redux';
+
+import { ReactComponent as ArrowDropDownIcon } from '@material-symbols/svg-600/outlined/arrow_drop_down.svg';
+
 import { openModal } from 'mastodon/actions/modal';
-import RelativeTimestamp from 'mastodon/components/relative_timestamp';
+import { Icon }  from 'mastodon/components/icon';
 import InlineAccount from 'mastodon/components/inline_account';
+import { RelativeTimestamp } from 'mastodon/components/relative_timestamp';
+
+import DropdownMenu from './containers/dropdown_menu_container';
 
 const mapDispatchToProps = (dispatch, { statusId }) => ({
 
   onItemClick (index) {
-    dispatch(openModal('COMPARE_HISTORY', { index, statusId }));
+    dispatch(openModal({
+      modalType: 'COMPARE_HISTORY',
+      modalProps: { index, statusId },
+    }));
   },
 
 });
 
-export default @connect(null, mapDispatchToProps)
-@injectIntl
-class EditedTimestamp extends React.PureComponent {
+class EditedTimestamp extends PureComponent {
 
   static propTypes = {
     statusId: PropTypes.string.isRequired,
@@ -34,7 +41,7 @@ class EditedTimestamp extends React.PureComponent {
 
   renderHeader = items => {
     return (
-      <FormattedMessage id='status.edited_x_times' defaultMessage='Edited {count, plural, one {{count} time} other {{count} times}}' values={{ count: items.size - 1 }} />
+      <FormattedMessage id='status.edited_x_times' defaultMessage='Edited {count, plural, one {# time} other {# times}}' values={{ count: items.size - 1 }} />
     );
   };
 
@@ -61,10 +68,12 @@ class EditedTimestamp extends React.PureComponent {
     return (
       <DropdownMenu statusId={statusId} renderItem={this.renderItem} scrollable renderHeader={this.renderHeader} onItemClick={this.handleItemClick}>
         <button className='dropdown-menu__text-button'>
-          <FormattedMessage id='status.edited' defaultMessage='Edited {date}' values={{ date: intl.formatDate(timestamp, { hour12: false, month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit' }) }} /> <Icon id='caret-down' />
+          <FormattedMessage id='status.edited' defaultMessage='Edited {date}' values={{ date: intl.formatDate(timestamp, { hour12: false, month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit' }) }} /> <Icon id='caret-down' icon={ArrowDropDownIcon} />
         </button>
       </DropdownMenu>
     );
   }
 
 }
+
+export default connect(null, mapDispatchToProps)(injectIntl(EditedTimestamp));

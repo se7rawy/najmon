@@ -1,11 +1,16 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import { fetchFollowRequests } from 'mastodon/actions/accounts';
-import { connect } from 'react-redux';
-import ColumnLink from 'mastodon/features/ui/components/column_link';
-import IconWithBadge from 'mastodon/components/icon_with_badge';
-import { List as ImmutableList } from 'immutable';
+import { Component } from 'react';
+
 import { injectIntl, defineMessages } from 'react-intl';
+
+import { List as ImmutableList } from 'immutable';
+import { connect } from 'react-redux';
+
+import { ReactComponent as PersonAddIcon } from '@material-symbols/svg-600/outlined/person_add.svg';
+
+import { fetchFollowRequests } from 'mastodon/actions/accounts';
+import { IconWithBadge } from 'mastodon/components/icon_with_badge';
+import ColumnLink from 'mastodon/features/ui/components/column_link';
 
 const messages = defineMessages({
   text: { id: 'navigation_bar.follow_requests', defaultMessage: 'Follow requests' },
@@ -15,9 +20,7 @@ const mapStateToProps = state => ({
   count: state.getIn(['user_lists', 'follow_requests', 'items'], ImmutableList()).size,
 });
 
-export default @injectIntl
-@connect(mapStateToProps)
-class FollowRequestsColumnLink extends React.Component {
+class FollowRequestsColumnLink extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -42,10 +45,12 @@ class FollowRequestsColumnLink extends React.Component {
       <ColumnLink
         transparent
         to='/follow_requests'
-        icon={<IconWithBadge className='column-link__icon' id='user-plus' count={count} />}
+        icon={<IconWithBadge className='column-link__icon' id='user-plus' icon={PersonAddIcon} count={count} />}
         text={intl.formatMessage(messages.text)}
       />
     );
   }
 
 }
+
+export default injectIntl(connect(mapStateToProps)(FollowRequestsColumnLink));

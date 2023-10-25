@@ -10,7 +10,6 @@ class Auth::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :set_sessions, only: [:edit, :update]
   before_action :set_strikes, only: [:edit, :update]
-  before_action :set_instance_presenter, only: [:new, :create, :update]
   before_action :set_body_classes, only: [:new, :create, :edit, :update]
   before_action :require_not_suspended!, only: [:update]
   before_action :set_cache_headers, only: [:edit, :update]
@@ -18,20 +17,21 @@ class Auth::RegistrationsController < Devise::RegistrationsController
   before_action :require_rules_acceptance!, only: :new
   before_action :set_registration_form_time, only: :new
 
+  skip_before_action :check_self_destruct!, only: [:edit, :update]
   skip_before_action :require_functional!, only: [:edit, :update]
 
   def new
     super(&:build_invite_request)
   end
 
-  def destroy
-    not_found
-  end
-
   def update
     super do |resource|
       resource.clear_other_sessions(current_session.session_id) if resource.saved_change_to_encrypted_password?
     end
+  end
+
+  def destroy
+    not_found
   end
 
   protected
@@ -46,7 +46,7 @@ class Auth::RegistrationsController < Devise::RegistrationsController
     super(hash)
 
     resource.locale                 = I18n.locale
-    resource.invite_code            = params[:invite_code] if resource.invite_code.blank?
+    resource.invite_code            = @invite&.code if resource.invite_code.blank?
     resource.registration_form_time = session[:registration_form_time]
     resource.sign_up_ip             = request.remote_ip
 
@@ -107,10 +107,6 @@ class Auth::RegistrationsController < Devise::RegistrationsController
 
   private
 
-  def set_instance_presenter
-    @instance_presenter = InstancePresenter.new
-  end
-
   def set_body_classes
     @body_classes = %w(edit update).include?(action_name) ? 'admin' : 'lighter'
   end
@@ -127,7 +123,7 @@ class Auth::RegistrationsController < Devise::RegistrationsController
   end
 
   def set_sessions
-    @sessions = current_user.session_activations
+    @sessions = current_user.session_activations.order(updated_at: :desc)
   end
 
   def set_strikes
@@ -152,6 +148,6 @@ class Auth::RegistrationsController < Devise::RegistrationsController
   end
 
   def set_cache_headers
-    response.headers['Cache-Control'] = 'private, no-store'
+    response.cache_control.replace(private: true, no_store: true)
   end
 end

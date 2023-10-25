@@ -1,24 +1,33 @@
-import React from 'react';
-import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import Icon from 'mastodon/components/icon';
+import { PureComponent } from 'react';
 import { createPortal } from 'react-dom';
 
-export default class ColumnBackButton extends React.PureComponent {
+import { FormattedMessage } from 'react-intl';
 
-  static contextTypes = {
-    router: PropTypes.object,
-  };
+import { withRouter } from 'react-router-dom';
+
+import { ReactComponent as ArrowBackIcon } from '@material-symbols/svg-600/outlined/arrow_back.svg';
+
+import { Icon }  from 'mastodon/components/icon';
+import { WithRouterPropTypes } from 'mastodon/utils/react_router';
+
+export class ColumnBackButton extends PureComponent {
 
   static propTypes = {
     multiColumn: PropTypes.bool,
+    onClick: PropTypes.func,
+    ...WithRouterPropTypes,
   };
 
   handleClick = () => {
-    if (window.history && window.history.length === 1) {
-      this.context.router.history.push('/');
+    const { onClick, history } = this.props;
+
+    if (onClick) {
+      onClick();
+    } else if (history.location?.state?.fromMastodon) {
+      history.goBack();
     } else {
-      this.context.router.history.goBack();
+      history.push('/');
     }
   };
 
@@ -27,7 +36,7 @@ export default class ColumnBackButton extends React.PureComponent {
 
     const component = (
       <button onClick={this.handleClick} className='column-back-button'>
-        <Icon id='chevron-left' className='column-back-button__icon' fixedWidth />
+        <Icon id='chevron-left' icon={ArrowBackIcon} className='column-back-button__icon' />
         <FormattedMessage id='column_back_button.label' defaultMessage='Back' />
       </button>
     );
@@ -52,3 +61,5 @@ export default class ColumnBackButton extends React.PureComponent {
   }
 
 }
+
+export default withRouter(ColumnBackButton);

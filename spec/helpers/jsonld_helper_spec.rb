@@ -22,14 +22,14 @@ describe JsonLdHelper do
   end
 
   describe '#first_of_value' do
-    context 'value.is_a?(Array)' do
+    context 'when value.is_a?(Array)' do
       it 'returns value.first' do
         value = ['a']
         expect(helper.first_of_value(value)).to be 'a'
       end
     end
 
-    context '!value.is_a?(Array)' do
+    context 'with !value.is_a?(Array)' do
       it 'returns value' do
         value = 'a'
         expect(helper.first_of_value(value)).to be 'a'
@@ -38,14 +38,14 @@ describe JsonLdHelper do
   end
 
   describe '#supported_context?' do
-    context "!json.nil? && equals_or_includes?(json['@context'], ActivityPub::TagManager::CONTEXT)" do
+    context 'when json is present and in an activitypub tagmanager context' do
       it 'returns true' do
         json = { '@context' => ActivityPub::TagManager::CONTEXT }.as_json
         expect(helper.supported_context?(json)).to be true
       end
     end
 
-    context 'else' do
+    context 'when not in activitypub tagmanager context' do
       it 'returns false' do
         json = nil
         expect(helper.supported_context?(json)).to be false
@@ -90,7 +90,7 @@ describe JsonLdHelper do
     end
   end
 
-  context 'compaction and forwarding' do
+  context 'with compaction and forwarding' do
     let(:json) do
       {
         '@context' => [
@@ -158,14 +158,14 @@ describe JsonLdHelper do
       it 'deems a safe compacting as such' do
         json['object'].delete('convo')
         compacted = compact(json)
-        deemed_compatible = patch_for_forwarding!(json, compacted)
+        patch_for_forwarding!(json, compacted)
         expect(compacted['to']).to eq ['https://www.w3.org/ns/activitystreams#Public']
         expect(safe_for_forwarding?(json, compacted)).to be true
       end
 
       it 'deems an unsafe compacting as such' do
         compacted = compact(json)
-        deemed_compatible = patch_for_forwarding!(json, compacted)
+        patch_for_forwarding!(json, compacted)
         expect(compacted['to']).to eq ['https://www.w3.org/ns/activitystreams#Public']
         expect(safe_for_forwarding?(json, compacted)).to be false
       end

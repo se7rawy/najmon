@@ -1,9 +1,14 @@
-import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { changeListEditorTitle, submitListEditor } from '../../../actions/lists';
-import IconButton from '../../../components/icon_button';
+import { PureComponent } from 'react';
+
 import { defineMessages, injectIntl } from 'react-intl';
+
+import { connect } from 'react-redux';
+
+import { ReactComponent as CheckIcon } from '@material-symbols/svg-600/outlined/check.svg';
+
+import { changeListEditorTitle, submitListEditor } from '../../../actions/lists';
+import { IconButton } from '../../../components/icon_button';
 
 const messages = defineMessages({
   title: { id: 'lists.edit.submit', defaultMessage: 'Change title' },
@@ -19,9 +24,7 @@ const mapDispatchToProps = dispatch => ({
   onSubmit: () => dispatch(submitListEditor(false)),
 });
 
-export default @connect(mapStateToProps, mapDispatchToProps)
-@injectIntl
-class ListForm extends React.PureComponent {
+class ListForm extends PureComponent {
 
   static propTypes = {
     value: PropTypes.string.isRequired,
@@ -60,6 +63,7 @@ class ListForm extends React.PureComponent {
         <IconButton
           disabled={disabled}
           icon='check'
+          iconComponent={CheckIcon}
           title={title}
           onClick={this.handleClick}
         />
@@ -68,3 +72,5 @@ class ListForm extends React.PureComponent {
   }
 
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(ListForm));

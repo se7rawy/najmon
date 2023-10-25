@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe FavouriteService, type: :service do
-  subject { FavouriteService.new }
+  subject { described_class.new }
 
   let(:sender) { Fabricate(:account, username: 'alice') }
 

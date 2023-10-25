@@ -1,13 +1,18 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import ImmutablePureComponent from 'react-immutable-pure-component';
-import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
-import IconButton from 'mastodon/components/icon_button';
-import { Link } from 'react-router-dom';
-import Avatar from 'mastodon/components/avatar';
-import DisplayName from 'mastodon/components/display_name';
+
 import { defineMessages, injectIntl } from 'react-intl';
+
+import { Link } from 'react-router-dom';
+
+import ImmutablePropTypes from 'react-immutable-proptypes';
+import ImmutablePureComponent from 'react-immutable-pure-component';
+import { connect } from 'react-redux';
+
+import { ReactComponent as CloseIcon } from '@material-symbols/svg-600/outlined/close.svg';
+
+import { Avatar } from 'mastodon/components/avatar';
+import { DisplayName } from 'mastodon/components/display_name';
+import { IconButton } from 'mastodon/components/icon_button';
 
 const messages = defineMessages({
   close: { id: 'lightbox.close', defaultMessage: 'Close' },
@@ -17,8 +22,6 @@ const mapStateToProps = (state, { accountId }) => ({
   account: state.getIn(['accounts', accountId]),
 });
 
-export default @connect(mapStateToProps)
-@injectIntl
 class Header extends ImmutablePureComponent {
 
   static propTypes = {
@@ -39,9 +42,11 @@ class Header extends ImmutablePureComponent {
           <DisplayName account={account} />
         </Link>
 
-        <IconButton icon='times' onClick={onClose} title={intl.formatMessage(messages.close)} />
+        <IconButton icon='times' iconComponent={CloseIcon} onClick={onClose} title={intl.formatMessage(messages.close)} />
       </div>
     );
   }
 
 }
+
+export default connect(mapStateToProps)(injectIntl(Header));

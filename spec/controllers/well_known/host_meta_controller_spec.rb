@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-describe WellKnown::HostMetaController, type: :controller do
+describe WellKnown::HostMetaController do
   render_views
 
   describe 'GET #show' do

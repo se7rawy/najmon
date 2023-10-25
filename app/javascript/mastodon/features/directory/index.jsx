@@ -1,19 +1,26 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
+import { PureComponent } from 'react';
+
+import { defineMessages, injectIntl } from 'react-intl';
+
+import { Helmet } from 'react-helmet';
+
+import { List as ImmutableList } from 'immutable';
 import ImmutablePropTypes from 'react-immutable-proptypes';
-import Column from 'mastodon/components/column';
-import ColumnHeader from 'mastodon/components/column_header';
+import { connect } from 'react-redux';
+
+import { ReactComponent as PeopleIcon } from '@material-symbols/svg-600/outlined/group.svg';
+
 import { addColumn, removeColumn, moveColumn, changeColumnParams } from 'mastodon/actions/columns';
 import { fetchDirectory, expandDirectory } from 'mastodon/actions/directory';
-import { List as ImmutableList } from 'immutable';
-import AccountCard from './components/account_card';
-import RadioButton from 'mastodon/components/radio_button';
-import LoadMore from 'mastodon/components/load_more';
+import Column from 'mastodon/components/column';
+import ColumnHeader from 'mastodon/components/column_header';
+import { LoadMore } from 'mastodon/components/load_more';
+import { LoadingIndicator } from 'mastodon/components/loading_indicator';
+import { RadioButton } from 'mastodon/components/radio_button';
 import ScrollContainer from 'mastodon/containers/scroll_container';
-import LoadingIndicator from 'mastodon/components/loading_indicator';
-import { Helmet } from 'react-helmet';
+
+import AccountCard from './components/account_card';
 
 const messages = defineMessages({
   title: { id: 'column.directory', defaultMessage: 'Browse profiles' },
@@ -29,13 +36,7 @@ const mapStateToProps = state => ({
   domain: state.getIn(['meta', 'domain']),
 });
 
-export default @connect(mapStateToProps)
-@injectIntl
-class Directory extends React.PureComponent {
-
-  static contextTypes = {
-    router: PropTypes.object,
-  };
+class Directory extends PureComponent {
 
   static propTypes = {
     isLoading: PropTypes.bool,
@@ -157,6 +158,7 @@ class Directory extends React.PureComponent {
       <Column bindToDocument={!multiColumn} ref={this.setRef} label={intl.formatMessage(messages.title)}>
         <ColumnHeader
           icon='address-book-o'
+          iconComponent={PeopleIcon}
           title={intl.formatMessage(messages.title)}
           onPin={this.handlePin}
           onMove={this.handleMove}
@@ -176,3 +178,5 @@ class Directory extends React.PureComponent {
   }
 
 }
+
+export default connect(mapStateToProps)(injectIntl(Directory));

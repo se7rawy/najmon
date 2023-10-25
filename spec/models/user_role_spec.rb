@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe UserRole, type: :model do
+RSpec.describe UserRole do
   subject { described_class.create(name: 'Foo', position: 1) }
 
   describe '#can?' do
@@ -91,7 +93,7 @@ RSpec.describe UserRole, type: :model do
 
   describe '#computed_permissions' do
     context 'when the role is nobody' do
-      let(:subject) { described_class.nobody }
+      subject { described_class.nobody }
 
       it 'returns none' do
         expect(subject.computed_permissions).to eq UserRole::Flags::NONE
@@ -99,7 +101,7 @@ RSpec.describe UserRole, type: :model do
     end
 
     context 'when the role is everyone' do
-      let(:subject) { described_class.everyone }
+      subject { described_class.everyone }
 
       it 'returns permissions' do
         expect(subject.computed_permissions).to eq subject.permissions
@@ -116,10 +118,8 @@ RSpec.describe UserRole, type: :model do
       end
     end
 
-    context do
-      it 'returns permissions combined with the everyone role' do
-        expect(subject.computed_permissions).to eq described_class.everyone.permissions
-      end
+    it 'returns permissions combined with the everyone role' do
+      expect(subject.computed_permissions).to eq described_class.everyone.permissions
     end
   end
 

@@ -1,11 +1,17 @@
-import Blurhash from 'mastodon/components/blurhash';
-import classNames from 'classnames';
-import Icon from 'mastodon/components/icon';
-import { autoPlayGif, displayMedia, useBlurhash } from 'mastodon/initial_state';
 import PropTypes from 'prop-types';
-import React from 'react';
+
+import classNames from 'classnames';
+
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import ImmutablePureComponent from 'react-immutable-pure-component';
+
+import { ReactComponent as AudiotrackIcon } from '@material-symbols/svg-600/outlined/music_note.svg';
+import { ReactComponent as PlayArrowIcon } from '@material-symbols/svg-600/outlined/play_arrow.svg';
+import { ReactComponent as VisibilityOffIcon } from '@material-symbols/svg-600/outlined/visibility_off.svg';
+
+import { Blurhash } from 'mastodon/components/blurhash';
+import { Icon }  from 'mastodon/components/icon';
+import { autoPlayGif, displayMedia, useBlurhash } from 'mastodon/initial_state';
 
 export default class MediaItem extends ImmutablePureComponent {
 
@@ -67,23 +73,24 @@ export default class MediaItem extends ImmutablePureComponent {
     if (!visible) {
       icon = (
         <span className='account-gallery__item__icons'>
-          <Icon id='eye-slash' />
+          <Icon id='eye-slash' icon={VisibilityOffIcon} />
         </span>
       );
     } else {
       if (['audio', 'video'].includes(attachment.get('type'))) {
         content = (
           <img
-            src={attachment.get('preview_url') || attachment.getIn(['account', 'avatar_static'])}
+            src={attachment.get('preview_url') || status.getIn(['account', 'avatar_static'])}
             alt={attachment.get('description')}
+            lang={status.get('language')}
             onLoad={this.handleImageLoad}
           />
         );
 
         if (attachment.get('type') === 'audio') {
-          label = <Icon id='music' />;
+          label = <Icon id='music' icon={AudiotrackIcon} />;
         } else {
-          label = <Icon id='play' />;
+          label = <Icon id='play' icon={PlayArrowIcon} />;
         }
       } else if (attachment.get('type') === 'image') {
         const focusX = attachment.getIn(['meta', 'focus', 'x']) || 0;
@@ -95,6 +102,7 @@ export default class MediaItem extends ImmutablePureComponent {
           <img
             src={attachment.get('preview_url')}
             alt={attachment.get('description')}
+            lang={status.get('language')}
             style={{ objectPosition: `${x}% ${y}%` }}
             onLoad={this.handleImageLoad}
           />
@@ -105,6 +113,7 @@ export default class MediaItem extends ImmutablePureComponent {
             className='media-gallery__item-gifv-thumbnail'
             aria-label={attachment.get('description')}
             title={attachment.get('description')}
+            lang={status.get('language')}
             role='application'
             src={attachment.get('url')}
             onMouseEnter={this.handleMouseEnter}
@@ -123,7 +132,11 @@ export default class MediaItem extends ImmutablePureComponent {
         <div className='media-gallery__gifv'>
           {content}
 
-          {label && <span className='media-gallery__gifv__label'>{label}</span>}
+          {label && (
+            <div className='media-gallery__item__badges'>
+              <span className='media-gallery__gifv__label'>{label}</span>
+            </div>
+          )}
         </div>
       );
     }

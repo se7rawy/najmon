@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe ActivityPub::Activity::Undo do
@@ -29,7 +31,7 @@ RSpec.describe ActivityPub::Activity::Undo do
         }
       end
 
-      context do
+      context 'when not atomUri' do
         before do
           Fabricate(:status, reblog: status, account: sender, uri: 'bar')
         end

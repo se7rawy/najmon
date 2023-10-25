@@ -1,10 +1,11 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import { injectIntl, FormattedMessage } from 'react-intl';
-import Button from '../../../components/button';
+import { PureComponent } from 'react';
 
-export default @injectIntl
-class ConfirmationModal extends React.PureComponent {
+import { injectIntl, FormattedMessage } from 'react-intl';
+
+import { Button } from '../../../components/button';
+
+class ConfirmationModal extends PureComponent {
 
   static propTypes = {
     message: PropTypes.node.isRequired,
@@ -21,10 +22,6 @@ class ConfirmationModal extends React.PureComponent {
     closeWhenConfirm: true,
   };
 
-  componentDidMount() {
-    this.button.focus();
-  }
-
   handleClick = () => {
     if (this.props.closeWhenConfirm) {
       this.props.onClose();
@@ -39,10 +36,6 @@ class ConfirmationModal extends React.PureComponent {
 
   handleCancel = () => {
     this.props.onClose();
-  };
-
-  setRef = (c) => {
-    this.button = c;
   };
 
   render () {
@@ -61,10 +54,12 @@ class ConfirmationModal extends React.PureComponent {
           {secondary !== undefined && (
             <Button text={secondary} onClick={this.handleSecondary} className='confirmation-modal__secondary-button' />
           )}
-          <Button text={confirm} onClick={this.handleClick} ref={this.setRef} />
+          <Button text={confirm} onClick={this.handleClick} autoFocus />
         </div>
       </div>
     );
   }
 
 }
+
+export default injectIntl(ConfirmationModal);

@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe PostStatusService, type: :service do
-  subject { PostStatusService.new }
+  subject { described_class.new }
 
   it 'creates a new status' do
     account = Fabricate(:account)
@@ -46,11 +48,11 @@ RSpec.describe PostStatusService, type: :service do
       expect(status.params['text']).to eq 'Hi future!'
       expect(status.params['media_ids']).to eq [media.id]
       expect(media.reload.status).to be_nil
-      expect(Status.where(text: 'Hi future!').exists?).to be_falsey
+      expect(Status.where(text: 'Hi future!')).to_not exist
     end
 
     it 'does not change statuses count' do
-      expect { subject.call(account, text: 'Hi future!', scheduled_at: future, thread: previous_status) }.to_not change { [account.statuses_count, previous_status.replies_count] }
+      expect { subject.call(account, text: 'Hi future!', scheduled_at: future, thread: previous_status) }.to_not(change { [account.statuses_count, previous_status.replies_count] })
     end
   end
 
@@ -130,7 +132,7 @@ RSpec.describe PostStatusService, type: :service do
   end
 
   it 'processes mentions' do
-    mention_service = double(:process_mentions_service)
+    mention_service = instance_double(ProcessMentionsService)
     allow(mention_service).to receive(:call)
     allow(ProcessMentionsService).to receive(:new).and_return(mention_service)
     account = Fabricate(:account)
@@ -153,7 +155,7 @@ RSpec.describe PostStatusService, type: :service do
 
   it 'processes duplicate mentions correctly' do
     account = Fabricate(:account)
-    mentioned_account = Fabricate(:account, username: 'alice')
+    Fabricate(:account, username: 'alice')
 
     expect do
       subject.call(account, text: '@alice @alice @alice hey @alice')
@@ -161,7 +163,7 @@ RSpec.describe PostStatusService, type: :service do
   end
 
   it 'processes hashtags' do
-    hashtags_service = double(:process_hashtags_service)
+    hashtags_service = instance_double(ProcessHashtagsService)
     allow(hashtags_service).to receive(:call)
     allow(ProcessHashtagsService).to receive(:new).and_return(hashtags_service)
     account = Fabricate(:account)
@@ -210,7 +212,7 @@ RSpec.describe PostStatusService, type: :service do
     account = Fabricate(:account)
     media = Fabricate(:media_attachment, account: Fabricate(:account))
 
-    status = subject.call(
+    subject.call(
       account,
       text: 'test status update',
       media_ids: [media.id]

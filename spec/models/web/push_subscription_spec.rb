@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe Web::PushSubscription, type: :model do
+RSpec.describe Web::PushSubscription do
   subject { described_class.new(data: data) }
 
   let(:account) { Fabricate(:account) }
@@ -54,7 +56,7 @@ RSpec.describe Web::PushSubscription, type: :model do
     context 'when policy is followed' do
       let(:policy) { 'followed' }
 
-      context 'and notification is from someone you follow' do
+      context 'when notification is from someone you follow' do
         before do
           account.follow!(notification.from_account)
         end
@@ -64,7 +66,7 @@ RSpec.describe Web::PushSubscription, type: :model do
         end
       end
 
-      context 'and notification is not from someone you follow' do
+      context 'when notification is not from someone you follow' do
         it 'returns false' do
           expect(subject.pushable?(notification)).to be false
         end
@@ -74,7 +76,7 @@ RSpec.describe Web::PushSubscription, type: :model do
     context 'when policy is follower' do
       let(:policy) { 'follower' }
 
-      context 'and notification is from someone who follows you' do
+      context 'when notification is from someone who follows you' do
         before do
           notification.from_account.follow!(account)
         end
@@ -84,7 +86,7 @@ RSpec.describe Web::PushSubscription, type: :model do
         end
       end
 
-      context 'and notification is not from someone who follows you' do
+      context 'when notification is not from someone who follows you' do
         it 'returns false' do
           expect(subject.pushable?(notification)).to be false
         end

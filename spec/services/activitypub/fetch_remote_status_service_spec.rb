@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe ActivityPub::FetchRemoteStatusService, type: :service do
@@ -224,12 +226,12 @@ RSpec.describe ActivityPub::FetchRemoteStatusService, type: :service do
     end
   end
 
-  context 'statuses referencing other statuses' do
+  context 'with statuses referencing other statuses' do
     before do
       stub_const 'ActivityPub::FetchRemoteStatusService::DISCOVERIES_PER_REQUEST', 5
     end
 
-    context 'using inReplyTo' do
+    context 'when using inReplyTo' do
       let(:object) do
         {
           '@context': 'https://www.w3.org/ns/activitystreams',
@@ -265,7 +267,7 @@ RSpec.describe ActivityPub::FetchRemoteStatusService, type: :service do
       end
     end
 
-    context 'using replies' do
+    context 'when using replies' do
       let(:object) do
         {
           '@context': 'https://www.w3.org/ns/activitystreams',

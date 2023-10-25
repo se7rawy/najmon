@@ -1,20 +1,24 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import api from 'mastodon/api';
+import { PureComponent } from 'react';
+
 import { FormattedMessage, FormattedNumber, FormattedDate } from 'react-intl';
+
 import classNames from 'classnames';
+
+import api from 'mastodon/api';
 import { roundTo10 } from 'mastodon/utils/numbers';
 
 const dateForCohort = cohort => {
+  const timeZone = 'UTC';
   switch(cohort.frequency) {
   case 'day':
-    return <FormattedDate value={cohort.period} month='long' day='2-digit' />;
+    return <FormattedDate value={cohort.period} month='long' day='2-digit' timeZone={timeZone} />;
   default:
-    return <FormattedDate value={cohort.period} month='long' year='numeric' />;
+    return <FormattedDate value={cohort.period} month='long' year='numeric' timeZone={timeZone} />;
   }
 };
 
-export default class Retention extends React.PureComponent {
+export default class Retention extends PureComponent {
 
   static propTypes = {
     start_at: PropTypes.string,

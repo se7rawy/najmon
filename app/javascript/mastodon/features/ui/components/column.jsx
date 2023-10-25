@@ -1,15 +1,19 @@
-import React from 'react';
-import ColumnHeader from './column_header';
 import PropTypes from 'prop-types';
-import { debounce } from 'lodash';
-import { scrollTop } from '../../../scroll';
-import { isMobile } from '../../../is_mobile';
+import { PureComponent } from 'react';
 
-export default class Column extends React.PureComponent {
+import { debounce } from 'lodash';
+
+import { isMobile } from '../../../is_mobile';
+import { scrollTop } from '../../../scroll';
+
+import ColumnHeader from './column_header';
+
+export default class Column extends PureComponent {
 
   static propTypes = {
     heading: PropTypes.string,
     icon: PropTypes.string,
+    iconComponent: PropTypes.func,
     children: PropTypes.node,
     active: PropTypes.bool,
     hideHeadingOnMobile: PropTypes.bool,
@@ -47,13 +51,13 @@ export default class Column extends React.PureComponent {
   };
 
   render () {
-    const { heading, icon, children, active, hideHeadingOnMobile } = this.props;
+    const { heading, icon, iconComponent, children, active, hideHeadingOnMobile } = this.props;
 
     const showHeading = heading && (!hideHeadingOnMobile || (hideHeadingOnMobile && !isMobile(window.innerWidth)));
 
     const columnHeaderId = showHeading && heading.replace(/ /g, '-');
     const header = showHeading && (
-      <ColumnHeader icon={icon} active={active} type={heading} onClick={this.handleHeaderClick} columnHeaderId={columnHeaderId} />
+      <ColumnHeader icon={icon} iconComponent={iconComponent} active={active} type={heading} onClick={this.handleHeaderClick} columnHeaderId={columnHeaderId} />
     );
     return (
       <div

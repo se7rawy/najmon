@@ -14,15 +14,10 @@ describe Api::V1::Accounts::StatusesController do
   end
 
   describe 'GET #index' do
-    it 'returns http success' do
+    it 'returns expected headers', :aggregate_failures do
       get :index, params: { account_id: user.account.id, limit: 1 }
 
       expect(response).to have_http_status(200)
-    end
-
-    it 'returns expected headers' do
-      get :index, params: { account_id: user.account.id, limit: 1 }
-
       expect(response.headers['Link'].links.size).to eq(2)
     end
 
@@ -44,14 +39,11 @@ describe Api::V1::Accounts::StatusesController do
         get :index, params: { account_id: user.account.id, exclude_replies: true }
       end
 
-      it 'returns http success' do
-        expect(response).to have_http_status(200)
-      end
-
-      it 'returns posts along with self replies' do
+      it 'returns posts along with self replies', :aggregate_failures do
         json = body_as_json
         post_ids = json.map { |item| item[:id].to_i }.sort
 
+        expect(response).to have_http_status(200)
         expect(post_ids).to eq [status.id, status_self_reply.id]
       end
     end
@@ -99,7 +91,7 @@ describe Api::V1::Accounts::StatusesController do
         it 'lists both the public and the private statuses' do
           get :index, params: { account_id: account.id, pinned: true }
           json = body_as_json
-          expect(json.map { |item| item[:id].to_i }).to match_array([status.id, private_status.id])
+          expect(json.map { |item| item[:id].to_i }).to contain_exactly(status.id, private_status.id)
         end
       end
     end

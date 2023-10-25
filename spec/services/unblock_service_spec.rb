@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe UnblockService, type: :service do
-  subject { UnblockService.new }
+  subject { described_class.new }
 
   let(:sender) { Fabricate(:account, username: 'alice') }
 

@@ -1,12 +1,19 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import ImmutablePureComponent from 'react-immutable-pure-component';
-import ImmutablePropTypes from 'react-immutable-proptypes';
-import IconButton from '../../../components/icon_button';
+
 import { defineMessages, injectIntl } from 'react-intl';
+
+import ImmutablePropTypes from 'react-immutable-proptypes';
+import ImmutablePureComponent from 'react-immutable-pure-component';
+import { connect } from 'react-redux';
+
+import { ReactComponent as AddIcon } from '@material-symbols/svg-600/outlined/add.svg';
+import { ReactComponent as CloseIcon } from '@material-symbols/svg-600/outlined/close.svg';
+import { ReactComponent as ListAltIcon } from '@material-symbols/svg-600/outlined/list_alt.svg';
+
+import { Icon }  from 'mastodon/components/icon';
+
 import { removeFromListAdder, addToListAdder } from '../../../actions/lists';
-import Icon from 'mastodon/components/icon';
+import { IconButton }  from '../../../components/icon_button';
 
 const messages = defineMessages({
   remove: { id: 'lists.account.remove', defaultMessage: 'Remove from list' },
@@ -23,8 +30,6 @@ const mapDispatchToProps = (dispatch, { listId }) => ({
   onAdd: () => dispatch(addToListAdder(listId)),
 });
 
-export default @connect(MapStateToProps, mapDispatchToProps)
-@injectIntl
 class List extends ImmutablePureComponent {
 
   static propTypes = {
@@ -45,16 +50,16 @@ class List extends ImmutablePureComponent {
     let button;
 
     if (added) {
-      button = <IconButton icon='times' title={intl.formatMessage(messages.remove)} onClick={onRemove} />;
+      button = <IconButton icon='times' iconComponent={CloseIcon} title={intl.formatMessage(messages.remove)} onClick={onRemove} />;
     } else {
-      button = <IconButton icon='plus' title={intl.formatMessage(messages.add)} onClick={onAdd} />;
+      button = <IconButton icon='plus' iconComponent={AddIcon} title={intl.formatMessage(messages.add)} onClick={onAdd} />;
     }
 
     return (
       <div className='list'>
         <div className='list__wrapper'>
           <div className='list__display-name'>
-            <Icon id='list-ul' className='column-link__icon' fixedWidth />
+            <Icon id='list-ul' icon={ListAltIcon} className='column-link__icon' />
             {list.get('title')}
           </div>
 
@@ -67,3 +72,5 @@ class List extends ImmutablePureComponent {
   }
 
 }
+
+export default connect(MapStateToProps, mapDispatchToProps)(injectIntl(List));

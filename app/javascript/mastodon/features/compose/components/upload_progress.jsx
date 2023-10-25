@@ -1,11 +1,16 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import Motion from '../../ui/util/optional_motion';
-import spring from 'react-motion/lib/spring';
-import Icon from 'mastodon/components/icon';
+import { PureComponent } from 'react';
+
 import { FormattedMessage } from 'react-intl';
 
-export default class UploadProgress extends React.PureComponent {
+import { ReactComponent as UploadFileIcon } from '@material-symbols/svg-600/outlined/upload_file.svg';
+import spring from 'react-motion/lib/spring';
+
+import { Icon }  from 'mastodon/components/icon';
+
+import Motion from '../../ui/util/optional_motion';
+
+export default class UploadProgress extends PureComponent {
 
   static propTypes = {
     active: PropTypes.bool,
@@ -31,7 +36,7 @@ export default class UploadProgress extends React.PureComponent {
     return (
       <div className='upload-progress'>
         <div className='upload-progress__icon'>
-          <Icon id='upload' />
+          <Icon id='upload' icon={UploadFileIcon} />
         </div>
 
         <div className='upload-progress__message'>

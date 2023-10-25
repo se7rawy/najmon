@@ -1,10 +1,14 @@
-import React from 'react';
-import IconButton from '../../../components/icon_button';
 import PropTypes from 'prop-types';
+
 import { defineMessages, injectIntl } from 'react-intl';
-import { connect } from 'react-redux';
-import ImmutablePureComponent from 'react-immutable-pure-component';
+
 import ImmutablePropTypes from 'react-immutable-proptypes';
+import ImmutablePureComponent from 'react-immutable-pure-component';
+import { connect } from 'react-redux';
+
+import { ReactComponent as AddPhotoAlternateIcon } from '@material-symbols/svg-600/outlined/add_photo_alternate.svg';
+
+import { IconButton } from '../../../components/icon_button';
 
 const messages = defineMessages({
   upload: { id: 'upload_button.label', defaultMessage: 'Add images, a video or an audio file' },
@@ -23,8 +27,6 @@ const iconStyle = {
   lineHeight: '27px',
 };
 
-export default @connect(makeMapStateToProps)
-@injectIntl
 class UploadButton extends ImmutablePureComponent {
 
   static propTypes = {
@@ -62,7 +64,7 @@ class UploadButton extends ImmutablePureComponent {
 
     return (
       <div className='compose-form__upload-button'>
-        <IconButton icon='paperclip' title={message} disabled={disabled} onClick={this.handleClick} className='compose-form__upload-button-icon' size={18} inverted style={iconStyle} />
+        <IconButton icon='paperclip' iconComponent={AddPhotoAlternateIcon} title={message} disabled={disabled} onClick={this.handleClick} className='compose-form__upload-button-icon' size={18} inverted style={iconStyle} />
         <label>
           <span style={{ display: 'none' }}>{message}</span>
           <input
@@ -81,3 +83,5 @@ class UploadButton extends ImmutablePureComponent {
   }
 
 }
+
+export default connect(makeMapStateToProps)(injectIntl(UploadButton));
