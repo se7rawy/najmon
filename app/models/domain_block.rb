@@ -37,6 +37,8 @@ class DomainBlock < ApplicationRecord
     domain
   end
 
+  alias to_log_route_param to_log_human_identifier
+
   def policies
     if suspend?
       [:suspend]

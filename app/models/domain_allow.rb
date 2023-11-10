@@ -23,6 +23,8 @@ class DomainAllow < ApplicationRecord
     domain
   end
 
+  alias to_log_route_param to_log_human_identifier
+
   class << self
     def allowed?(domain)
       !rule_for(domain).nil?
