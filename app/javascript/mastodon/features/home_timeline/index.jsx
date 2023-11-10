@@ -28,6 +28,7 @@ import StatusListContainer from '../ui/containers/status_list_container';
 import { ColumnSettings } from './components/column_settings';
 import { CriticalUpdateBanner } from './components/critical_update_banner';
 import { ExplorePrompt } from './components/explore_prompt';
+import { Notice } from './components/notice';
 
 const messages = defineMessages({
   title: { id: 'column.home', defaultMessage: 'Home' },
@@ -80,6 +81,7 @@ const mapStateToProps = state => ({
   unreadAnnouncements: state.getIn(['announcements', 'items']).count(item => !item.get('read')),
   showAnnouncements: state.getIn(['announcements', 'show']),
   tooSlow: homeTooSlow(state),
+  notices: state.get('notices'),
 });
 
 class HomeTimeline extends PureComponent {
@@ -99,6 +101,7 @@ class HomeTimeline extends PureComponent {
     unreadAnnouncements: PropTypes.number,
     showAnnouncements: PropTypes.bool,
     tooSlow: PropTypes.bool,
+    notices: PropTypes.arrayOf(PropTypes.object),
   };
 
   handlePin = () => {
@@ -168,7 +171,7 @@ class HomeTimeline extends PureComponent {
   };
 
   render () {
-    const { intl, hasUnread, columnId, multiColumn, tooSlow, hasAnnouncements, unreadAnnouncements, showAnnouncements } = this.props;
+    const { intl, hasUnread, columnId, multiColumn, tooSlow, hasAnnouncements, unreadAnnouncements, showAnnouncements, notices } = this.props;
     const pinned = !!columnId;
     const { signedIn } = this.context.identity;
     const banners = [];
@@ -193,7 +196,9 @@ class HomeTimeline extends PureComponent {
       banners.push(<CriticalUpdateBanner key='critical-update-banner' />);
     }
 
-    if (tooSlow) {
+    if (notices.length) {
+      banners.push(<Notice key='notice' notice={notices[0]} />);
+    } else if (tooSlow) {
       banners.push(<ExplorePrompt key='explore-prompt' />);
     }
 
