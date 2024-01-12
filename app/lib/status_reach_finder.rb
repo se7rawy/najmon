@@ -22,7 +22,9 @@ class StatusReachFinder
     if @status.reblog?
       []
     else
-      Account.where(id: reached_account_ids).inboxes
+      scope = Account.where(id: reached_account_ids).inboxes
+      scope.merge!(Account.without_suspended) unless unsafe?
+      scope
     end
   end
 
