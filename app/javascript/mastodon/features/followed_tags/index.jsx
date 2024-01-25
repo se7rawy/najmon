@@ -14,7 +14,7 @@ import TagIcon from '@/material-icons/400-24px/tag.svg?react';
 import { expandFollowedHashtags, fetchFollowedHashtags } from 'mastodon/actions/tags';
 import ColumnHeader from 'mastodon/components/column_header';
 import { Hashtag } from 'mastodon/components/hashtag';
-import ScrollableList from 'mastodon/components/scrollable_list';
+import { ScrollableList } from 'mastodon/components/scrollable_list';
 import Column from 'mastodon/features/ui/components/column';
 
 const messages = defineMessages({

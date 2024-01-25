@@ -14,7 +14,7 @@ import BlockIcon from '@/material-icons/400-24px/block-fill.svg?react';
 
 import { fetchDomainBlocks, expandDomainBlocks } from '../../actions/domain_blocks';
 import { LoadingIndicator } from '../../components/loading_indicator';
-import ScrollableList from '../../components/scrollable_list';
+import { ScrollableList } from '../../components/scrollable_list';
 import DomainContainer from '../../containers/domain_container';
 import Column from '../ui/components/column';
 

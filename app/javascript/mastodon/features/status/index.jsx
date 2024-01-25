@@ -18,7 +18,7 @@ import VisibilityIcon from '@/material-icons/400-24px/visibility.svg?react';
 import VisibilityOffIcon from '@/material-icons/400-24px/visibility_off.svg?react';
 import { Icon }  from 'mastodon/components/icon';
 import { LoadingIndicator } from 'mastodon/components/loading_indicator';
-import ScrollContainer from 'mastodon/containers/scroll_container';
+import { ScrollContainer } from 'mastodon/containers/scroll_container';
 import BundleColumnError from 'mastodon/features/ui/components/bundle_column_error';
 import { WithRouterPropTypes } from 'mastodon/utils/react_router';
 

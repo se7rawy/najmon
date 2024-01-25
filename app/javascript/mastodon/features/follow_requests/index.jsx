@@ -13,7 +13,7 @@ import { debounce } from 'lodash';
 import PersonAddIcon from '@/material-icons/400-24px/person_add.svg?react';
 
 import { fetchFollowRequests, expandFollowRequests } from '../../actions/accounts';
-import ScrollableList from '../../components/scrollable_list';
+import { ScrollableList } from '../../components/scrollable_list';
 import { me } from '../../initial_state';
 import Column from '../ui/components/column';
 

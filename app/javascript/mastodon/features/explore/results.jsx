@@ -15,7 +15,7 @@ import TagIcon from '@/material-icons/400-24px/tag.svg?react';
 import { submitSearch, expandSearch } from 'mastodon/actions/search';
 import { ImmutableHashtag as Hashtag } from 'mastodon/components/hashtag';
 import { Icon } from 'mastodon/components/icon';
-import ScrollableList from 'mastodon/components/scrollable_list';
+import { ScrollableList } from 'mastodon/components/scrollable_list';
 import Account from 'mastodon/containers/account_container';
 import Status from 'mastodon/containers/status_container';
 
