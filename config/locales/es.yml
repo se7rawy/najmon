@@ -21,7 +21,6 @@ es:
     posts:
       one: Publicación
       other: Publicaciones
-    posts_tab_heading: Publicaciones
   admin:
     account_actions:
       action: Realizar acción
@@ -1646,7 +1645,6 @@ es:
     export: Exportar información
     featured_tags: Hashtags destacados
     import: Importar
-    import_and_export: Importar y exportar
     migrate: Migración de cuenta
     notifications: Notificaciones
     preferences: Preferencias

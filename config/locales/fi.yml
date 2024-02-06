@@ -21,7 +21,6 @@ fi:
     posts:
       one: Julkaisu
       other: viestiä
-    posts_tab_heading: Julkaisut
   admin:
     account_actions:
       action: Suorita toimenpide
@@ -1646,7 +1645,6 @@ fi:
     export: Vie tietoja
     featured_tags: Esillä pidettävät aihetunnisteet
     import: Tuo
-    import_and_export: Tuonti ja vienti
     migrate: Tilin muutto muualle
     notifications: Ilmoitukset
     preferences: Ominaisuudet

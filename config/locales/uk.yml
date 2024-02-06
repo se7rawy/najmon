@@ -25,7 +25,6 @@ uk:
       many: Дописів
       one: Допис
       other: Дописів
-    posts_tab_heading: Дописів
   admin:
     account_actions:
       action: Виконати дію
@@ -1698,7 +1697,6 @@ uk:
     export: Експорт даних
     featured_tags: Рекомендовані хештеґи
     import: Імпорт
-    import_and_export: Імпорт та експорт
     migrate: Міграція облікового запису
     notifications: Сповіщення
     preferences: Налаштування

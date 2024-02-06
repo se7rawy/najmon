@@ -21,7 +21,6 @@ an:
     posts:
       one: Publicación
       other: Publicacions
-    posts_tab_heading: Publicacions
   admin:
     account_actions:
       action: Realizar acción
@@ -1422,7 +1421,6 @@ an:
     export: Exportar información
     featured_tags: Hashtags destacaus
     import: Importar
-    import_and_export: Importar y exportar
     migrate: Migración de cuenta
     notifications: Notificacions
     preferences: Preferencias
