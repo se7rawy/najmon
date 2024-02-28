@@ -87,7 +87,6 @@ module.exports = defineConfig({
         message: "Use '·' (middle dot) instead of '•' (bullet)",
       },
     ],
-    'no-self-assign': 'off',
     'no-unused-expressions': 'error',
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': [
