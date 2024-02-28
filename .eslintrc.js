@@ -20,10 +20,6 @@ module.exports = defineConfig({
     es6: true,
   },
 
-  globals: {
-    ATTACHMENT_HOST: false,
-  },
-
   parser: '@typescript-eslint/parser',
 
   plugins: [
