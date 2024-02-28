@@ -152,7 +152,6 @@ module.exports = defineConfig({
     //   },
     // ],
     'jsx-a11y/no-noninteractive-tabindex': 'off',
-    'jsx-a11y/no-onchange': 'off',
     // recommended is full 'error'
     'jsx-a11y/no-static-element-interactions': [
       'warn',
