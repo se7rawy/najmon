@@ -114,7 +114,6 @@ module.exports = defineConfig({
     'react/self-closing-comp': 'error',
 
     // recommended values found in https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/v6.8.0/src/index.js#L46
-    'jsx-a11y/accessible-emoji': 'warn',
     'jsx-a11y/click-events-have-key-events': 'off',
     'jsx-a11y/label-has-associated-control': 'off',
     'jsx-a11y/media-has-caption': 'off',
