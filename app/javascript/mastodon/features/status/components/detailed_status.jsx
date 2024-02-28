@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { FormattedDate, FormattedMessage } from 'react-intl';
+import { injectIntl, FormattedDate, FormattedMessage } from 'react-intl';
 
 import classNames from 'classnames';
 import { Link, withRouter } from 'react-router-dom';
@@ -32,6 +32,7 @@ import Card from './card';
 class DetailedStatus extends ImmutablePureComponent {
 
   static propTypes = {
+    intl: PropTypes.object.isRequired,
     status: ImmutablePropTypes.map,
     onOpenMedia: PropTypes.func.isRequired,
     onOpenVideo: PropTypes.func.isRequired,
@@ -134,7 +135,7 @@ class DetailedStatus extends ImmutablePureComponent {
   render () {
     const status = this._properStatus();
     const outerStyle = { boxSizing: 'border-box' };
-    const { compact, pictureInPicture } = this.props;
+    const { intl, compact, pictureInPicture } = this.props;
 
     if (!status) {
       return null;
@@ -147,6 +148,7 @@ class DetailedStatus extends ImmutablePureComponent {
     const reblogIconComponent = RepeatIcon;
     let favouriteLink = '';
     let edited = '';
+    let localisedLanguageName = '';
 
     if (this.props.measureHeight) {
       outerStyle.height = `${this.state.height}px`;
@@ -280,6 +282,25 @@ class DetailedStatus extends ImmutablePureComponent {
       );
     }
 
+    const originalLanguage = status.get('language');
+    if (language !== undefined && originalLanguage !== null && Intl) {
+      try {
+        localisedLanguageName = (
+          <>
+            {' · '}
+            <>{new Intl.DisplayNames([intl.locale], { type: 'language' }).of(originalLanguage)}</>
+          </>
+        );
+      } catch {
+        localisedLanguageName = (
+          <>
+            {' · '}
+            {originalLanguage}
+          </>
+        );
+      }
+    }
+
     const {statusContentProps, hashtagBar} = getHashtagBarForStatus(status);
     const expanded = !status.get('hidden') || status.get('spoiler_text').length === 0;
 
@@ -312,7 +333,7 @@ class DetailedStatus extends ImmutablePureComponent {
           <div className='detailed-status__meta'>
             <a className='detailed-status__datetime' href={`/@${status.getIn(['account', 'acct'])}/${status.get('id')}`} target='_blank' rel='noopener noreferrer'>
               <FormattedDate value={new Date(status.get('created_at'))} hour12={false} year='numeric' month='short' day='2-digit' hour='2-digit' minute='2-digit' />
-            </a>{edited}{visibilityLink}{applicationLink}{reblogLink} · {favouriteLink}
+            </a>{edited}{visibilityLink}{localisedLanguageName}{applicationLink}{reblogLink} · {favouriteLink}
           </div>
         </div>
       </div>
@@ -321,4 +342,4 @@ class DetailedStatus extends ImmutablePureComponent {
 
 }
 
-export default withRouter(DetailedStatus);
+export default withRouter(injectIntl(DetailedStatus));
