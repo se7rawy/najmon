@@ -65,9 +65,6 @@ module.exports = defineConfig({
     'consistent-return': 'error',
     'dot-notation': 'error',
     eqeqeq: ['error', 'always', { 'null': 'ignore' }],
-    'indent': ['error', 2],
-    'jsx-quotes': ['error', 'prefer-single'],
-    'semi': ['error', 'always'],
     'no-case-declarations': 'off',
     'no-catch-shadow': 'error',
     'no-console': [
@@ -112,13 +109,10 @@ module.exports = defineConfig({
     'react/jsx-boolean-value': 'error',
     'react/display-name': 'off',
     'react/jsx-fragments': ['error', 'syntax'],
-    'react/jsx-equals-spacing': 'error',
     'react/jsx-no-bind': 'error',
     'react/jsx-no-useless-fragment': 'error',
     'react/jsx-no-target-blank': 'off',
-    'react/jsx-tag-spacing': 'error',
     'react/jsx-uses-react': 'off', // not needed with new JSX transform
-    'react/jsx-wrap-multilines': 'error',
     'react/no-deprecated': 'off',
     'react/react-in-jsx-scope': 'off', // not needed with new JSX transform
     'react/self-closing-comp': 'error',
@@ -346,9 +340,6 @@ module.exports = defineConfig({
       },
 
       rules: {
-        // Disable formatting rules that have been enabled in the base config
-        'indent': 'off',
-
         'import/consistent-type-specifier-style': ['error', 'prefer-top-level'],
 
         '@typescript-eslint/consistent-type-definitions': ['warn', 'interface'],
