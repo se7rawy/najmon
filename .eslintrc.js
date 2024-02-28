@@ -108,7 +108,6 @@ module.exports = defineConfig({
     'react/jsx-no-useless-fragment': 'error',
     'react/jsx-no-target-blank': 'off',
     'react/jsx-uses-react': 'off', // not needed with new JSX transform
-    'react/no-deprecated': 'off',
     'react/react-in-jsx-scope': 'off', // not needed with new JSX transform
     'react/self-closing-comp': 'error',
 
