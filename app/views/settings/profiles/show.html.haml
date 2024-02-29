@@ -1,3 +1,6 @@
+- content_for :header_tags do
+  = javascript_pack_tag 'admin', async: true, crossorigin: 'anonymous'
+
 - content_for :page_title do
   = t('settings.edit_profile')
 
@@ -18,7 +21,13 @@
         = f.input :display_name, wrapper: :with_block_label, input_html: { maxlength: 30, data: { default: @account.username } }
 
       .fields-group
-        = f.input :note, wrapper: :with_block_label, input_html: { maxlength: 500 }
+        - account_note_maxlength = 500
+        = f.input :note, wrapper: :with_block_label, input_html: { maxlength: account_note_maxlength }
+        .character-counter__wrapper
+          %span.character-counter
+            = @account.note.size
+          %span \
+          %span.character-max= account_note_maxlength
 
     .fields-row__column.fields-group.fields-row__column-6
       .input.with_block_label

@@ -116,6 +116,19 @@ const onDomainBlockSeverityChange = (target) => {
 
 Rails.delegate(document, '#domain_block_severity', 'change', ({ target }) => onDomainBlockSeverityChange(target));
 
+const onAccountNoteChange = (target) => {
+  const characterCounter = document.querySelector('.character-counter')
+  const maxlength = target.maxLength
+  characterCounter.innerHTML = target.textLength
+  if (target.textLength >= maxlength) {
+    characterCounter.classList.add("character-counter--over");
+  } else {
+    characterCounter.classList.remove("character-counter--over");
+  }
+};
+
+delegate(document, 'textarea#account_note', 'keyup', ({ target }) => onAccountNoteChange(target));
+
 const onEnableBootstrapTimelineAccountsChange = (target) => {
   const bootstrapTimelineAccountsField = document.querySelector('#form_admin_settings_bootstrap_timeline_accounts');
 
