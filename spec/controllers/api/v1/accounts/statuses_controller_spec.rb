@@ -51,6 +51,25 @@ describe Api::V1::Accounts::StatusesController do
       end
     end
 
+    context 'with exclude sensitive' do
+      let!(:sensitive_status) { Fabricate(:status, sensitive: true, account: user.account) }
+      let!(:insensitive_status) { Fabricate(:status, account: user.account) }
+
+      before do
+        get :index, params: { account_id: user.account.id, exclude_sensitive: true }
+      end
+
+      it 'returns http success' do
+        expect(response).to have_http_status(200)
+      end
+
+      it 'does not return posts marked sensitive' do
+        json = body_as_json
+        post_ids = json.map { |item| item[:id].to_i }.sort
+        expect(post_ids).to eq [insensitive_status.id]
+      end
+    end
+
     context 'with only own pinned' do
       before do
         Fabricate(:status_pin, account: user.account, status: Fabricate(:status, account: user.account))
