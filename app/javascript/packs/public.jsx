@@ -261,6 +261,26 @@ Rails.delegate(document, '.sidebar__toggle__icon', 'keydown', e => {
 Rails.delegate(document, '.custom-emoji', 'mouseover', ({ target }) => target.src = target.getAttribute('data-original'));
 Rails.delegate(document, '.custom-emoji', 'mouseout', ({ target }) => target.src = target.getAttribute('data-static'));
 
+const setInputDisabled = (input, disabled) => {
+  input.disabled = disabled;
+
+  const wrapper = input.closest('.with_label');
+  if (wrapper) {
+    wrapper.classList.toggle('disabled', input.disabled);
+
+    const hidden = input.type === 'checkbox' && wrapper.querySelector('input[type=hidden][value="0"]');
+    if (hidden) {
+      hidden.disabled = input.disabled;
+    }
+  }
+};
+
+Rails.delegate(document, '#account_statuses_cleanup_policy_enabled', 'change', ({ target }) => {
+  target.form.querySelectorAll('input:not([type=hidden],#account_statuses_cleanup_policy_enabled), select').forEach((input) => {
+    setInputDisabled(input, !target.checked);
+  });
+});
+
 // Empty the honeypot fields in JS in case something like an extension
 // automatically filled them.
 Rails.delegate(document, '#registration_new_user,#new_user', 'submit', () => {
