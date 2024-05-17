@@ -16,7 +16,7 @@ class REST::ApplicationSerializer < ActiveModel::Serializer
   end
 
   def client_secret
-    object.secret
+    object.secret if object.confidential?
   end
 
   def website
