@@ -33,6 +33,7 @@ import { WordmarkLogo } from 'mastodon/components/logo';
 import { NavigationPortal } from 'mastodon/components/navigation_portal';
 import { timelinePreview, trendsEnabled } from 'mastodon/initial_state';
 import { transientSingleColumn } from 'mastodon/is_mobile';
+import { canManageReports, canViewAdminDashboard } from 'mastodon/permissions';
 
 import ColumnLink from './column_link';
 import DisabledAccountBanner from './disabled_account_banner';
@@ -49,6 +50,8 @@ const messages = defineMessages({
   bookmarks: { id: 'navigation_bar.bookmarks', defaultMessage: 'Bookmarks' },
   lists: { id: 'navigation_bar.lists', defaultMessage: 'Lists' },
   preferences: { id: 'navigation_bar.preferences', defaultMessage: 'Preferences' },
+  administration: { id: 'navigation_bar.administration', defaultMessage: 'Administration' },
+  moderation: { id: 'navigation_bar.moderation', defaultMessage: 'Moderation Reports' },
   followsAndFollowers: { id: 'navigation_bar.follows_and_followers', defaultMessage: 'Follows and followers' },
   about: { id: 'navigation_bar.about', defaultMessage: 'About' },
   search: { id: 'navigation_bar.search', defaultMessage: 'Search' },
@@ -112,7 +115,7 @@ class NavigationPanel extends Component {
 
   render () {
     const { intl } = this.props;
-    const { signedIn, disabledAccountId } = this.context.identity;
+    const { signedIn, disabledAccountId, permissions } = this.context.identity;
 
     let banner = undefined;
 
@@ -174,6 +177,9 @@ class NavigationPanel extends Component {
             <hr />
 
             <ColumnLink transparent href='/settings/preferences' icon='cog' iconComponent={SettingsIcon} text={intl.formatMessage(messages.preferences)} />
+
+            {canViewAdminDashboard(permissions) && <ColumnLink transparent href='/admin/dashboard' icon='tachometer' text={intl.formatMessage(messages.administration)} />}
+            {canManageReports(permissions) && <ColumnLink transparent href='/admin/reports' icon='flag' text={intl.formatMessage(messages.moderation)} />}
           </>
         )}
 
