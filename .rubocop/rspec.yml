@@ -3,7 +3,7 @@ RSpec/ExampleLength:
   CountAsOne: ['array', 'heredoc', 'method_call']
 
 RSpec/FilePath:
-  Enabled: false
+  Enabled: false # Deprecated cop
 
 RSpec/NamedSubject:
   EnforcedStyle: named_only
