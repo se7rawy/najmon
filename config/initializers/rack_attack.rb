@@ -14,7 +14,7 @@ class Rack::Attack
     end
 
     def remote_ip
-      @remote_ip ||= (@env["action_dispatch.remote_ip"] || ip).to_s
+      @remote_ip ||= (@env['action_dispatch.remote_ip'] || ip).to_s
     end
 
     def throttleable_remote_ip
@@ -103,6 +103,10 @@ class Rack::Attack
 
   throttle('throttle_api_delete', limit: 30, period: 30.minutes) do |req|
     req.authenticated_user_id if (req.post? && req.path.match?(API_DELETE_REBLOG_REGEX)) || (req.delete? && req.path.match?(API_DELETE_STATUS_REGEX))
+  end
+
+  throttle('throttle_oauth_application_registrations/ip', limit: 5, period: 10.minutes) do |req|
+    req.throttleable_remote_ip if req.post? && req.path == '/api/v1/apps'
   end
 
   throttle('throttle_sign_up_attempts/ip', limit: 25, period: 5.minutes) do |req|

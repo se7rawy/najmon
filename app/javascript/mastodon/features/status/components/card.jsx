@@ -6,6 +6,8 @@ import { PureComponent } from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
+
 
 import Immutable from 'immutable';
 import ImmutablePropTypes from 'react-immutable-proptypes';
@@ -14,6 +16,7 @@ import DescriptionIcon from '@/material-icons/400-24px/description-fill.svg?reac
 import OpenInNewIcon from '@/material-icons/400-24px/open_in_new.svg?react';
 import PlayArrowIcon from '@/material-icons/400-24px/play_arrow-fill.svg?react';
 import VisibilityOffIcon from '@/material-icons/400-24px/visibility_off.svg?react';
+import { Avatar } from 'mastodon/components/avatar';
 import { Blurhash } from 'mastodon/components/blurhash';
 import { Icon }  from 'mastodon/components/icon';
 import { RelativeTimestamp } from 'mastodon/components/relative_timestamp';
@@ -55,6 +58,20 @@ const addAutoPlay = html => {
   }
 
   return html;
+};
+
+const MoreFromAuthor = ({ author }) => (
+  <div className='more-from-author'>
+    <svg viewBox='0 0 79 79' className='logo logo--icon' role='img'>
+      <use xlinkHref='#logo-symbol-icon' />
+    </svg>
+
+    <FormattedMessage id='link_preview.more_from_author' defaultMessage='More from {name}' values={{ name: <Link to={`/@${author.get('acct')}`}><Avatar account={author} size={16} /> {author.get('display_name')}</Link> }} />
+  </div>
+);
+
+MoreFromAuthor.propTypes = {
+  author: ImmutablePropTypes.map,
 };
 
 export default class Card extends PureComponent {
@@ -151,6 +168,7 @@ export default class Card extends PureComponent {
     const interactive = card.get('type') === 'video';
     const language    = card.get('language') || '';
     const largeImage  = (card.get('image')?.length > 0 && card.get('width') > card.get('height')) || interactive;
+    const showAuthor  = !!card.get('author_account');
 
     const description = (
       <div className='status-card__content'>
@@ -161,7 +179,7 @@ export default class Card extends PureComponent {
 
         <strong className='status-card__title' title={card.get('title')} lang={language}>{card.get('title')}</strong>
 
-        {card.get('author_name').length > 0 ? <span className='status-card__author'><FormattedMessage id='link_preview.author' defaultMessage='By {name}' values={{ name: <strong>{card.get('author_name')}</strong> }} /></span> : <span className='status-card__description' lang={language}>{card.get('description')}</span>}
+        {!showAuthor && (card.get('author_name').length > 0 ? <span className='status-card__author'><FormattedMessage id='link_preview.author' defaultMessage='By {name}' values={{ name: <strong>{card.get('author_name')}</strong> }} /></span> : <span className='status-card__description' lang={language}>{card.get('description')}</span>)}
       </div>
     );
 
@@ -259,10 +277,14 @@ export default class Card extends PureComponent {
     }
 
     return (
-      <a href={card.get('url')} className={classNames('status-card', { expanded: largeImage })} target='_blank' rel='noopener noreferrer' ref={this.setRef}>
-        {embed}
-        {description}
-      </a>
+      <>
+        <a href={card.get('url')} className={classNames('status-card', { expanded: largeImage, bottomless: showAuthor })} target='_blank' rel='noopener noreferrer' ref={this.setRef}>
+          {embed}
+          {description}
+        </a>
+
+        {showAuthor && <MoreFromAuthor author={card.get('author_account')} />}
+      </>
     );
   }
 
