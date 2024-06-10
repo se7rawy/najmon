@@ -196,7 +196,7 @@ module.exports = defineConfig({
       {
         devDependencies: [
           '.eslintrc.js',
-          'config/webpack/**',
+          'vite.config.mts',
           'app/javascript/mastodon/performance.js',
           'app/javascript/mastodon/test_setup.js',
           'app/javascript/**/__tests__/**',
@@ -209,7 +209,6 @@ module.exports = defineConfig({
     'import/no-relative-packages': 'error',
     'import/no-self-import': 'error',
     'import/no-useless-path-segments': 'error',
-    'import/no-webpack-loader-syntax': 'error',
 
     'import/order': [
       'error',
@@ -305,7 +304,6 @@ module.exports = defineConfig({
         '*.config.js',
         '.*rc.js',
         'ide-helper.js',
-        'config/webpack/**/*',
         'config/formatjs-formatter.js',
       ],
 
@@ -382,9 +380,20 @@ module.exports = defineConfig({
         '**/__tests__/*.jsx',
       ],
 
-      env: {
-        jest: true,
-      },
+      globals: {
+        suite: true,
+        test: true,
+        describe: true,
+        it: true,
+        expect: true,
+        assert: true,
+        vitest: true,
+        vi: true,
+        beforeAll: true,
+        afterAll: true,
+        beforeEach: true,
+        afterEach: true,
+      }
     }
   ],
 });
