@@ -8,7 +8,7 @@
 
 Lint/NonLocalExitFromIterator:
   Exclude:
-    - 'app/helpers/jsonld_helper.rb'
+    - 'app/helpers/json_ld_helper.rb'
 
 # Configuration parameters: AllowedMethods, AllowedPatterns, CountRepeatedAttributes.
 Metrics/AbcSize:
@@ -51,7 +51,7 @@ Rails/OutputSafety:
 # AllowedMethods: ==, equal?, eql?
 Style/ClassEqualityComparison:
   Exclude:
-    - 'app/helpers/jsonld_helper.rb'
+    - 'app/helpers/json_ld_helper.rb'
     - 'app/serializers/activitypub/outbox_serializer.rb'
 
 # This cop supports safe autocorrection (--autocorrect).
@@ -146,7 +146,7 @@ Style/NilLambda:
 Style/OptionalBooleanParameter:
   Exclude:
     - 'app/helpers/admin/account_moderation_notes_helper.rb'
-    - 'app/helpers/jsonld_helper.rb'
+    - 'app/helpers/json_ld_helper.rb'
     - 'app/lib/admin/system_check/message.rb'
     - 'app/lib/request.rb'
     - 'app/lib/webfinger.rb'
