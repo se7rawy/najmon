@@ -1,0 +1,20 @@
+---
+RSpec/ExampleLength:
+  CountAsOne: ['array', 'heredoc', 'method_call']
+
+RSpec/FilePath:
+  Enabled: false # Deprecated cop
+
+RSpec/NamedSubject:
+  EnforcedStyle: named_only
+
+RSpec/NotToNot:
+  EnforcedStyle: to_not
+
+RSpec/SpecFilePathFormat:
+  CustomTransform:
+    ActivityPub: activitypub
+    DeepL: deepl
+    FetchOEmbedService: fetch_oembed_service
+    OEmbedController: oembed_controller
+    OStatus: ostatus
