@@ -2798,8 +2798,6 @@ __metadata:
     "@types/requestidlecallback": "npm:^0.3.5"
     "@types/webpack": "npm:^4.41.33"
     "@types/webpack-env": "npm:^1.18.4"
-    "@typescript-eslint/eslint-plugin": "npm:^7.0.0"
-    "@typescript-eslint/parser": "npm:^7.0.0"
     arrow-key-navigation: "npm:^1.2.0"
     async-mutex: "npm:^0.5.0"
     autoprefixer: "npm:^10.4.14"
@@ -2895,6 +2893,7 @@ __metadata:
     tiny-queue: "npm:^0.2.1"
     twitter-text: "npm:3.1.0"
     typescript: "npm:^5.0.4"
+    typescript-eslint: "npm:^7.11.0"
     webpack: "npm:^4.47.0"
     webpack-assets-manifest: "npm:^4.0.6"
     webpack-bundle-analyzer: "npm:^4.8.0"
@@ -4116,7 +4115,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/eslint-plugin@npm:^7.0.0":
+"@typescript-eslint/eslint-plugin@npm:7.11.0":
   version: 7.11.0
   resolution: "@typescript-eslint/eslint-plugin@npm:7.11.0"
   dependencies:
@@ -4139,7 +4138,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/parser@npm:^7.0.0":
+"@typescript-eslint/parser@npm:7.11.0":
   version: 7.11.0
   resolution: "@typescript-eslint/parser@npm:7.11.0"
   dependencies:
@@ -17136,6 +17135,22 @@ __metadata:
     is-typed-array: "npm:^1.1.13"
     possible-typed-array-names: "npm:^1.0.0"
   checksum: 10c0/74253d7dc488eb28b6b2711cf31f5a9dcefc9c41b0681fd1c178ed0a1681b4468581a3626d39cd4df7aee3d3927ab62be06aa9ca74e5baf81827f61641445b77
+  languageName: node
+  linkType: hard
+
+"typescript-eslint@npm:^7.11.0":
+  version: 7.11.0
+  resolution: "typescript-eslint@npm:7.11.0"
+  dependencies:
+    "@typescript-eslint/eslint-plugin": "npm:7.11.0"
+    "@typescript-eslint/parser": "npm:7.11.0"
+    "@typescript-eslint/utils": "npm:7.11.0"
+  peerDependencies:
+    eslint: ^8.56.0
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: 10c0/11dbbf4f317abe687733614f85a255e5ebad0d45d2a1f8c4922918bf74b902c8b20fd3be50f58cd6e7645a2cb34e99cb068ac97bca50ff96c931cfa9572855c0
   languageName: node
   linkType: hard
 
