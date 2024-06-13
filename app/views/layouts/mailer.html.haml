@@ -75,9 +75,9 @@
                   %td.email-footer-td
                     %p.email-footer-p
                       = link_to root_url, class: 'email-footer-logo-a' do
-                        = image_tag frontend_asset_url('images/mailer-new/common/logo-footer.png'), alt: 'Mastodon', width: 44, height: 44
-                    %p.email-footer-p
-                      = t 'about.hosted_on', domain: site_hostname
+                        = image_tag frontend_asset_url('images/mailer-new/common/logo-footer.png'), alt: 'najmon', width: 44, height: 44
+                    #%p.email-footer-p
+                    #  = t 'about.hosted_on', domain: site_hostname
                     %p.email-footer-p
                       = link_to t('application_mailer.notification_preferences'), settings_preferences_notifications_url
                       - if defined?(@unsubscribe_url)
