@@ -10,6 +10,13 @@ module LanguagesHelper
     
   }.freeze
 
+  # e.g. For Chinese, which is not a language,
+  # but a language family in spite of sharing the main locale code
+  # We need to be able to filter these
+  ISO_639_1_REGIONAL = {
+
+  }.freeze
+
   SUPPORTED_LOCALES = {}.merge(ISO_639_1).merge(ISO_639_1_REGIONAL).merge(ISO_639_3).freeze
 
   # For ISO-639-1 and ISO-639-3 language codes, we have their official
