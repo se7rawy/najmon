@@ -15,9 +15,6 @@
     = f.simple_fields_for :settings, current_user.settings do |ff|
       = ff.input :theme, collection: Themes.instance.names, label_method: ->(theme) { I18n.t("themes.#{theme}", default: theme) }, wrapper: :with_label, label: I18n.t('simple_form.labels.defaults.setting_theme'), include_blank: false, hint: false
 
-  - unless I18n.locale == :en
-    .flash-message.translation-prompt
-      #{t 'appearance.localization.body'} #{content_tag(:a, t('appearance.localization.guide_link_text'), href: t('appearance.localization.guide_link'), target: '_blank', rel: 'noopener')}
 
   = f.simple_fields_for :settings, current_user.settings do |ff|
     %h4= t 'appearance.advanced_web_interface'
