@@ -1161,11 +1161,11 @@ ar:
       new_confirmation_instructions_sent: سوف تتلقى رسالة بريد إلكتروني جديدة مع رابط التأكيد في غضون بضع دقائق!
       title: تحقَّق من بريدك الوارِد
     sign_in:
-      preamble_html:  
+      preamble_html:  قم بتسجيل الدخول
       title: تسجيل الدخول
     sign_up:
       manual_review: عمليات التسجيل في %{domain} تمر عبر المراجعة اليدوية من قبل مشرفينا. لمساعدتنا في معالجة إنشاء حسابك، اكتب نَبْذَة عن نفسك ولماذا تريد حسابًا على %{domain}.
-      preamble: 
+      preamble: قم بإنشاء حساب
       title: إنشاء حساب
     status:
       account_status: حالة الحساب
