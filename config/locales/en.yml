@@ -1,10 +1,10 @@
 ---
 en:
   about:
-    about_mastodon_html: 'The social network of the future: No ads, no corporate surveillance, ethical design, and decentralization! Own your data with Mastodon!'
+    about_mastodon_html: 'The social network of the future: No ads, no corporate surveillance, ethical design, and decentralization! Own your data with najmon!'
     contact_missing: Not set
     contact_unavailable: N/A
-    hosted_on: Mastodon hosted on %{domain}
+    hosted_on: najmon hosted on %{domain}
     title: About
   accounts:
     follow: Follow
@@ -673,7 +673,7 @@ en:
         moderation: Moderation
         special: Special
       delete: Delete
-      description_html: With <strong>user roles</strong>, you can customize which functions and areas of Mastodon your users can access.
+      description_html: With <strong>user roles</strong>, you can customize which functions and areas of najmon your users can access.
       edit: Edit '%{name}' role
       everyone: Default permissions
       everyone_full_description_html: This is the <strong>base role</strong> affecting <strong>all users</strong>, even those without an assigned role. All other roles inherit permissions from it.
@@ -736,23 +736,23 @@ en:
         rules_hint: There is a dedicated area for rules that your users are expected to adhere to.
         title: About
       appearance:
-        preamble: Customize Mastodon's web interface.
+        preamble: Customize najmon's web interface.
         title: Appearance
       branding:
-        preamble: Your server's branding differentiates it from other servers in the network. This information may be displayed across a variety of environments, such as Mastodon's web interface, native applications, in link previews on other websites and within messaging apps, and so on. For this reason, it is best to keep this information clear, short and concise.
+        preamble: Your server's branding differentiates it from other servers in the network. This information may be displayed across a variety of environments, such as najmon's web interface, native applications, in link previews on other websites and within messaging apps, and so on. For this reason, it is best to keep this information clear, short and concise.
         title: Branding
       captcha_enabled:
         desc_html: This relies on external scripts from hCaptcha, which may be a security and privacy concern. In addition, <strong>this can make the registration process significantly less accessible to some (especially disabled) people</strong>. For these reasons, please consider alternative measures such as approval-based or invite-based registration.
         title: Require new users to solve a CAPTCHA to confirm their account
       content_retention:
-        preamble: Control how user-generated content is stored in Mastodon.
+        preamble: Control how user-generated content is stored in najmon.
         title: Content retention
       default_noindex:
         desc_html: Affects all users who have not changed this setting themselves
         title: Opt users out of search engine indexing by default
       discovery:
         follow_recommendations: Follow recommendations
-        preamble: Surfacing interesting content is instrumental in onboarding new users who may not know anyone Mastodon. Control how various discovery features work on your server.
+        preamble: Surfacing interesting content is instrumental in onboarding new users who may not know anyone najmon. Control how various discovery features work on your server.
         profile_directory: Profile directory
         public_timelines: Public timelines
         publish_discovered_servers: Publish discovered servers
@@ -784,7 +784,7 @@ en:
       destroyed_msg: Site upload successfully deleted!
     software_updates:
       critical_update: Critical — please update quickly
-      description: It is recommended to keep your Mastodon installation up to date to benefit from the latest fixes and features. Moreover, it is sometimes critical to update Mastodon in a timely manner to avoid security issues. For these reasons, Mastodon checks for updates every 30 minutes, and will notify you according to your e-mail notification preferences.
+      description: It is recommended to keep your najmon installation up to date to benefit from the latest fixes and features. Moreover, it is sometimes critical to update najmon in a timely manner to avoid security issues. For these reasons, najmon checks for updates every 30 minutes, and will notify you according to your e-mail notification preferences.
       documentation_link: Learn more
       release_notes: Release notes
       title: Available updates
@@ -842,7 +842,7 @@ en:
         message_html: Elasticsearch index mappings are outdated. Please run <code>tootctl search deploy --only=%{value}</code>
       elasticsearch_preset:
         action: See documentation
-        message_html: Your Elasticsearch cluster has more than one node, but Mastodon is not configured to use them.
+        message_html: Your Elasticsearch cluster has more than one node, but najmon is not configured to use them.
       elasticsearch_preset_single_node:
         action: See documentation
         message_html: Your Elasticsearch cluster has only one node, <code>ES_PRESET</code> should be set to <code>single_node_cluster</code>.
@@ -860,10 +860,10 @@ en:
         message_html: No Sidekiq process running for the %{value} queue(s). Please review your Sidekiq configuration
       software_version_critical_check:
         action: See available updates
-        message_html: A critical Mastodon update is available, please update as quickly as possible.
+        message_html: A critical najmon update is available, please update as quickly as possible.
       software_version_patch_check:
         action: See available updates
-        message_html: A bugfix Mastodon update is available.
+        message_html: A bugfix najmon update is available.
       upload_check_privacy_error:
         action: Check here for more information
         message_html: "<strong>Your web server is misconfigured. The privacy of your users is at risk.</strong>"
@@ -947,7 +947,7 @@ en:
     webhooks:
       add_new: Add endpoint
       delete: Delete
-      description_html: A <strong>webhook</strong> enables Mastodon to push <strong>real-time notifications</strong> about chosen events to your own application, so your application can <strong>automatically trigger reactions</strong>.
+      description_html: A <strong>webhook</strong> enables najmon to push <strong>real-time notifications</strong> about chosen events to your own application, so your application can <strong>automatically trigger reactions</strong>.
       disable: Disable
       disabled: Disabled
       edit: Edit endpoint
@@ -981,8 +981,8 @@ en:
       next_steps: You can approve the appeal to undo the moderation decision, or ignore it.
       subject: "%{username} is appealing a moderation decision on %{instance}"
     new_critical_software_updates:
-      body: New critical versions of Mastodon have been released, you may want to update as soon as possible!
-      subject: Critical Mastodon updates are available for %{instance}!
+      body: New critical versions of najmon have been released, you may want to update as soon as possible!
+      subject: Critical najmon updates are available for %{instance}!
     new_pending_account:
       body: The details of the new account are below. You can approve or reject this application.
       subject: New account up for review on %{instance} (%{username})
@@ -991,8 +991,8 @@ en:
       body_remote: Someone from %{domain} has reported %{target}
       subject: New report for %{instance} (#%{id})
     new_software_updates:
-      body: New Mastodon versions have been released, you may want to update!
-      subject: New Mastodon versions are available for %{instance}!
+      body: New najmon versions have been released, you may want to update!
+      subject: New najmon versions are available for %{instance}!
     new_trends:
       body: 'The following items need a review before they can be displayed publicly:'
       new_trending_links:
@@ -1018,7 +1018,7 @@ en:
     confirmation_dialogs: Confirmation dialogs
     discovery: Discovery
     localization:
-      body: Mastodon is translated by volunteers.
+      body: najmon is translated by volunteers.
       guide_link: https://crowdin.com/project/mastodon
       guide_link_text: Everyone can contribute.
     sensitive_content: Sensitive content
@@ -1049,9 +1049,9 @@ en:
     delete_account: Delete account
     delete_account_html: If you wish to delete your account, you can <a href="%{path}">proceed here</a>. You will be asked for confirmation.
     description:
-      prefix_invited_by_user: "@%{name} invites you to join this server of Mastodon!"
-      prefix_sign_up: Sign up on Mastodon today!
-      suffix: With an account, you will be able to follow people, post updates and exchange messages with users from any Mastodon server and more!
+      prefix_invited_by_user: "@%{name} invites you to join this server of najmon!"
+      prefix_sign_up: Sign up on najmon today!
+      suffix: With an account, you will be able to follow people, post updates and exchange messages with users from any najmon server and more!
     didnt_get_confirmation: Didn't receive a confirmation link?
     dont_have_your_security_key: Don't have your security key?
     forgot_password: Forgot your password?
@@ -1098,7 +1098,7 @@ en:
       title: Login to %{domain}
     sign_up:
       manual_review: Sign-ups on %{domain} go through manual review by our moderators. To help us process your registration, write a bit about yourself and why you want an account on %{domain}.
-      preamble: With an account on this Mastodon server, you'll be able to follow any other person on the network, regardless of where their account is hosted.
+      preamble: With an account on this najmon server, you'll be able to follow any other person on the network, regardless of where their account is hosted.
       title: Let's get you set up on %{domain}.
     status:
       account_status: Account status
@@ -1203,7 +1203,7 @@ en:
       content: We're sorry, but something went wrong on our end.
       title: This page is not correct
     '503': The page could not be served due to a temporary server failure.
-    noscript_html: To use the Mastodon web application, please enable JavaScript. Alternatively, try one of the <a href="%{apps_path}">native apps</a> for Mastodon for your platform.
+    noscript_html: To use the najmon web application, please enable JavaScript. Alternatively, try one of the <a href="%{apps_path}">native apps</a> for najmon for your platform.
   existing_username_validator:
     not_found: could not find a local user with that username
     not_found_multiple: could not find %{usernames}
@@ -1391,7 +1391,7 @@ en:
     unsubscribe:
       action: Yes, unsubscribe
       complete: Unsubscribed
-      confirmation_html: Are you sure you want to unsubscribe from receiving %{type} for Mastodon on %{domain} to your e-mail at %{email}? You can always re-subscribe from your <a href="%{settings_path}">e-mail notification settings</a>.
+      confirmation_html: Are you sure you want to unsubscribe from receiving %{type} for najmon on %{domain} to your e-mail at %{email}? You can always re-subscribe from your <a href="%{settings_path}">e-mail notification settings</a>.
       emails:
         notification_emails:
           favourite: favorite notification e-mails
@@ -1400,7 +1400,7 @@ en:
           mention: mention notification e-mails
           reblog: boost notification e-mails
       resubscribe_html: If you've unsubscribed by mistake, you can re-subscribe from your <a href="%{settings_path}">e-mail notification settings</a>.
-      success_html: You'll no longer receive %{type} for Mastodon on %{domain} to your e-mail at %{email}.
+      success_html: You'll no longer receive %{type} for najmon on %{domain} to your e-mail at %{email}.
       title: Unsubscribe
   media_attachments:
     validations:
@@ -1527,13 +1527,13 @@ en:
     posting_defaults: Posting defaults
     public_timelines: Public timelines
   privacy:
-    hint_html: "<strong>Customize how you want your profile and your posts to be found.</strong> A variety of features in Mastodon can help you reach a wider audience when enabled. Take a moment to review these settings to make sure they fit your use case."
+    hint_html: "<strong>Customize how you want your profile and your posts to be found.</strong> A variety of features in najmon can help you reach a wider audience when enabled. Take a moment to review these settings to make sure they fit your use case."
     privacy: Privacy
     privacy_hint_html: Control how much you want to disclose for the benefit of others. People discover interesting profiles and cool apps by browsing other people's follows and seeing which apps they post from, but you may prefer to keep it hidden.
     reach: Reach
     reach_hint_html: Control whether you want to be discovered and followed by new people. Do you want your posts to appear on the Explore screen? Do you want other people to see you in their follow recommendations? Do you want to accept all new followers automatically, or have granular control over each one?
     search: Search
-    search_hint_html: Control how you want to be found. Do you want people to find you by what you've publicly posted about? Do you want people outside Mastodon to find your profile when searching the web? Please mind that total exclusion from all search engines cannot be guaranteed for public information.
+    search_hint_html: Control how you want to be found. Do you want people to find you by what you've publicly posted about? Do you want people outside najmon to find your profile when searching the web? Please mind that total exclusion from all search engines cannot be guaranteed for public information.
     title: Privacy and reach
   privacy_policy:
     title: Privacy Policy
@@ -1601,7 +1601,7 @@ en:
       weibo: Weibo
     current_session: Current session
     description: "%{browser} on %{platform}"
-    explanation: These are the web browsers currently logged in to your Mastodon account.
+    explanation: These are the web browsers currently logged in to your najmon account.
     ip: IP
     platforms:
       adobe_air: Adobe Air
@@ -1627,7 +1627,7 @@ en:
     aliases: Account aliases
     appearance: Appearance
     authorized_apps: Authorized apps
-    back: Back to Mastodon
+    back: Back to najmon
     delete: Account deletion
     development: Development
     edit_profile: Edit profile
@@ -1736,9 +1736,9 @@ en:
   tags:
     does_not_match_previous_name: does not match the previous name
   themes:
-    contrast: Mastodon (High contrast)
-    default: Mastodon (Dark)
-    mastodon-light: Mastodon (Light)
+    contrast: najmon (High contrast)
+    default: najmon (Dark)
+    mastodon-light: najmon (Light)
   time:
     formats:
       default: "%b %d, %Y, %H:%M"
