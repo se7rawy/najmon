@@ -16,7 +16,7 @@ export const ExplorePrompt = () => (
     <h1>
       <FormattedMessage
         id='home.explore_prompt.title'
-        defaultMessage='This is your home base within Najmon.'
+        defaultMessage='This is your home base within MASTODON.'
       />
     </h1>
     <p>
