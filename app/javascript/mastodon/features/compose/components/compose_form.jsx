@@ -266,9 +266,7 @@ class ComposeForm extends ImmutablePureComponent {
         <div className={classNames('compose-form__highlightable', { active: highlighted })}>
           <AutosuggestTextarea
             ref={this.setAutosuggestTextarea}
-            <div className='compose-form__placeholder'>
             placeholder={intl.formatMessage(messages.placeholder)}
-            </div>
             disabled={disabled}
             value={this.props.text}
             onChange={this.handleChange}
