@@ -143,7 +143,7 @@
   "compose_form.hashtag_warning": "لن يُدرَج هذا المنشور تحت أي وسم بما أنَّه غير منشور للعامة. إلّا الرسائل المنشورة للعامة يُمكن البحث عنها بواسطة وسم.",
   "compose_form.lock_disclaimer": "حسابُك غير {locked}. يُمكن لأي شخص مُتابعتك لرؤية (منشورات المتابعين فقط).",
   "compose_form.lock_disclaimer.lock": "مُقفَل",
-  "compose_form.placeholder": "\nفِيمَ تُفكِّر؟\n",
+  "compose_form.placeholder": "فِيمَ تُفكِّر؟",
   "compose_form.poll.add_option": "إضافة خيار",
   "compose_form.poll.duration": "مُدَّة اِستطلاع الرأي",
   "compose_form.poll.option_placeholder": "الخيار {number}",
