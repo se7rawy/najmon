@@ -285,7 +285,7 @@ class ComposeForm extends ImmutablePureComponent {
               <PollFormContainer />
             </div>
           </AutosuggestTextarea>
-          <EmojiPickerDropdown onPickEmoji={this.handleEmojiPick} />
+        
 
           <div className='compose-form__buttons-wrapper'>
             <div className='compose-form__buttons'>
@@ -294,6 +294,7 @@ class ComposeForm extends ImmutablePureComponent {
               <PrivacyDropdownContainer disabled={this.props.isEditing} />
               <SpoilerButtonContainer />
               <LanguageDropdown />
+              <EmojiPickerDropdown onPickEmoji={this.handleEmojiPick} />
             </div>
 
             <div className='character-counter__wrapper'>
