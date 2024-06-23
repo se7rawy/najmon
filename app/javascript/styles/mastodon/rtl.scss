@@ -35,10 +35,16 @@ body.rtl {
     }
     }
     
-    .compose-form__modifiers {
-    text-align:right;
+    poll__option.dialog-option {
+    
+text-align:right;
       direction:rtl;
-    }
+    & > .poll__option__text {
+      text-align:right;
+      direction:rtl;
+}
+}
+    
   .column-header__setting-arrows {
     float: left;
   }
