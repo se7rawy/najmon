@@ -201,7 +201,6 @@ export default class AutosuggestInput extends ImmutablePureComponent {
           <input
             type='text'
             ref={this.setInput}
-            className='autosuggest-textarea__textarea'
             disabled={disabled}
             placeholder={placeholder}
             autoFocus={autoFocus}
