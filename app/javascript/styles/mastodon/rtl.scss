@@ -29,8 +29,6 @@ body.rtl {
   .spoiler-input__input{
 
     &::placeholder {
-      color: $dark-text-color;
-      text-align:right;
       direction:rtl;
     }
     }
