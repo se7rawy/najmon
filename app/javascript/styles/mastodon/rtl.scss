@@ -23,13 +23,11 @@ body.rtl {
     float: right;
   }
   .compose-form__highlightable {
-  text-align:right;
-      direction:rtl;
+  
   }
   .autosuggest-textarea__textarea,
   .spoiler-input__input {
-text-align:right;
-direction:rtl;
+
     &::placeholder {
       color: $dark-text-color;
       text-align:right;
