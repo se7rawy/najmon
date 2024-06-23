@@ -214,7 +214,7 @@ export default class AutosuggestInput extends ImmutablePureComponent {
             dir='auto'
             aria-autocomplete='list'
             id={id}
-            className=classnames{'placeholder_poll',className}
+            className={className}
             maxLength={maxLength}
             lang={lang}
             spellCheck={spellCheck}
