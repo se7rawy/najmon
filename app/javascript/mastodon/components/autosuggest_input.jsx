@@ -210,7 +210,7 @@ export default class AutosuggestInput extends ImmutablePureComponent {
             onKeyUp={onKeyUp}
             onFocus={this.onFocus}
             onBlur={this.onBlur}
-            dir='rtl'
+            dir='auto'
             aria-autocomplete='list'
             id={id}
             className={className}
