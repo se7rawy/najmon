@@ -22,6 +22,10 @@ body.rtl {
   .account__avatar-wrapper {
     float: right;
   }
+  .compose-form__highlightable {
+  text-align:right;
+      direction:rtl;
+  }
   .autosuggest-textarea__textarea,
   .spoiler-input__input {
 text-align:right;
