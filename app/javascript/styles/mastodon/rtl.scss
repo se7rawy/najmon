@@ -22,9 +22,14 @@ body.rtl {
   .account__avatar-wrapper {
     float: right;
   }
-.compose-form__highlightable {
-text-align: right;
-}
+  .autosuggest-textarea__textarea,
+  .spoiler-input__input {
+text-align:right;
+    &::placeholder {
+      color: $dark-text-color;
+      text-align:right;
+    }
+    }
   .column-header__setting-arrows {
     float: left;
   }
