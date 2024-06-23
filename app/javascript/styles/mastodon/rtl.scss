@@ -29,7 +29,7 @@ body.rtl {
   .spoiler-input__input{
 
     &::placeholder {
-      direction:rtl;
+      text-align:right;
     }
     }
 
