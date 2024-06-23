@@ -26,8 +26,9 @@ body.rtl {
   
   }
   .autosuggest-textarea__textarea,
-  .spoiler-input__input {
-
+  .spoiler-input__input, placeholder_poll {
+text-align:right;
+      direction:rtl;
     &::placeholder {
       color: $dark-text-color;
       text-align:right;
