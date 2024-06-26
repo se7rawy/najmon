@@ -206,7 +206,7 @@ class About extends PureComponent {
 
       
 
- 
+          <LinkFooter />
         </div>
 
         <Helmet>
