@@ -9,7 +9,7 @@
   "about.domain_blocks.suspended.explanation": "لن يتم معالجة أي بيانات من هذا الخادم أو تخزينها أو تبادلها، مما يجعل أي تفاعل أو اتصال مع المستخدمين من هذا الخادم مستحيلا.",
   "about.domain_blocks.suspended.title": "مُعلّق",
   "about.not_available": "لم يتم توفير هذه المعلومات على هذا الخادم.",
-  "about.powered_by": " شبكة اجتماعية إسلامية {najmon}",
+  "about.powered_by": "شبكة اجتماعية إسلامية",
   "about.rules": "قواعد الخادم",
   "account.account_note_header": "مُلاحظة",
   "account.add_or_remove_from_list": "الإضافة أو الإزالة من القائمة",
