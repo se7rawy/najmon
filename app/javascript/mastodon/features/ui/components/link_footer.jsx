@@ -64,7 +64,7 @@ class LinkFooter extends PureComponent {
     return (
       <div className='link-footer'>
         <p>
-          <strong>{domain}</strong>:
+   
           {' '}
           <Link to='/about' target={multiColumn ? '_blank' : undefined}><FormattedMessage id='footer.about' defaultMessage='About' /></Link>
           {statusPageUrl && (
@@ -87,21 +87,11 @@ class LinkFooter extends PureComponent {
           )}
           {DividingCircle}
           <Link to='/privacy-policy' target={multiColumn ? '_blank' : undefined}><FormattedMessage id='footer.privacy_policy' defaultMessage='Privacy policy' /></Link>
-        </p>
-
-        <p>
-          <strong>Mastodon</strong>:
-          {' '}
-          <a href='https://joinmastodon.org' target='_blank'><FormattedMessage id='footer.about' defaultMessage='About' /></a>
-          {DividingCircle}
-          <a href='https://joinmastodon.org/apps' target='_blank'><FormattedMessage id='footer.get_app' defaultMessage='Get the app' /></a>
-          {DividingCircle}
+        {DividingCircle}
           <Link to='/keyboard-shortcuts'><FormattedMessage id='footer.keyboard_shortcuts' defaultMessage='Keyboard shortcuts' /></Link>
-          {DividingCircle}
-          <a href={source_url} rel='noopener noreferrer' target='_blank'><FormattedMessage id='footer.source_code' defaultMessage='View source code' /></a>
-          {DividingCircle}
-          <span className='version'>v{version}</span>
-        </p>
+  </p>
+
+   
       </div>
     );
   }
