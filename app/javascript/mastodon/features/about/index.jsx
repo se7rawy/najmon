@@ -121,7 +121,7 @@ class About extends PureComponent {
           <div className='about__header'>
             <ServerHeroImage blurhash={server.getIn(['thumbnail', 'blurhash'])} src={server.getIn(['thumbnail', 'url'])} srcSet={server.getIn(['thumbnail', 'versions'])?.map((value, key) => `${value} ${key.replace('@', '')}`).join(', ')} className='about__header__hero' />
             <h1>{isLoading ? <Skeleton width='10ch' /> : server.get('domain')}</h1>
-            
+                <p><FormattedMessage id='about.powered_by' defaultMessage='Islamic Social Network {mastodon}' values={{ mastodon: <a href='https://info.najmon.com' className='about__mail' target='_blank'>najmon</a> }} /></p>
           </div>
 
           <div className='about__meta'>
