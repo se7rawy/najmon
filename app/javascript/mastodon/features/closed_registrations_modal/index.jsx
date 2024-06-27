@@ -48,8 +48,9 @@ class ClosedRegistrationsModal extends ImmutablePureComponent {
            <h3>
             {closedRegistrationsMessage}    </h3>
           </div>
-
-      
+          <div>
+        <a href='https://info.najmon.com' target='_blank'><FormattedMessage id='footer.info_center' defaultMessage='Info center' /></a>
+                  </div>
         </div>
       </div>
     );
