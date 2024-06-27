@@ -102,7 +102,7 @@
   "bundle_modal_error.message": "لقد حدث خطأ ما أثناء تحميل هذا العنصر.",
   "bundle_modal_error.retry": "إعادة المُحاولة",
   "closed_registrations.other_server_instructions": "بما أن نجمون لامركزي، يمكنك إنشاء حساب على خادم آخر للاستمرار في التفاعل مع هذا الخادم.",
-  "closed_registrations_modal.description": "لا يمكن إنشاء حساب على {domain} حاليا، ولكن على فكرة لست بحاجة إلى حساب على {domain} بذاته لاستخدام نجمون.",
+ "closed_registrations_modal.description": "لا يمكن إنشاء حساب على {domain} حاليا .",
   "closed_registrations_modal.find_another_server": "ابحث على خادم آخر",
   "closed_registrations_modal.preamble": "نجمون لامركزي، لذلك بغض النظر عن مكان إنشاء حسابك، سيكون بإمكانك المتابعة والتفاعل مع أي شخص على هذا الخادم. يمكنك حتى أن تستضيفه ذاتياً!",
   "closed_registrations_modal.title": "إنشاء حساب على نجمون",
