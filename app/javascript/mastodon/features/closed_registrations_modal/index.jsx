@@ -46,11 +46,12 @@ class ClosedRegistrationsModal extends ImmutablePureComponent {
         <div className='interaction-modal__choices'>
           <div className='interaction-modal__choices__choice'>
            <h3>
-            {closedRegistrationsMessage}    </h3>
+            {closedRegistrationsMessage}  </h3>
+             <a href='https://info.najmon.com' target='_blank'><FormattedMessage id='footer.info_center' defaultMessage='Info center' /></a>
           </div>
-          <div>
-        <a href='https://info.najmon.com' target='_blank'><FormattedMessage id='footer.info_center' defaultMessage='Info center' /></a>
-                  </div>
+     
+       
+           
         </div>
       </div>
     );
