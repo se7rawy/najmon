@@ -16,7 +16,7 @@ const messages = defineMessages({
   logoutMessage: { id: 'confirmations.logout.message', defaultMessage: 'Are you sure you want to log out?' },
   logoutConfirm: { id: 'confirmations.logout.confirm', defaultMessage: 'Log out' },
 });
-
+ 
 const mapDispatchToProps = (dispatch, { intl }) => ({
   onLogout () {
     dispatch(openModal({
