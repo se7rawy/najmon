@@ -41,7 +41,7 @@ const SignInBanner = () => {
       </button>
     );
   }
-
+ 
   return (
     <div className='sign-in-banner'>
       <p><FormattedMessage id='sign_in_banner.text' defaultMessage='Login to follow profiles or hashtags, favorite, share and reply to posts. You can also interact from your account on a different server.' /></p>
