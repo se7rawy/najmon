@@ -86,7 +86,7 @@ class LinkFooter extends PureComponent {
           <Link to='/privacy-policy' target={multiColumn ? '_blank' : undefined}><FormattedMessage id='footer.privacy_policy' defaultMessage='Privacy policy' /></Link>
            {DividingCircle}
           <Link to='/keyboard-shortcuts'><FormattedMessage id='footer.keyboard_shortcuts' defaultMessage='Keyboard shortcuts' /></Link>
-  </p>
+         </p>
 
       
       </div>
