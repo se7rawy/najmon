@@ -141,8 +141,8 @@ class Directory extends PureComponent {
           </div>
 
           <div className='filter-form__column' role='group'>
-            <RadioButton name='local' value='1' label={intl.formatMessage(messages.local, { domain })} checked={!local} onChange={this.handleChangeLocal} />
-            <RadioButton name='local' value='0' label={intl.formatMessage(messages.federated)} checked={local} onChange={this.handleChangeLocal} />
+            <RadioButton name='local' value='1' label={intl.formatMessage(messages.local, { domain })} checked={local} onChange={this.handleChangeLocal} />
+            <RadioButton name='local' value='0' label={intl.formatMessage(messages.federated)} checked={!local} onChange={this.handleChangeLocal} />
           </div>
         </div>
 
