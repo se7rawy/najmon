@@ -64,7 +64,7 @@ class LinkFooter extends PureComponent {
     return (
       <div className='link-footer'>
         <p>
-          <strong>{domain}</strong>:
+     
           {' '}
           <Link to='/about' target={multiColumn ? '_blank' : undefined}><FormattedMessage id='footer.about' defaultMessage='About' /></Link>
           {statusPageUrl && (
