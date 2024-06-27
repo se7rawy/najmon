@@ -93,7 +93,7 @@ class LinkFooter extends PureComponent {
           <Link to='/keyboard-shortcuts'><FormattedMessage id='footer.keyboard_shortcuts' defaultMessage='Keyboard shortcuts' /></Link>
          </p>
       
-      </div>
+      </div> 
     );
   }
 
