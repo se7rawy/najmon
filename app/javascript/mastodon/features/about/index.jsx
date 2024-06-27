@@ -206,9 +206,7 @@ class About extends PureComponent {
 
           <LinkFooter />
 
-          <div className='about__footer'>
-            <p><FormattedMessage id='about.disclaimer' defaultMessage='Mastodon is free, open-source software, and a trademark of Mastodon gGmbH.' /></p>
-          </div>
+     
         </div>
 
         <Helmet>
