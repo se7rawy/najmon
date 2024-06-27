@@ -193,7 +193,7 @@
   "conversation.with": "مع {names}",
   "copypaste.copied": "تم نسخه",
   "copypaste.copy_to_clipboard": "نسخ إلى الحافظة",
-  "directory.federated": "مِن الفديفرس المعروف",
+  "directory.federated": "مِن الجميع",
   "directory.local": "مِن {domain} فقط",
   "directory.new_arrivals": "الوافدون الجُدد",
   "directory.recently_active": "نشط مؤخرا",
