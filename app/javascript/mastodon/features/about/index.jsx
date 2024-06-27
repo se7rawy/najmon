@@ -9,7 +9,7 @@ import { Helmet } from 'react-helmet';
 import { List as ImmutableList } from 'immutable';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
- 
+
 import { fetchServer, fetchExtendedDescription, fetchDomainBlocks  } from 'mastodon/actions/server';
 import Column from 'mastodon/components/column';
 import { Icon  }  from 'mastodon/components/icon';
