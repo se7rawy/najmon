@@ -45,8 +45,8 @@ class ClosedRegistrationsModal extends ImmutablePureComponent {
 
         <div className='interaction-modal__choices'>
           <div className='interaction-modal__choices__choice'>
-       
-            {closedRegistrationsMessage}
+           <h3>
+            {closedRegistrationsMessage}    </h3>
           </div>
 
       
