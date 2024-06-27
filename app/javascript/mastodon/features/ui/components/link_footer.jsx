@@ -67,7 +67,9 @@ class LinkFooter extends PureComponent {
      
           {' '}
           <Link to='/about' target={multiColumn ? '_blank' : undefined}><FormattedMessage id='footer.about' defaultMessage='About' /></Link>
-          {statusPageUrl && (
+          {DividingCircle}
+             <a href='https://info.najmon.com' target='_blank'><FormattedMessage id='footer.info_center' defaultMessage='Info center' />
+   {statusPageUrl && (
             <>
               {DividingCircle}
               <a href={statusPageUrl} target='_blank' rel='noopener'><FormattedMessage id='footer.status' defaultMessage='Status' /></a>
