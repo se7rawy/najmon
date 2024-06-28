@@ -65,8 +65,7 @@ class Follows extends PureComponent {
             {loadedContent}
           </div>
 
-          <p className='onboarding__lead'><FormattedMessage id='onboarding.tips.accounts_from_other_servers' defaultMessage='<strong>Did you know?</strong> Since Mastodon is decentralized, some profiles you come across will be hosted on servers other than yours. And yet you can interact with them seamlessly! Their server is in the second half of their username!' values={{ strong: chunks => <strong>{chunks}</strong> }} /></p>
-
+        
           <div className='onboarding__footer'>
             <button className='link-button' onClick={onBack}><FormattedMessage id='onboarding.actions.back' defaultMessage='Take me back' /></button>
           </div>
