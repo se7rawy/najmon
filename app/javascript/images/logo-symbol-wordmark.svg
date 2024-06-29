@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="261px" height="66px" viewBox="0 0 261 66" version="1.1">
-<defs>
+<defs> 
 <clipPath id="clip1">
   <path d="M 0.171875 0 L 260.511719 0 L 260.511719 65.574219 L 0.171875 65.574219 Z M 0.171875 0 "/>
 </clipPath>
