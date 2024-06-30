@@ -268,7 +268,6 @@ class EmojiPickerMenuImpl extends PureComponent {
       'places',
       'objects',
       'symbols',
-      'flags',
     ];
 
     categoriesSort.splice(1, 0, ...Array.from(categoriesFromEmojis(custom_emojis)).sort());
