@@ -220,7 +220,7 @@ class EmojiPickerMenuImpl extends PureComponent {
         places: intl.formatMessage(messages.travel),
         objects: intl.formatMessage(messages.objects),
         symbols: intl.formatMessage(messages.symbols),
-        flags: intl.formatMessage(messages.flags),
+        
         custom: intl.formatMessage(messages.custom),
       },
     };
