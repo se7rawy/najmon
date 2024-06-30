@@ -1912,7 +1912,7 @@ ar:
       title:
         delete_statuses: منشورات محذوفة
         disable: الحساب مُجمَّد
-        mark_statuses_as_sensitive: منشورات مصنفه كحساسة
+        mark_statuses_as_sensitive: منشورات مصنفة كحساسة
         none: تحذير
         sensitive: حسابات مصنفه كحساسة
         silence: الحساب محدود
