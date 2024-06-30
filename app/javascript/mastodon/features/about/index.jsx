@@ -123,7 +123,7 @@ class About extends PureComponent {
             <h1>{isLoading ? <Skeleton width='10ch' /> : server.get('domain')}</h1>
             <p><FormattedMessage id='about.powered_by' defaultMessage='Islamic Social Network' /></p>
           </div>
-          
+           
           <div className='about__meta'>
             <div className='about__meta__column'>
               <h4><FormattedMessage id='server_banner.administered_by' defaultMessage='Administered by:' /></h4>
