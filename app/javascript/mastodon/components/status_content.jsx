@@ -263,11 +263,11 @@ let contentHtml = statusContent ?? getStatusContent(status);
 
 
     
-   // const readMoreButton = isContentTooLong && renderReadMore && (
-    //  <button className='status__content__read-more-button' onClick={this.props.onClick} key='read-more'>
-    //    <FormattedMessage id='status.read_more' defaultMessage='Read more' /><Icon id='angle-right' fixedWidth />
-   //   </button>
-    //);
+  const readMoreButton = renderReadMore && (
+      <button className='status__content__read-more-button' onClick={this.props.onClick} key='read-more'>
+        <FormattedMessage id='status.read_more' defaultMessage='Read more' /><Icon id='angle-right' fixedWidth />
+      </button>
+    );
     
     
     const translateButton = renderTranslate && (
