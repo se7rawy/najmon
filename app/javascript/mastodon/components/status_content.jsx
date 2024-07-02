@@ -246,7 +246,7 @@ class StatusContent extends PureComponent {
 let contentHtml = statusContent ?? getStatusContent(status);
     const isContentTooLong = contentHtml.length > MAX_CHARACTERS;
 
-    if (isContentTooLong && hidden) {
+    if (isContentTooLong) {
       contentHtml = contentHtml.substring(0, MAX_CHARACTERS) + '...';
     }
 
