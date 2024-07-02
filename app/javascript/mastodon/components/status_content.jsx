@@ -268,6 +268,7 @@ let contentHtml = statusContent ?? getStatusContent(status);
         <FormattedMessage id='status.read_more' defaultMessage='Read more' /><Icon id='angle-right' fixedWidth />
       </button>
     );
+         {readMoreButton}
 
     const translateButton = renderTranslate && (
       <TranslateButton onClick={this.handleTranslate} translation={status.get('translation')} />
