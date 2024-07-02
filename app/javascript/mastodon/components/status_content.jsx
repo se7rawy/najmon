@@ -263,12 +263,28 @@ let contentHtml = statusContent ?? getStatusContent(status);
 
 
     
-    const readMoreButton = isContentTooLong && renderReadMore && (
+    const readMoreButton = isContentTooLong && this.state.hidden && (
       <button className='status__content__read-more-button' onClick={this.props.onClick} key='read-more'>
         <FormattedMessage id='status.read_more' defaultMessage='Read more' /><Icon id='angle-right' fixedWidth />
       </button>
     );
-         {readMoreButton}
+    
+    return (
+  <div className={classNames} ref={this.setRef} onMouseDown={this.handleMouseDown} onMouseUp={this.handleMouseUp}>
+    {status.get('spoiler_text').length > 0 &&
+      <div className='status__content__spoiler' onClick={this.handleSpoilerClick}>
+        <span dangerouslySetInnerHTML={spoilerContent} />
+        <FormattedMessage id='status.show_less' defaultMessage='Show less' />
+      </div>
+    }
+
+    <div className='status__content__inner' dangerouslySetInnerHTML={contentHtml} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} />
+    {readMoreButton}
+  </div>
+);
+    
+    
+    
 
     const translateButton = renderTranslate && (
       <TranslateButton onClick={this.handleTranslate} translation={status.get('translation')} />
