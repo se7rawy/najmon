@@ -243,14 +243,15 @@ class StatusContent extends PureComponent {
     const targetLanguages = this.props.languages?.get(status.get('language') || 'und');
     const renderTranslate = this.props.onTranslate && this.context.identity.signedIn && ['public', 'unlisted'].includes(status.get('visibility')) && status.get('search_index').trim().length > 0 && targetLanguages?.includes(contentLocale);
 
-    let content = statusContent ?? getStatusContent(status);
-    const isContentTooLong = content.length > MAX_CHARACTERS;
+let contentHtml = statusContent ?? getStatusContent(status);
+    const isContentTooLong = contentHtml.length > MAX_CHARACTERS;
 
     if (isContentTooLong && hidden) {
-      content = content.substring(0, MAX_CHARACTERS) + '...';
+      contentHtml = contentHtml.substring(0, MAX_CHARACTERS) + '...';
     }
 
-    const contentHtml = { __html: content };
+    const content = { __html: contentHtml };
+
     
     const spoilerContent = { __html: status.getIn(['translation', 'spoilerHtml']) || status.get('spoilerHtml') };
     const language = status.getIn(['translation', 'language']) || status.get('language');
