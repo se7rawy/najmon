@@ -271,9 +271,9 @@ let contentHtml = statusContent ?? getStatusContent(status);
     
     return (
   <div className={classNames} ref={this.setRef} onMouseDown={this.handleMouseDown} onMouseUp={this.handleMouseUp}>
-    {status.get('spoiler_text').length > 0 &&
+    {contentHtml.length > 0 &&
       <div className='status__content__spoiler' onClick={this.handleSpoilerClick}>
-        <span dangerouslySetInnerHTML={spoilerContent} />
+        <span dangerouslySetInnerHTML={contentHtml} />
         <FormattedMessage id='status.show_less' defaultMessage='Show less' />
       </div>
     }
