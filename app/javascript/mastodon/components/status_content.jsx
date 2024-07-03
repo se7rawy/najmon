@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
 
+import ArrowSmallRight from 'mastodon/features/onboarding/components/arrow_small_right';
 import { Icon }  from 'mastodon/components/icon';
 import PollContainer from 'mastodon/containers/poll_container';
 import { autoPlayGif, languages as preloadedLanguages } from 'mastodon/initial_state';
@@ -265,7 +266,7 @@ let contentHtml = statusContent ?? getStatusContent(status);
     const readMoreButton2 = isContentTooLong  && (
   <button className='status__content__read-more-button' onClick={this.props.onClick} key='read-more'>
     <FormattedMessage id='status.read_more' defaultMessage='Read more' />
-  
+          <ArrowSmallRight />
   </button>
 );
   const readMoreButton = renderReadMore && (
