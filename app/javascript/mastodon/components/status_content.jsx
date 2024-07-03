@@ -323,9 +323,10 @@ let contentHtml = statusContent ?? getStatusContent(status);
             {poll}
             {translateButton}
           </div>
-   <div className='status__content__text' dangerouslySetInnerHTML={content} />
+
     {renderReadMore && readMoreButton2}
-          {readMoreButton}
+      
+    {readMoreButton}
         </>
       );
     } else {
