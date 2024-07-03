@@ -324,7 +324,7 @@ let contentHtml = statusContent ?? getStatusContent(status);
             {translateButton}
           </div>
 
-  //  {readMoreButton}
+ 
         </>
       );
     } else {
