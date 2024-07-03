@@ -244,11 +244,11 @@ class StatusContent extends PureComponent {
     const renderTranslate = this.props.onTranslate && this.context.identity.signedIn && ['public', 'unlisted'].includes(status.get('visibility')) && status.get('search_index').trim().length > 0 && targetLanguages?.includes(contentLocale);
 
 let contentHtml = statusContent ?? getStatusContent(status);
-    //const isContentTooLong = contentHtml.length > MAX_CHARACTERS;
+    const isContentTooLong = contentHtml.length > MAX_CHARACTERS;
 
-  //  if (isContentTooLong) {
-  //    contentHtml = contentHtml.substring(0, MAX_CHARACTERS) + '...';
-  //  }
+    if (isContentTooLong) {
+    contentHtml = contentHtml.substring(0, MAX_CHARACTERS) + '...';
+   }
 
     const content = { __html: contentHtml };
 
@@ -262,7 +262,12 @@ let contentHtml = statusContent ?? getStatusContent(status);
     });
 
 
-    
+    const readMoreButton2 = isContentTooLong && hidden && (
+  <button className='status__content__read-more-button' onClick={() => this.setState({ hidden: false })} key='read-more'>
+    <FormattedMessage id='status.read_more' defaultMessage='Read more' />
+    <Icon id='angle-right' fixedWidth />
+  </button>
+);
   const readMoreButton = renderReadMore && (
       <button className='status__content__read-more-button' onClick={this.props.onClick} key='read-more'>
         <FormattedMessage id='status.read_more' defaultMessage='Read more' /><Icon id='angle-right' fixedWidth />
@@ -318,7 +323,8 @@ let contentHtml = statusContent ?? getStatusContent(status);
             {poll}
             {translateButton}
           </div>
-
+   <div className='status__content__text' dangerouslySetInnerHTML={content} />
+    {renderReadMore && readMoreButton2}
           {readMoreButton}
         </>
       );
