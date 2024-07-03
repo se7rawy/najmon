@@ -251,7 +251,7 @@ let contentHtml = statusContent ?? getStatusContent(status);
    }
 
     const content = { __html: contentHtml };
-
+    const content2 = { __html: statusContent ?? getStatusContent(status) };
     
     const spoilerContent = { __html: status.getIn(['translation', 'spoilerHtml']) || status.get('spoilerHtml') };
     const language = status.getIn(['translation', 'language']) || status.get('language');
@@ -330,7 +330,7 @@ let contentHtml = statusContent ?? getStatusContent(status);
     } else {
       return (
         <div className={classNames} ref={this.setRef} tabIndex={0} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
-          <div className='status__content__text status__content__text--visible translate' lang={language} dangerouslySetInnerHTML={content} />
+          <div className='status__content__text status__content__text--visible translate' lang={language} dangerouslySetInnerHTML={content2} />
 
           {poll}
           {translateButton}
