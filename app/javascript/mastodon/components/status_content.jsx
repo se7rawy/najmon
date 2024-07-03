@@ -265,12 +265,12 @@ let contentHtml = statusContent ?? getStatusContent(status);
     const readMoreButton2 = isContentTooLong  && (
   <button className='status__content__read-more-button' onClick={this.props.onClick} key='read-more'>
     <FormattedMessage id='status.read_more' defaultMessage='Read more' />
-    <Icon id='angle-left' fixedWidth />
+  
   </button>
 );
   const readMoreButton = renderReadMore && (
       <button className='status__content__read-more-button' onClick={this.props.onClick} key='read-more'>
-        <FormattedMessage id='status.read_more' defaultMessage='Read more' /><Icon id='angle-right' fixedWidth />
+        <FormattedMessage id='status.read_more' defaultMessage='Read more' />
       </button>
     );
     
