@@ -262,7 +262,7 @@ let contentHtml = statusContent ?? getStatusContent(status);
     });
 
          
-    const readMoreButton2 = isContentTooLong  && (
+    const readMoreButton2 = isContentTooLong  && hidden && (
   <button className='status__content__read-more-button' onClick={this.props.onClick} key='read-more'>
     <FormattedMessage id='status.read_more' defaultMessage='Read more' />
     <Icon id='angle-left' fixedWidth />
@@ -319,7 +319,7 @@ let contentHtml = statusContent ?? getStatusContent(status);
         <>
           <div className={classNames} ref={this.setRef} tabIndex={0} onMouseDown={this.handleMouseDown} onMouseUp={this.handleMouseUp} key='status-content' onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
             <div className='status__content__text status__content__text--visible translate' lang={language} dangerouslySetInnerHTML={content} />
-
+   {readMoreButton2}
             {poll}
             {translateButton}
           </div>
