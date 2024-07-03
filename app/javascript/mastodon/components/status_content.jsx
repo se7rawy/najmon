@@ -266,7 +266,7 @@ let contentHtml = statusContent ?? getStatusContent(status);
     const readMoreButton2 = isContentTooLong  && (
   <button className='status__content__read-more-button' onClick={this.props.onClick} key='read-more'>
     <FormattedMessage id='status.read_more' defaultMessage='Read more' />
-          <ArrowSmallRight />
+    
   </button>
 );
   const readMoreButton = renderReadMore && (
