@@ -333,7 +333,7 @@ let contentHtml = statusContent ?? getStatusContent(status);
       return (
         <div className={classNames} ref={this.setRef} tabIndex={0} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
           <div className='status__content__text status__content__text--visible translate' lang={language} dangerouslySetInnerHTML={content} />
-    {readMoreButton2}
+
           {poll}
           {translateButton}
         </div>
