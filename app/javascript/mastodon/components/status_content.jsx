@@ -262,7 +262,7 @@ let contentHtml = statusContent ?? getStatusContent(status);
     });
 
 
-    const readMoreButton2 = isContentTooLong && hidden && (
+    const readMoreButton2 = isContentTooLong  && (
   <button className='status__content__read-more-button' onClick={() => this.setState({ hidden: false })} key='read-more'>
     <FormattedMessage id='status.read_more' defaultMessage='Read more' />
     <Icon id='angle-right' fixedWidth />
