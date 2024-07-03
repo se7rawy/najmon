@@ -261,9 +261,9 @@ let contentHtml = statusContent ?? getStatusContent(status);
       'status__content--collapsed': renderReadMore,
     });
 
-
+         
     const readMoreButton2 = isContentTooLong  && (
-  <button className='status__content__read-more-button' onClick={() => this.setState({ hidden: false })} key='read-more'>
+  <button className='status__content__read-more-button' onClick={this.props.onClick} key='read-more'>
     <FormattedMessage id='status.read_more' defaultMessage='Read more' />
     <Icon id='angle-left' fixedWidth />
   </button>
