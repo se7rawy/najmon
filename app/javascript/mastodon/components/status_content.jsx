@@ -14,7 +14,7 @@ import PollContainer from 'mastodon/containers/poll_container';
 import { autoPlayGif, languages as preloadedLanguages } from 'mastodon/initial_state';
 
 const MAX_HEIGHT = 706; // 22px * 32 (+ 2px padding at the top)
-const MAX_CHARACTERS = 200;
+const MAX_CHARACTERS = 500;
 /**
  *
  * @param {any} status
