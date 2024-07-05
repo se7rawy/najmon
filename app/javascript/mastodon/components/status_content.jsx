@@ -264,7 +264,9 @@ let contentHtml = statusContent ?? getStatusContent(status);
 
          
     const readMoreButton2 = isContentTooLong  && (
-     <button type='button' className={`status__content__spoiler-link ${hidden ? 'status__content__spoiler-link--show-more' : 'status__content__spoiler-link--show-less'}`} onClick={this.handleSpoilerClick} aria-expanded={!hidden}>{toggleText}</button>
+  <button className='status__content__read-more-button' onClick={this.props.onClick} key='read-more'>
+    <FormattedMessage id='status.read_more' defaultMessage='Read more' />
+  </button>
 );
   const readMoreButton = renderReadMore && (
       <button className='status__content__read-more-button' onClick={this.props.onClick} key='read-more'>
