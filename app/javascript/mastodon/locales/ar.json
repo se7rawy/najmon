@@ -34,7 +34,7 @@
   "account.followers": "مُتابِعون",
   "account.followers.empty": "لا أحدَ يُتابع هذا المُستخدم إلى حد الآن.",
   "account.followers_counter": "{count, plural, zero{لا مُتابع} one {مُتابعٌ واحِد} two {مُتابعانِ اِثنان} few {{counter} مُتابِعين} many {{counter} مُتابِعًا} other {{counter} مُتابع}}",
-  "account.following": "الاشتراكات",
+  "account.following": "يتابع",
   "account.following_counter": "{count, plural, zero{لا يُتابِع أحدًا} one {يُتابِعُ واحد} two{يُتابِعُ اِثنان} few{يُتابِعُ {counter}} many{يُتابِعُ {counter}} other {يُتابِعُ {counter}}}",
   "account.follows.empty": "لا يُتابع هذا المُستخدمُ أيَّ أحدٍ حتى الآن.",
   "account.follows_you": "يُتابِعُك",
