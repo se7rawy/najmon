@@ -4,7 +4,7 @@ en:
     about_mastodon_html: 'شبكة التواصل الاجتماعية المستقبَليّة: مِن دون إعلانات، وغير خاضعة لرقابة الشركات، ذات تصميم أخلاقي! بياناتكم مِلك لكم مع نجمون!'
     contact_missing: Not set
     contact_unavailable: N/A
-    hosted_on: najmon hosted on %{domain}
+    hosted_on:  نجمون شبكة التواصل الاجتماعي الإسلامية
     title: About
   accounts:
     follow: Follow
