@@ -299,7 +299,7 @@
   "hashtag.column_settings.tag_toggle": "إدراج الوسوم الإضافية لهذا العمود",
   "hashtag.counter_by_accounts": "{count, plural, zero {لَا مُشارك} one {مُشارَك واحد} two {مُشارِكان إثنان} few {{counter} مشاركين} many {{counter} مُشاركًا} other {{counter} مُشارِك}}",
   "hashtag.counter_by_uses": "{count, plural, zero {لَا منشورات} one {منشور واحد} two {منشوران إثنان} few {{counter} منشورات} many {{counter} منشورًا} other {{counter} منشور}}",
-  "hashtag.counter_by_uses_today": "{count, plural, zero {لَا منشورات} one {منشور واحد} two {منشوران إثنان} few {{counter} منشورات} many {{counter} منشورًا} other {{counter} منشور}}",
+"hashtag.counter_by_uses_today": "{count, plural, zero {لَا منشورات} one {منشور واحد} two {منشوران إثنان} few {{counter} منشورات} many {{counter} منشورًا} other {{counter} منشور}} اليوم ",
   "hashtag.follow": "اتبع الوسم",
   "hashtag.unfollow": "ألغِ متابعة الوسم",
   "hashtags.and_other": "…و {count, plural, zero {} one {# واحد آخر} two {# اثنان آخران} few {# آخرون} many {# آخَرًا}other {# آخرون}}",
