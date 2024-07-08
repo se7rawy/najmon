@@ -622,7 +622,7 @@
   "status.bookmark": "أضفه إلى الفواصل المرجعية",
   "status.cancel_reblog_private": "إلغاء إعادة النشر",
   "status.cannot_reblog": "لا يمكن إعادة نشر هذا المنشور",
-  "status.copy": "انسخ رابط الرسالة",
+  "status.copy": "انسخ رابط المنشور",
   "status.delete": "احذف",
   "status.detailed_status": "تفاصيل المحادثة",
   "status.direct": "إشارة خاصة لـ @{name}",
