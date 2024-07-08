@@ -61,7 +61,7 @@
   "account.requested_follow": "لقد طلب {name} متابعتك",
   "account.share": "شارِك الملف التعريفي لـ @{name}",
   "account.show_reblogs": "اعرض إعادات نشر @{name}",
-  "account.statuses_counter": "{count, plural, zero {لَا منشورات اليوم} one {منشور واحد اليوم} two {منشوران إثنان اليوم} few {{counter} منشورات اليوم} many {{counter} منشورًا اليوم} other {{counter} منشور اليوم}}",
+  "account.statuses_counter": "{count, plural, zero {لَا منشورات} one {منشور واحد} two {منشوران إثنان} few {{counter} منشورات} many {{counter} منشورًا} other {{counter} منشور}}",
   "account.unblock": "إلغاء الحَظر عن @{name}",
   "account.unblock_domain": "إلغاء الحَظر عن النِّطاق {domain}",
   "account.unblock_short": "ألغ الحجب",
