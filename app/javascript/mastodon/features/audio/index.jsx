@@ -542,7 +542,7 @@ class Audio extends PureComponent {
         <div className='video-player__seek' onMouseDown={this.handleMouseDown} ref={this.setSeekRef}>
           <div className='video-player__seek__buffer' style={{ width: `${buffer}%` }} />
           <div className='video-player__seek__progress' style={{ width: `${progress}%`, backgroundColor: this._getAccentColor() }} />
-
+ 
           <span
             className={classNames('video-player__seek__handle', { active: dragging })}
             tabIndex={0}
