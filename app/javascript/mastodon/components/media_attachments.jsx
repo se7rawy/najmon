@@ -69,7 +69,7 @@ export default class MediaAttachments extends ImmutablePureComponent {
             <Component
               src={audio.get('url')}
               alt={description}
-              lang='ltr'
+              lang={language}
               width={width}
               height={height}
               poster={audio.get('preview_url') || status.getIn(['account', 'avatar_static'])}
