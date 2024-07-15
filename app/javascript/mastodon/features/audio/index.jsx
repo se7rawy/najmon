@@ -546,7 +546,7 @@ class Audio extends PureComponent {
           <span
             className={classNames('video-player__seek__handle', { active: dragging })}
             tabIndex={0}
-            style={{ right: `${progress}%`, backgroundColor: this._getAccentColor() }}
+            style={{ left: `${progress}%`, backgroundColor: this._getAccentColor() }}
             onKeyDown={this.handleAudioKeyDown}
           />
         </div>
