@@ -506,7 +506,7 @@ class Audio extends PureComponent {
           className='audio-player__canvas'
           width={this.state.width}
           height={this.state.height}
-          style={{ width: '100%', position: 'absolute', top: 0, left: 0 }}
+          style={{ width: '100%', position: 'absolute', top: 0, right: 0 }}
           ref={this.setCanvasRef}
           onClick={this.togglePlay}
           onKeyDown={this.handleAudioKeyDown}
@@ -553,7 +553,7 @@ class Audio extends PureComponent {
 
         <div className='video-player__controls active'>
           <div className='video-player__buttons-bar'>
-            <div className='video-player__buttons left'>
+            <div className='video-player__buttons right'>
               <button type='button' title={intl.formatMessage(paused ? messages.play : messages.pause)} aria-label={intl.formatMessage(paused ? messages.play : messages.pause)} className='player-button' onClick={this.togglePlay}><Icon id={paused ? 'play' : 'pause'} fixedWidth /></button>
               <button type='button' title={intl.formatMessage(muted ? messages.unmute : messages.mute)} aria-label={intl.formatMessage(muted ? messages.unmute : messages.mute)} className='player-button' onClick={this.toggleMute}><Icon id={muted ? 'volume-off' : 'volume-up'} fixedWidth /></button>
 
