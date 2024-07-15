@@ -546,14 +546,14 @@ class Audio extends PureComponent {
           <span
             className={classNames('video-player__seek__handle', { active: dragging })}
             tabIndex={0}
-            style={{ left: `${progress}%`, backgroundColor: this._getAccentColor() }}
+            style={{ right: `${progress}%`, backgroundColor: this._getAccentColor() }}
             onKeyDown={this.handleAudioKeyDown}
           />
         </div>
 
         <div className='video-player__controls active'>
           <div className='video-player__buttons-bar'>
-            <div className='video-player__buttons right'>
+            <div className='video-player__buttons left'>
               <button type='button' title={intl.formatMessage(paused ? messages.play : messages.pause)} aria-label={intl.formatMessage(paused ? messages.play : messages.pause)} className='player-button' onClick={this.togglePlay}><Icon id={paused ? 'play' : 'pause'} fixedWidth /></button>
               <button type='button' title={intl.formatMessage(muted ? messages.unmute : messages.mute)} aria-label={intl.formatMessage(muted ? messages.unmute : messages.mute)} className='player-button' onClick={this.toggleMute}><Icon id={muted ? 'volume-off' : 'volume-up'} fixedWidth /></button>
 
