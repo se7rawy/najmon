@@ -512,7 +512,7 @@ class Audio extends PureComponent {
           onKeyDown={this.handleAudioKeyDown}
           title={alt}
           aria-label={alt}
-          lang='ltr'
+          lang={lang}
         />
 
         <div className={classNames('spoiler-button', { 'spoiler-button--hidden': revealed || editable })}>
