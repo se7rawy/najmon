@@ -62,7 +62,7 @@ export default class MediaAttachments extends ImmutablePureComponent {
     if (mediaAttachments.getIn([0, 'type']) === 'audio') {
       const audio = mediaAttachments.get(0);
       const description = audio.getIn(['translation', 'description']) || audio.get('description');
- 
+
       return (
         <Bundle fetchComponent={Audio} loading={this.renderLoadingAudioPlayer} >
           {Component => (
