@@ -506,7 +506,7 @@ class Audio extends PureComponent {
           className='audio-player__canvas'
           width={this.state.width}
           height={this.state.height}
-          style={{ width: '100%', position: 'absolute', top: 0, right: 0 }}
+          style={{ width: '100%', position: 'absolute', top: 0, left: 0 }}
           ref={this.setCanvasRef}
           onClick={this.togglePlay}
           onKeyDown={this.handleAudioKeyDown}
@@ -546,7 +546,7 @@ class Audio extends PureComponent {
           <span
             className={classNames('video-player__seek__handle', { active: dragging })}
             tabIndex={0}
-            style={{ right: `${progress}%`, backgroundColor: this._getAccentColor() }}
+            style={{ left: `${progress}%`, backgroundColor: this._getAccentColor() }}
             onKeyDown={this.handleAudioKeyDown}
           />
         </div>
@@ -563,7 +563,7 @@ class Audio extends PureComponent {
                 <span
                   className='video-player__volume__handle'
                   tabIndex={0}
-                  style={{ right: `${muted ? 0 : volume * 100}%`, backgroundColor: this._getAccentColor() }}
+                  style={{ left: `${muted ? 0 : volume * 100}%`, backgroundColor: this._getAccentColor() }}
                 />
               </div>
 
