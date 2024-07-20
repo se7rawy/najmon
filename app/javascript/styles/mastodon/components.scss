@@ -2497,7 +2497,8 @@ $ui-header-height: 55px;
 
   .columns-area__panels__main {
     width: calc(100% - $sidebar-width);
-    
+    padding-top:60px;
+    margin-top:60px;
   }
 
   .columns-area__panels__pane--navigational {
