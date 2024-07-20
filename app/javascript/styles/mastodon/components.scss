@@ -2461,7 +2461,7 @@ $ui-header-height: 55px;
       margin: 0;
       background: $ui-base-color;
       border-inline-start: 1px solid lighten($ui-base-color, 8%);
-      height: 50px;
+      height: 100vh;
       
       
     }
@@ -2497,8 +2497,6 @@ $ui-header-height: 55px;
 
   .columns-area__panels__main {
     width: calc(100% - $sidebar-width);
-    padding-top:50px;
-    
   }
 
   .columns-area__panels__pane--navigational {
@@ -2966,7 +2964,7 @@ $ui-header-height: 55px;
   height: calc(100% - 20px);
   overflow-y: auto;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   
 
   & > a {
