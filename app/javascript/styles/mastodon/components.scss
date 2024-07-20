@@ -2110,7 +2110,7 @@ a.account__display-name {
       height: 100%;
       overflow: hidden;
       pointer-events: none;
-      display: none;
+      display: flex;
       justify-content: flex-end;
       min-width: 285px;
 
