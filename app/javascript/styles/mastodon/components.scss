@@ -2959,7 +2959,7 @@ $ui-header-height: 55px;
   margin-bottom: 10px;
   height: calc(100% - 20px);
   overflow-y: auto;
-  display: flex;
+  display: none;
   flex-direction: column;
 
   & > a {
