@@ -2439,9 +2439,8 @@ $ui-header-height: 55px;
 }
 
 @media screen and (max-width: $no-gap-breakpoint - 1px) {
-  $sidebar-width: 0px;
-padding-top: 50px;
-margin-top: 50px;
+  $sidebar-width: 55px;
+
   .columns-area__panels__main {
     width: calc(100% - $sidebar-width);
   }
@@ -2495,8 +2494,7 @@ margin-top: 50px;
 
 @media screen and (max-width: $no-gap-breakpoint - 285px - 1px) {
   $sidebar-width: 0px;
-padding-top: 50px;
-margin-top: 50px;
+
   .columns-area__panels__main {
     width: calc(100% - $sidebar-width);
     
