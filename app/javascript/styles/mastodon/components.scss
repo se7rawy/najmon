@@ -2130,7 +2130,7 @@ a.account__display-name {
       box-sizing: border-box;
       width: 100%;
       flex: 0 0 auto;
-      display: flex;
+      display: none;
       flex-direction: column;
 
       @media screen and (min-width: $no-gap-breakpoint) {
