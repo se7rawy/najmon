@@ -2505,7 +2505,7 @@ $ui-header-height: 55px;
     min-width: $sidebar-width;
 
     .columns-area__panels__pane__inner {
-      width: $sidebar-width;
+      width: 100px;
     }
 
     .column-link span {
