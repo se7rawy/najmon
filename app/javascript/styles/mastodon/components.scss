@@ -2955,17 +2955,11 @@ $ui-header-height: 55px;
   }
 }
 
-
-
-
 .navigation-panel {
-  position: fixed; /* لجعل العنصر ثابتًا في أسفل الصفحة */
-  bottom: 0; /* يحدد المسافة من الأسفل */
-  left: 0; /* يحدد المسافة من اليسار، أو استخدم right: 0; حسب المكان المطلوب */
-  margin: 0; /* قم بإزالة الهوامش لإبقاء العنصر لاصقًا في الأسفل */
-  height: auto; /* لتكون الارتفاع حسب محتوى العنصر */
-  width: 100%; /* لتغطية عرض الصفحة بالكامل */
-  overflow-y: auto; /* لتمكين التمرير العمودي إذا كان هناك محتوى يتجاوز ارتفاع العنصر */
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: calc(100% - 20px);
+  overflow-y: auto;
   display: flex;
   flex-direction: row;
   
