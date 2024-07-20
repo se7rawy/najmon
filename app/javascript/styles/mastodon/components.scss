@@ -2502,7 +2502,7 @@ $ui-header-height: 55px;
   }
 
   .columns-area__panels__pane--navigational {
-    min-width: $sidebar-width;
+    min-width: 200px;
 
     .columns-area__panels__pane__inner {
       width: 200px;
