@@ -3902,7 +3902,7 @@ a.status-card {
 }
 
 .column-header {
-  display: flex;
+  display: none;
   font-size: 16px;
   background: $ui-base-color;
   border-bottom: 1px solid lighten($ui-base-color, 8%);
