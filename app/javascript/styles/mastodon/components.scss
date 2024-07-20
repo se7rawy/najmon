@@ -2493,7 +2493,7 @@ $ui-header-height: 55px;
 }
 
 @media screen and (max-width: $no-gap-breakpoint - 285px - 1px) {
-  $sidebar-width: 55px;
+  $sidebar-width: 100px;
 
   .columns-area__panels__main {
     width: calc(100% - $sidebar-width);
@@ -2502,10 +2502,10 @@ $ui-header-height: 55px;
   }
 
   .columns-area__panels__pane--navigational {
-    min-width: 200px;
+    min-width: $sidebar-width;
 
     .columns-area__panels__pane__inner {
-      width: 200px;
+      width: $sidebar-width;
     }
 
     .column-link span {
