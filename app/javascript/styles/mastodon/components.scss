@@ -2958,7 +2958,7 @@ $ui-header-height: 55px;
 .navigation-panel {
   margin-top: 10px;
   margin-bottom: 10px;
-  height: 30px ;/*calc(100% - 20px);*/
+  height: calc(100% - 20px);
   overflow-y: auto;
   display: flex;
   flex-direction: row;
