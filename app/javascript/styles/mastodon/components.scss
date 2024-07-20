@@ -2235,7 +2235,7 @@ $ui-header-height: 55px;
   width: 350px;
   position: relative;
   box-sizing: border-box;
-  display: flex;
+  display: none;
   flex-direction: column;
 
   > .scrollable {
