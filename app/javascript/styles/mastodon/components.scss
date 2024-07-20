@@ -2960,7 +2960,7 @@ $ui-header-height: 55px;
   height: calc(100% - 20px);
   overflow-y: auto;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 
   & > a {
     flex: 0 0 auto;
