@@ -2900,7 +2900,7 @@ $ui-header-height: 55px;
 .compose-panel {
   width: 285px;
   margin-top: 10px;
-  display: none;
+  display: flex;
   flex-direction: column;
   height: calc(100% - 10px);
   overflow-y: hidden;
