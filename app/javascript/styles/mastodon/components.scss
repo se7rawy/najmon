@@ -2132,7 +2132,7 @@ a.account__display-name {
       display: flex;
       flex-direction: column;
 padding-top: 50px;
-
+margin-top: 50px;
       @media screen and (min-width: $no-gap-breakpoint) {
         padding: 0 10px;
         max-width: 600px;
@@ -2498,7 +2498,7 @@ $ui-header-height: 55px;
 
   .columns-area__panels__main {
     width: calc(100% - $sidebar-width);
-    padding-top: 50px;
+    
   }
 
   .columns-area__panels__pane--navigational {
