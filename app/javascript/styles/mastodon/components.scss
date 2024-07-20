@@ -2309,7 +2309,7 @@ $ui-header-height: 55px;
 
 .tabs-bar {
   box-sizing: border-box;
-  display: flex;
+  display: none;
   background: lighten($ui-base-color, 8%);
   flex: 0 0 auto;
   overflow-y: auto;
