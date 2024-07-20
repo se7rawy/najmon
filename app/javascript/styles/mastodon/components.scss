@@ -2131,7 +2131,7 @@ a.account__display-name {
       flex: 0 0 auto;
       display: flex;
       flex-direction: column;
-
+padding-top: 70px;
       @media screen and (min-width: $no-gap-breakpoint) {
         padding: 0 10px;
         max-width: 600px;
@@ -2446,7 +2446,7 @@ $ui-header-height: 55px;
   }
 
   .columns-area__panels {
-    min-height: calc(100vh - $ui-header-height - 60px);
+    min-height: calc(100vh - $ui-header-height);
  
   }
 
