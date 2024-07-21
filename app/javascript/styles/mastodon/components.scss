@@ -2196,8 +2196,8 @@ $ui-header-height: 55px;
 .tabs-bar__wrapper {
   background: darken($ui-base-color, 8%);
   position: sticky;
-  top: 105px;
-  z-index: 1;
+  top: 55px;
+  z-index: 2;
   padding-top: 0;
 
   @media screen and (min-width: $no-gap-breakpoint) {
