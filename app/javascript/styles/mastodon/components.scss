@@ -2444,10 +2444,10 @@ $ui-header-height: 55px;
   $sidebar-width: 100vw;
 .bbb {
  
-  z-index:1;
+  z-index:2;
 }
   .columns-area__panels__main {
-    z-index:1;
+    z-index:2;
     margin-top: 50px;
   }
 
@@ -2503,10 +2503,10 @@ min-height: 50px;
   $sidebar-width: 100vw ;
 .bbb {
 
-  z-index:1;
+  z-index:2;
 }
   .columns-area__panels__main {
-    z-index:1;
+    z-index:2;
     margin-top: 50px;
   }
 
