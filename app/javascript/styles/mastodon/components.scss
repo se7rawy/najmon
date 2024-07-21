@@ -2965,10 +2965,10 @@ $ui-header-height: 55px;
   margin-top: 10px;
   margin-bottom: 10px;
   height: 50px;
-  overflow-y: auto;
+  overflow-x: auto;
   display: flex;
   flex-direction: row;
-  position: relative;
+  position: fixed;
   z-index: 3;
   outline: 0;
 
