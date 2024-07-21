@@ -2439,7 +2439,7 @@ $ui-header-height: 55px;
 }
 
 @media screen and (max-width: $no-gap-breakpoint - 1px) {
-  $sidebar-width: 0px;
+  $sidebar-width: 100vw;
 
   .columns-area__panels__main {
     width: calc(100% - $sidebar-width);
@@ -2462,7 +2462,7 @@ $ui-header-height: 55px;
       background: $ui-base-color;
       border-inline-start: 1px solid lighten($ui-base-color, 8%);
       height: 50px;
-      width: 100vw;
+      
       
       
     }
@@ -2494,7 +2494,7 @@ $ui-header-height: 55px;
 }
 
 @media screen and (max-width: $no-gap-breakpoint - 285px - 1px) {
-  $sidebar-width: 0px;
+  $sidebar-width: 100vw ;
 
   .columns-area__panels__main {
     width: calc(100% - $sidebar-width);
