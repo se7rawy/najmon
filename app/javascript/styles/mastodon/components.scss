@@ -2445,7 +2445,7 @@ $ui-header-height: 55px;
 
   .columns-area__panels__main {
     
-    min-height: calc(100vh - $ui-header-height + 50px);
+    padding-top: 50px;
   }
 
   .columns-area__panels {
@@ -2501,7 +2501,7 @@ $ui-header-height: 55px;
 
   .columns-area__panels__main {
     
-    min-height: calc(100vh - $ui-header-height + 50px);
+    padding-top: 50px;
   }
 
   .columns-area__panels__pane--navigational {
