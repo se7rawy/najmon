@@ -120,10 +120,10 @@ class NavigationPanel extends Component {
           </>
         )}
 
-        <div className='navigation-panel__legal'>
+      
           <hr />
           <ColumnLink transparent to='/about' icon='ellipsis-h' text={intl.formatMessage(messages.about)} />
-        </div>
+   
 
         <NavigationPortal />
       </div>
