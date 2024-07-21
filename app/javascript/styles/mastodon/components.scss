@@ -2195,7 +2195,7 @@ $ui-header-height: 55px;
 
 .tabs-bar__wrapper {
   background: darken($ui-base-color, 8%);
-  position: sticky;
+  position: fixed;
   top: $ui-header-height;
   z-index: 2;
   padding-top: 0;
