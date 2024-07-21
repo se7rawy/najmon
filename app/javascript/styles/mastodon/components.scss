@@ -2442,7 +2442,8 @@ $ui-header-height: 55px;
   $sidebar-width: 100vw;
 
   .columns-area__panels__main {
-    width: calc(100% - $sidebar-width);
+    width: calc(100%);
+    padding-top: 60px;
   }
 
   .columns-area__panels {
@@ -2497,7 +2498,8 @@ $ui-header-height: 55px;
   $sidebar-width: 100vw ;
 
   .columns-area__panels__main {
-    width: calc(100% - $sidebar-width);
+    width: calc(100%);
+    padding-top: 60px;
   }
 
   .columns-area__panels__pane--navigational {
