@@ -2197,7 +2197,7 @@ $ui-header-height: 55px;
   background: darken($ui-base-color, 8%);
   position: sticky;
   top: 105px;
-  z-index: 2;
+  z-index: 1;
   padding-top: 0;
 
   @media screen and (min-width: $no-gap-breakpoint) {
@@ -2972,7 +2972,7 @@ min-height: 50px;
   overflow-x: auto;
   display: flex;
   flex-direction: row;
-  position: relative;
+  
   & > a {
     flex: 0 0 auto;
   }
