@@ -92,7 +92,7 @@ export class DisplayName extends React.PureComponent<Props> {
           />
         </bdi>
       );
-      suffix = <span className='display-name__account'>@{acct}</span>;
+      suffix = <span className='display-name__account'>{acct}</span>;
     } else {
       displayName = (
         <bdi>
