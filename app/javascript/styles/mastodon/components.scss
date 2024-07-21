@@ -2434,10 +2434,9 @@ $ui-header-height: 55px;
   }
 
   .navigation-panel__legal {
-    display: flex;
-    justify-content: center;
-  align-items: center;
-  height: 100vh;
+    display: none;
+    margin-bottom: 10px;
+    
   }
 }
 
