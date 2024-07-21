@@ -2968,7 +2968,9 @@ $ui-header-height: 55px;
   overflow-y: auto;
   display: flex;
   flex-direction: row;
-  
+  position: relative;
+  z-index: 2;
+  outline: 0;
 
   & > a {
     flex: 0 0 auto;
