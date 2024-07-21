@@ -156,10 +156,7 @@ export default class ColumnsArea extends ImmutablePureComponent {
             </div>
           </div>
 
-          <div className='columns-area__panels__main'>
-     
-    
-          </div>
+
 
     
         </div>
