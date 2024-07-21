@@ -2454,8 +2454,9 @@ $ui-header-height: 55px;
   }
 
   .columns-area__panels__pane--navigational {
+  
     width: $sidebar-width;
-
+height: 50px;
     .columns-area__panels__pane__inner {
       width: $sidebar-width;
     }
@@ -2464,9 +2465,6 @@ $ui-header-height: 55px;
       margin: 0;
       background: $ui-base-color;
       border-inline-start: 1px solid lighten($ui-base-color, 8%);
-      
-      
-      
       
     }
 
@@ -2506,7 +2504,7 @@ $ui-header-height: 55px;
 
   .columns-area__panels__pane--navigational {
     width: $sidebar-width;
-
+height: 50px;
     .columns-area__panels__pane__inner {
       width: $sidebar-width;
     }
