@@ -101,7 +101,7 @@ class NavigationPanel extends Component {
             { disabledAccountId ? <DisabledAccountBanner /> : <SignInBanner /> }
           </div>
         )}
-
+      <div className='bbb'>
         {signedIn && (
           <>
           
@@ -123,7 +123,7 @@ class NavigationPanel extends Component {
       
           <hr />
           <ColumnLink transparent to='/about' icon='ellipsis-h' text={intl.formatMessage(messages.about)} />
-   
+     </div>
 
         <NavigationPortal />
       </div>
