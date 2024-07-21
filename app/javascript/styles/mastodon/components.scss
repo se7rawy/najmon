@@ -2456,9 +2456,6 @@ $ui-header-height: 55px;
 
     .columns-area__panels__pane__inner {
       width: $sidebar-width;
-      position: sticky;
-  z-index: 3;
-  outline: 0;
     }
 
     .navigation-panel {
@@ -2510,9 +2507,6 @@ $ui-header-height: 55px;
 
     .columns-area__panels__pane__inner {
       width: $sidebar-width;
-      position: sticky;
-  z-index: 3;
-  outline: 0;
     }
 
     .column-link span {
