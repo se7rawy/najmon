@@ -2457,9 +2457,10 @@ $ui-header-height: 55px;
   
     width: $sidebar-width;
 min-height: 50px;
+z-index: 2;
     .columns-area__panels__pane__inner {
       width: $sidebar-width;
-      z-index: 3;
+ 
     }
 
     .navigation-panel {
@@ -2506,9 +2507,10 @@ min-height: 50px;
   .columns-area__panels__pane--navigational {
     width: $sidebar-width;
 min-height: 50px;
+z-index: 2;
     .columns-area__panels__pane__inner {
       width: $sidebar-width;
-           z-index: 3;
+    
     }
 
     .column-link span {
