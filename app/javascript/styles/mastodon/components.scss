@@ -2434,9 +2434,10 @@ $ui-header-height: 55px;
   }
 
   .navigation-panel__legal {
-    display: none;
+    display: flex;
     justify-content: center;
   align-items: center;
+  height: 100vh;
   }
 }
 
