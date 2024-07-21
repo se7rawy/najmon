@@ -2972,7 +2972,7 @@ min-height: 50px;
   overflow-x: auto;
   display: flex;
   flex-direction: row;
-  
+  position: fixed;
   
   & > a {
     flex: 0 0 auto;
