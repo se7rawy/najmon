@@ -2451,10 +2451,10 @@ $ui-header-height: 55px;
   }
 
   .columns-area__panels__pane--navigational {
-    min-width: $sidebar-width;
+   /* min-width: $sidebar-width;*/
 
     .columns-area__panels__pane__inner {
-      width: $sidebar-width;
+      /*width: $sidebar-width;*/
     }
 
     .navigation-panel {
@@ -2501,7 +2501,7 @@ $ui-header-height: 55px;
   }
 
   .columns-area__panels__pane--navigational {
-    min-width: $sidebar-width;
+    /*min-width: $sidebar-width;*/
 
     .columns-area__panels__pane__inner {
       /*width: $sidebar-width;*/
