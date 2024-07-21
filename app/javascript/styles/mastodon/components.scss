@@ -2442,7 +2442,9 @@ $ui-header-height: 55px;
 
 @media screen and (max-width: $no-gap-breakpoint - 1px) {
   $sidebar-width: 100vw;
-
+.bbb {
+ z-index:2;
+}
   .columns-area__panels__main {
     
     margin-top: 50px;
@@ -2460,7 +2462,7 @@ min-height: 50px;
 
     .columns-area__panels__pane__inner {
       width: $sidebar-width;
- z-index:2;
+
     }
 
     .navigation-panel {
@@ -2498,7 +2500,9 @@ min-height: 50px;
 
 @media screen and (max-width: $no-gap-breakpoint - 285px - 1px) {
   $sidebar-width: 100vw ;
-
+.bbb {
+ z-index:2;
+}
   .columns-area__panels__main {
     
     margin-top: 50px;
@@ -2510,7 +2514,7 @@ min-height: 50px;
 
     .columns-area__panels__pane__inner {
       width: $sidebar-width;
-    z-index:2;
+  
     }
 
     .column-link span {
