@@ -2443,8 +2443,8 @@ $ui-header-height: 55px;
 @media screen and (max-width: $no-gap-breakpoint - 1px) {
   $sidebar-width: 100vw;
 .bbb {
- position: sticky;
-  top: 5px;
+ 
+  top: 55px;
 
   padding-top: 0;
 }
@@ -2504,8 +2504,8 @@ min-height: 50px;
 @media screen and (max-width: $no-gap-breakpoint - 285px - 1px) {
   $sidebar-width: 100vw ;
 .bbb {
-position: sticky;
-  top: 5px;
+
+  top: 55px;
 
   padding-top: 0;
 }
