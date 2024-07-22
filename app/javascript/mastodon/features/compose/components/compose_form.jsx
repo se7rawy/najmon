@@ -295,7 +295,7 @@ class ComposeForm extends ImmutablePureComponent {
               <SpoilerButtonContainer />
               <LanguageDropdown />
             </div>
-
+ 
             <div className='character-counter__wrapper'>
               <CharacterCounter max={5000} text={this.getFulltextForCharacterCounting()} />
             </div>
