@@ -91,7 +91,7 @@ class Account extends ImmutablePureComponent {
       return (
         <>
           {account.get('display_name')}
-          {account.get('username')}
+ 
         </>
       );
     }
