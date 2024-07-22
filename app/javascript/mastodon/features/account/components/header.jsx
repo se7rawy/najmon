@@ -419,7 +419,7 @@ class Header extends ImmutablePureComponent {
             <h1>
               <span dangerouslySetInnerHTML={displayNameHtml} />
               <small>
-                <span>@{acct}</span> {lockedIcon}
+                <span>{acct}@</span> {lockedIcon}
               </small>
             </h1>
           </div>
