@@ -64,6 +64,11 @@ class PreviewCard < ApplicationRecord
 
   before_save :extract_dimensions, if: :link?
 
+def missing_image?
+    width.present? && height.present? && image_file_name.blank?
+  end
+
+
   def appropriate_for_trends?
     link? && article? && title.present? && description.present? && image.present? && provider_name.present?
   end
