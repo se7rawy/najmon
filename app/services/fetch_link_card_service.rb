@@ -27,7 +27,7 @@ class FetchLinkCardService < BaseService
       @card = PreviewCard.find_by(url: @url)
       process_url if @card.nil? || @card.updated_at <= 2.weeks.ago || @card.missing_image?
     end
-
+ 
     attach_card if @card&.persisted?
   rescue HTTP::Error, OpenSSL::SSL::SSLError, Addressable::URI::InvalidURIError, Mastodon::HostValidationError, Mastodon::LengthValidationError => e
     Rails.logger.debug { "Error fetching link #{@original_url}: #{e}" }
