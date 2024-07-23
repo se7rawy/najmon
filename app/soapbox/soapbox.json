@@ -1,0 +1,29 @@
+{
+  "logo": "/instance/images/logo-symbol-wordmark.svg",
+  "brandColor": "#0482d8",
+  "promoPanel": {
+    "items": [{
+      "icon": "area-chart",
+      "text": "Our Site stats",
+      "url": "https://fediverse.network/example.com"
+    }, {
+      "icon": "comment-o",
+      "text": "مركز معلومات نجمون",
+      "url": "https://info.najmon.com"
+    }]
+  },
+  "defaultSettings": {
+    "autoPlayGif": false,
+    "themeMode": "light"
+  },
+  "copyright": "najmon.com",
+  "navlinks": {
+    "homeFooter": [
+      { "title": "من نحن", "url": "/about" },
+      { "title": "قواعد الموقع", "url": "/about/tos" },
+      { "title": "سياسة الخصوصية", "url": "/about/privacy" },
+      { "title": "سياسة حقوق النشر", "url": "/about/dmca" },
+    
+    ]
+  }
+}
