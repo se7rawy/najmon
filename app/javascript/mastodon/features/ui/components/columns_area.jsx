@@ -120,7 +120,7 @@ export default class ColumnsArea extends ImmutablePureComponent {
   handleWheel = () => {
     if (typeof this._interruptScrollAnimation !== 'function') {
       return;
-    }
+    } 
 
     this._interruptScrollAnimation();
   };
