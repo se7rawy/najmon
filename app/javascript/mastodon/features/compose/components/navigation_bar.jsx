@@ -31,7 +31,7 @@ export default class NavigationBar extends ImmutablePureComponent {
         <div className='navigation-bar__profile'>
           <span>
             <Link to={`/@${username}`}>
-              <strong className='navigation-bar__profile-account'>{username}#</strong>
+              <strong className='navigation-bar__profile-account'>{username}@</strong>
             </Link>
           </span>
 
