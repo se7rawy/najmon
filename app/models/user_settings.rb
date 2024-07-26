@@ -16,7 +16,7 @@ class UserSettings
   setting :default_sensitive, default: false
   setting :default_privacy, default: nil, in: %w(public unlisted private)
 
-  setting_inverse_alias :indexable, :noindex
+  setting_inverse_alias :indexable, :true
 
   namespace :web do
     setting :advanced_layout, default: false
