@@ -336,10 +336,10 @@ class StatusActionBar extends ImmutablePureComponent {
     let replyIcon;
     let replyTitle;
     if (status.get('in_reply_to_id', null) === null) {
-      replyIcon = 'reply';
+      replyIcon = 'comment';
       replyTitle = intl.formatMessage(messages.reply);
     } else {
-      replyIcon = 'reply-all';
+      replyIcon = 'comment';
       replyTitle = intl.formatMessage(messages.replyAll);
     }
 
@@ -362,7 +362,7 @@ class StatusActionBar extends ImmutablePureComponent {
 
     return (
       <div className='status__action-bar'>
-        <IconButton className='status__action-bar__button' title={replyTitle} icon={status.get('in_reply_to_account_id') === status.getIn(['account', 'id']) ? 'reply' : replyIcon} onClick={this.handleReplyClick} counter={status.get('replies_count')} />
+        <IconButton className='status__action-bar__button' title={replyTitle} icon={status.get('in_reply_to_account_id') === status.getIn(['account', 'id']) ? 'comment' : replyIcon} onClick={this.handleReplyClick} counter={status.get('replies_count')} />
         <IconButton className={classNames('status__action-bar__button', { reblogPrivate })} disabled={!publicStatus && !reblogPrivate} active={status.get('reblogged')} title={reblogTitle} icon='retweet' onClick={this.handleReblogClick} counter={status.get('reblogs_count')} />
         <IconButton className='status__action-bar__button star-icon' animate active={status.get('favourited')} title={intl.formatMessage(messages.favourite)} icon='star' onClick={this.handleFavouriteClick} counter={status.get('favourites_count')} />
         <IconButton className='status__action-bar__button bookmark-icon' disabled={!signedIn} active={status.get('bookmarked')} title={intl.formatMessage(messages.bookmark)} icon='bookmark' onClick={this.handleBookmarkClick} />
