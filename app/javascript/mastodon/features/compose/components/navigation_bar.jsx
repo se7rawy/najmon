@@ -34,7 +34,7 @@ export default class NavigationBar extends ImmutablePureComponent {
               <strong className='navigation-bar__profile-account'>{username}@</strong>
             </Link>
           </span>
-
+ 
           <span>
             <a href='/settings/profile' className='navigation-bar__profile-edit'><FormattedMessage id='navigation_bar.edit_profile' defaultMessage='Edit profile' /></a>
           </span>
