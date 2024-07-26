@@ -10,13 +10,13 @@ class UserSettings
   setting :always_send_emails, default: false
   setting :aggregate_reblogs, default: true
   setting :theme, default: -> { ::Setting.theme }
-  setting :noindex, default: -> { ::Setting.indexable }
+  setting :noindex, default: -> { ::Setting.noindex }
   setting :show_application, default: true
   setting :default_language, default: nil
   setting :default_sensitive, default: false
   setting :default_privacy, default: nil, in: %w(public unlisted private)
 
-  setting_inverse_alias :indexable, :indexable
+  setting_inverse_alias :indexable, :noindex
 
   namespace :web do
     setting :advanced_layout, default: false
