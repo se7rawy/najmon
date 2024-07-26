@@ -76,7 +76,7 @@ class NavigationPanel extends Component {
             {banner}
           </div>
         }
-
+ 
         {signedIn && (
           <>
             <ColumnLink transparent to='/home' icon='home' text={intl.formatMessage(messages.home)} />
