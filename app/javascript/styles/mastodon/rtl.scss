@@ -7,7 +7,9 @@ body.rtl {
   .display-name__account0 {
   direction: ltr;
   }
-
+  .ui__header {
+  direction: rtl;
+  }
   .announcements__mastodon,
   .drawer__inner__mastodon > img {
     transform: scaleX(-1);
