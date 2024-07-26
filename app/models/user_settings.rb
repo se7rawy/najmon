@@ -10,7 +10,7 @@ class UserSettings
   setting :always_send_emails, default: false
   setting :aggregate_reblogs, default: true
   setting :theme, default: -> { ::Setting.theme }
-  setting :noindex, default: -> { ::Setting.noindex }
+  setting :noindex, default: -> { ::Setting.indexable }
   setting :show_application, default: true
   setting :default_language, default: nil
   setting :default_sensitive, default: false
