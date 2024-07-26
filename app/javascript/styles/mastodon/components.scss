@@ -2143,6 +2143,7 @@ a.account__display-name {
 $ui-header-height: 55px;
 
 .ui__header {
+direction: rtl;
   display: none;
   box-sizing: border-box;
   height: $ui-header-height;
