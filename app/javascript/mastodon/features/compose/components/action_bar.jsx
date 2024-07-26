@@ -58,9 +58,9 @@ class ActionBar extends PureComponent {
     menu.push({ text: intl.formatMessage(messages.logout), action: this.handleLogout });
 
     return (
-      <div className='compose__action-bar '>
+      <div className='compose__action-bar rtl_'>
         <div className='compose__action-bar-dropdown'>
-          <DropdownMenuContainer items={menu} icon='bars' size={18} direction='left' />
+          <DropdownMenuContainer items={menu} icon='bars' size={18} direction='right' />
         </div>
       </div>
     );
