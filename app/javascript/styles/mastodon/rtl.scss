@@ -13,6 +13,11 @@ body.rtl {
   .rtl_ {
   direction: ltr;
   }
+  status__content__text {
+  
+  direction: rtl;
+  }
+  
   .announcements__mastodon,
   .drawer__inner__mastodon > img {
     transform: scaleX(-1);
