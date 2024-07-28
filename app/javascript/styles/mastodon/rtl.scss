@@ -20,11 +20,20 @@ a[href^="https"] {
     
     unicode-bidi: isolate;
 }
-a[href^="@"] {
-    direction: ltr;
-    
-    unicode-bidi: isolate;
+hashtag[lang="ar"]::before {
+    content: "#";
+    margin-left: 0.5em;
 }
+
+.hashtag[lang="en"]::after {
+    content: "#";
+    margin-right: 0.5em;
+}
+p span.at-symbol::before {
+    content: "@";
+    margin-right: 0.5em;
+}
+
 
 }
  
