@@ -24,6 +24,7 @@ a {
 }
  
 .status__content {
+unicode-bidi: isolate;
     direction: rtl;
  text-align: right;
  }
