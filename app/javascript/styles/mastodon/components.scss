@@ -839,7 +839,7 @@ body > [data-popper-placement] {
   p {
     margin-bottom: 22px;
     white-space: pre-wrap;
-    unicode-bidi: embed;
+    unicode-bidi: plaintext;
     
 
     &:last-child {
