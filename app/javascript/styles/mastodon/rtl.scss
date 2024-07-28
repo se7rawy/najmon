@@ -10,14 +10,7 @@ body.rtl {
   .ui__header {
   direction: ltr;
   }
-  .rtl_ {
-  direction: ltr;
-  }
-  .status__content__text {
-  float: right;
-  direction: rtl;
-  }
-  
+
   .announcements__mastodon,
   .drawer__inner__mastodon > img {
     transform: scaleX(-1);
