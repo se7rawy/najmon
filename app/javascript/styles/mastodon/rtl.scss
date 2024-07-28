@@ -1,6 +1,6 @@
 body.rtl {
   direction: rtl;
-text-align: right;
+
   .reactions-bar {
     direction: rtl;
   }
@@ -14,7 +14,7 @@ text-align: right;
 direction: ltr;
 }
 
-.status__content0 {
+.status__content {
 a {
   
     unicode-bidi: isolate;
