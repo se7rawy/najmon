@@ -1,6 +1,6 @@
 body.rtl {
   direction: rtl;
-
+text-align: right;
   .reactions-bar {
     direction: rtl;
   }
@@ -12,6 +12,15 @@ body.rtl {
   }
 .status__content__text {
 direction: ltr;
+}
+
+.status__content {
+a {
+  
+    unicode-bidi: isolate;
+    direction: rtl;
+    }
+
 }
 
   .announcements__mastodon,
