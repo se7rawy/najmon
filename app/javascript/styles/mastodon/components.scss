@@ -840,6 +840,7 @@ body > [data-popper-placement] {
     margin-bottom: 22px;
     white-space: pre-wrap;
     unicode-bidi: plaintext;
+    unicode-bidi: embed;
 
     &:last-child {
       margin-bottom: 0;
