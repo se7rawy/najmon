@@ -32,23 +32,6 @@ p {
 }
 
 
-
-
-.#[lang="ar"]::before {
-    content: "#";
-    margin-left: 0.5em;
-}
-
-.#[lang="en"]::before {
-    content: "#";
-    margin-right: 0.5em;
-}
-p span.@::after {
-    content: "@";
-    margin-right: 0.5em;
-}
-
-
 }
  
 .status__content0 {
