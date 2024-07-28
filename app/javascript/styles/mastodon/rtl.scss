@@ -14,13 +14,42 @@ body.rtl {
 direction: ltr;
 }
 
-.status__content {
+.status__content0 {
 a {
   
     unicode-bidi: isolate;
     direction: rtl;
     }
 
+}
+
+.status__content {
+p {
+    unicode-bidi: isolate;
+}
+
+p:lang(ar) {
+    direction: rtl;
+    text-align: right;
+
+    [lang="ar"] {
+        unicode-bidi: isolate;
+        direction: rtl;
+        &:before {
+            content: "#";
+            margin-left: 0.5em;
+        }
+    }
+
+    [lang="en"] {
+        unicode-bidi: isolate;
+        direction: ltr;
+        &:after {
+            content: "#";
+            margin-right: 0.5em;
+        }
+ }
+}
 }
 
   .announcements__mastodon,
