@@ -11,8 +11,8 @@ body.rtl {
   direction: ltr;
   }
 .status__content__text {
-/*direction: ltr;*/
-unicode-bidi: embed;
+direction: ltr;
+
 }
 
 .status__content {
