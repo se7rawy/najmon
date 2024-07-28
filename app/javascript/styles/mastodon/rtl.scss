@@ -16,15 +16,14 @@ direction: ltr;
 }
 
 .status__content {
-a[href^="http"] {
+/*a[href^="http"] {
     direction: ltr;
     
     unicode-bidi: isolate;
-}
-a {
+}*/
+
     
-    
-    }
+   
 $arabic: 'ar';
 $english: 'en';
 
