@@ -15,11 +15,25 @@ direction: ltr;
 }
 
 .status__content {
-a[href^="https"] {
+a[href^="http"] {
     direction: ltr;
     
     unicode-bidi: isolate;
 }
+$arabic: 'ar';
+$english: 'en';
+
+p {
+ 
+  @if element-at(p, 'lang') == $arabic {
+    direction: rtl;
+    text-align: right;
+  }
+}
+
+
+
+
 .#[lang="ar"]::before {
     content: "#";
     margin-left: 0.5em;
