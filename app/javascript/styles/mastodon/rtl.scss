@@ -24,8 +24,19 @@ a {
 }
  
 .status__content {
+p:lang(ar) {
 unicode-bidi: isolate;
     direction: rtl;
+    text-align: right;
+    }
+    
+    p:lang(ar) {
+unicode-bidi: isolate;
+    direction: ltr;
+    text-align: left;
+ 
+ }
+ 
  
  }
 
