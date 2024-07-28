@@ -23,35 +23,21 @@ a {
 
 }
 
-.status__content {
-p {
-    unicode-bidi: isolate;
-}
-
-
-    
-    
-
+.status__content__text {
     [lang="ar"] {
         unicode-bidi: isolate;
         direction: rtl;
         text-align: right;
-        &:before {
-            content: "#";
-            margin-left: 0.5em;
-        }
+       
     }
 
     [lang="en"] {
         unicode-bidi: isolate;
         direction: ltr;
         text-align: left;
-        &:after {
-            content: "#";
-            margin-right: 0.5em;
-        }
  }
-}
+ 
+ }
 
 
   .announcements__mastodon,
