@@ -10,6 +10,9 @@ body.rtl {
   .ui__header {
   direction: ltr;
   }
+.status__content__text {
+direction: rtl;
+}
 
   .announcements__mastodon,
   .drawer__inner__mastodon > img {
