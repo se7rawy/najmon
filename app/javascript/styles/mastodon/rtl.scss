@@ -10,8 +10,9 @@ body.rtl {
   .ui__header {
   direction: ltr;
   }
-.status__content__text0 {
-direction: ltr;
+.status__content__text {
+/*direction: ltr;*/
+unicode-bidi: embed;
 }
 
 .status__content {
@@ -22,7 +23,7 @@ a[href^="http"] {
 }
 a {
     
-    unicode-bidi: embed;
+    
     }
 $arabic: 'ar';
 $english: 'en';
