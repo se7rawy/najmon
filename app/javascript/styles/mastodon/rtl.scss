@@ -10,15 +10,15 @@ body.rtl {
   .ui__header {
   direction: ltr;
   }
-.status__content__text {
+.status__content__text0 {
 direction: ltr;
 }
 
-.status__content0 {
+.status__content {
 a {
   
     unicode-bidi: isolate;
-    direction: rtl;
+    direction: ltr;
     }
 
 }
