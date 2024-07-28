@@ -24,19 +24,8 @@ a {
 }
 
 .status__content {
-    [lang="ar"] {
-        unicode-bidi: isolate;
-        direction: rtl;
-        text-align: right;
-       
-    }
-
-    [lang="en"] {
-        unicode-bidi: isolate;
-        direction: ltr;
-        text-align: left;
- }
- 
+    
+ text-align: right;
  }
 
 
