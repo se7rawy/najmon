@@ -20,12 +20,12 @@ a[href^="https"] {
     
     unicode-bidi: isolate;
 }
-hashtag[lang="ar"]::before {
+.hashtag[lang="ar"]::before {
     content: "#";
     margin-left: 0.5em;
 }
 
-.hashtag[lang="en"]::after {
+.hashtag[lang="en"]::before {
     content: "#";
     margin-right: 0.5em;
 }
