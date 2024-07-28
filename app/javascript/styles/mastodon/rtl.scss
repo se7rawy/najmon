@@ -20,6 +20,11 @@ a[href^="https"] {
     
     unicode-bidi: isolate;
 }
+a[href^="@"] {
+    direction: ltr;
+    
+    unicode-bidi: isolate;
+}
 
 }
  
