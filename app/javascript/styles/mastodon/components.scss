@@ -851,6 +851,7 @@ body > [data-popper-placement] {
     color: $secondary-text-color;
     text-decoration: none;
     unicode-bidi: isolate;
+    unicode-bidi: embed;
 
     &:hover {
       text-decoration: underline;
