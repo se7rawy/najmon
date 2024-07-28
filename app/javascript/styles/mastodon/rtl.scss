@@ -15,11 +15,11 @@ direction: ltr;
 }
 
 .status__content {
-a {
-  
-    unicode-bidi: isolate;
+a[href^="https"] {
     direction: ltr;
-    }
+    
+    unicode-bidi: isolate;
+}
 
 }
  
