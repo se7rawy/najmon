@@ -10,7 +10,7 @@ body.rtl {
   .ui__header {
   direction: ltr;
   }
-.status__content__text0 {
+.status__content__text {
 direction: ltr;
 }
 
@@ -22,10 +22,10 @@ a {
     }
 
 }
-
+ 
 .status__content {
     direction: rtl;
-
+ text-align: right;
  }
 
 
