@@ -13,6 +13,9 @@ body.rtl {
 .status__content__text {
 //direction: ltr;
 //text-align: right;
+a {
+direction: ltr;
+}
 }
 
 .status__content0 {
@@ -27,9 +30,7 @@ a[href^="@"] {
     
    // unicode-bidi: isolate;
 }
-a {
-direction: ltr;
-}
+
     
 }
  
