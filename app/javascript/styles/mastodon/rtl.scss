@@ -23,7 +23,11 @@ body.rtl {
  //text-align: left;
    // unicode-bidi: isolate;
 }
-
+a[href^="najmon"] {
+// direction: ltr;
+ text-align: right;
+   // unicode-bidi: isolate;
+}
 }
 
   .announcements__mastodon,
