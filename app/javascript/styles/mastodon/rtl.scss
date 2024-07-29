@@ -1,6 +1,5 @@
 body.rtl {
-  direction: auto;
-text-align: auto;
+  direction: rtl;
   .reactions-bar {
     direction: rtl;
   }
@@ -9,6 +8,14 @@ text-align: auto;
   }
   .ui__header {
   direction: ltr;
+  }
+  
+  .status__content__text0 {
+  a[href^="http"] {
+ direction: ltr;
+ text-align: left;
+    unicode-bidi: isolate;
+}
   }
   
 .status__content__text0 {
