@@ -26,7 +26,7 @@ body.rtl {
 a[href^="#"] {
  direction: rtl;
  text-align: right;
-   // unicode-bidi: isolate;
+   unicode-bidi: isolate;
 }
 }
 
