@@ -1,6 +1,6 @@
 body.rtl {
   direction: rtl;
-
+text-align: right;
   .reactions-bar {
     direction: rtl;
   }
@@ -11,9 +11,9 @@ body.rtl {
   direction: ltr;
   }
   
-.status__content__text {
+.status__content__text0 {
 //direction: ltr;
-text-align: right;
+
 //a { text-align: right;}
  a[href^="http"] {
  direction: ltr;
@@ -21,7 +21,7 @@ text-align: right;
     unicode-bidi: isolate;
 }
 }
-.status__content {
+.status__content0 {
 //text-align: right;
  /*a[href^="http"] {
  direction: ltr;
