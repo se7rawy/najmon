@@ -10,47 +10,18 @@ body.rtl {
   .ui__header {
   direction: ltr;
   }
+  
 .status__content__text {
 //direction: ltr;
 //text-align: right;
-a {
-direction: ltr;
 }
-}
-
-.status__content0 {
-text-align: right;
- a[href^="http"] {
-    direction: ltr;
-    
-   // unicode-bidi: isolate;
-}
-a[href^="@"] {
-    direction: ltr;
-    
-   // unicode-bidi: isolate;
-}
-
-    
-}
- 
 .status__content {
-p:lang(ar) {
-//unicode-bidi: isolate;
-    direction: rtl;
-    text-align: right;
-    }
-    
-    p:lang(en) {
-//unicode-bidi: isolate;
-    direction: ltr;
-    text-align: left;
- 
- }
- 
- 
- }
-
+//text-align: right;
+ a[href^="http"] {
+ direction: ltr;
+   // unicode-bidi: isolate;
+}
+}
 
   .announcements__mastodon,
   .drawer__inner__mastodon > img {
