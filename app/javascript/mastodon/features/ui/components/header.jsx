@@ -110,9 +110,7 @@ class Header extends PureComponent {
           <WordmarkLogo />
         </Link>
         
-              <Link to='/settings/preferences' className='ui__header__logo'>
-          <SymbolLogo />
-        </Link>
+ 
 
         <div className='ui__header__links'>
           {content}
