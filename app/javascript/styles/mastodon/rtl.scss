@@ -20,8 +20,8 @@ text-align: right;
 //text-align: right;
  a[href^="http"] {
  direction: ltr;
- //text-align: left;
-   // unicode-bidi: isolate;
+ text-align: left;
+    unicode-bidi: isolate;
 }
 a[href^="#"] {
  direction: rtl;
