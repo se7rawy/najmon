@@ -13,8 +13,6 @@ body.rtl {
   .status__content__text {
   a[href^="http"] {
  direction: ltr;
- text-align: left;
-    unicode-bidi: isolate;
 }
   }
   
