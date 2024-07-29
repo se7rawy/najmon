@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { PureComponent } from 'react';
-import ColumnLink from './column_link';
+import ColumnLink from 'mastodon/features/ui/components/column_link';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import { Link, withRouter } from 'react-router-dom';
