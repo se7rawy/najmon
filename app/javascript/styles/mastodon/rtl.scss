@@ -16,31 +16,19 @@ direction: ltr;
 }
 
 .status__content {
+text-align: right;
  a[href^="http"] {
     direction: ltr;
     
-    unicode-bidi: isolate;
+   // unicode-bidi: isolate;
 }
 a[href^="@"] {
     direction: ltr;
     
-    unicode-bidi: isolate;
+   // unicode-bidi: isolate;
 }
 
     
-   
-$arabic: 'ar';
-$english: 'en';
-
-p {
- 
-  @if element-at(p, 'lang') == $arabic {
-    direction: rtl;
-    text-align: right;
-  }
-}
-
-
 }
  
 .status__content0 {
