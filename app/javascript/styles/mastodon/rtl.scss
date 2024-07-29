@@ -10,12 +10,12 @@ body.rtl {
   .ui__header {
   direction: ltr;
   }
-.status__content__text0 {
-direction: ltr;
-
+.status__content__text {
+//direction: ltr;
+text-align: right;
 }
 
-.status__content {
+.status__content0 {
 text-align: right;
  a[href^="http"] {
     direction: ltr;
