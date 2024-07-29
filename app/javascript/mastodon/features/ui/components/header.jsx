@@ -17,7 +17,7 @@ import { registrationsOpen, me, sso_redirect } from 'mastodon/initial_state';
 const Account = connect(state => ({
   account: state.getIn(['accounts', me]),
 }))(({ account }) => (
-  <Link to='/settings/preferences' t title={account.get('acct')}>
+  <Link to='/settings/preferences' title={account.get('acct')}>
     <Avatar account={account} size={35} />
   </Link>
 ));
