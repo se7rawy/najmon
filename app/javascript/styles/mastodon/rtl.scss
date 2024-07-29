@@ -15,14 +15,19 @@ body.rtl {
 //direction: ltr;
 text-align: right;
 //a { text-align: right;}
-}
-.status__content {
-//text-align: right;
  a[href^="http"] {
  direction: ltr;
  text-align: left;
     unicode-bidi: isolate;
 }
+}
+.status__content {
+//text-align: right;
+ /*a[href^="http"] {
+ direction: ltr;
+ text-align: left;
+    unicode-bidi: isolate;
+}*/
 a[href^="#"] {
  direction: rtl;
  text-align: right;
