@@ -16,30 +16,6 @@ body.rtl {
 }
   }
   
-.status__content__text0 {
-//direction: ltr;
-
-//a { text-align: right;}
- a[href^="http"] {
- direction: ltr;
- text-align: left;
-    unicode-bidi: isolate;
-}
-}
-.status__content0 {
-//text-align: right;
- /*a[href^="http"] {
- direction: ltr;
- text-align: left;
-    unicode-bidi: isolate;
-}*/
-a[href^="#"] {
- direction: rtl;
- text-align: right;
-   unicode-bidi: isolate;
-}
-}
-
   .announcements__mastodon,
   .drawer__inner__mastodon > img {
     transform: scaleX(-1);
