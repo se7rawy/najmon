@@ -17,9 +17,9 @@ import { registrationsOpen, me, sso_redirect } from 'mastodon/initial_state';
 const Account = connect(state => ({
   account: state.getIn(['accounts', me]),
 }))(({ account }) => (
-  <Link to={`/@${account.get('acct')}`} title={account.get('acct')}>
+  <a href='/settings/preferences' >
     <Avatar account={account} size={35} />
-  </Link>
+  </a>
 ));
 
 const messages = defineMessages({
@@ -70,7 +70,7 @@ class Header extends PureComponent {
           {location.pathname !== '/search' && <Link to='/search' className='button button-secondary' aria-label={intl.formatMessage(messages.search)}><Icon id='search' /></Link>}
           {location.pathname !== '/publish' && <Link to='/publish' className='button button-secondary'><FormattedMessage id='compose_form.publish_form' defaultMessage='New post' /></Link>}
           <Account />
-                   <ColumnLink transparent href='/settings/preferences' icon='bars' text={intl.formatMessage(messages.preferences)} />
+
         </>
       );
     } else {
