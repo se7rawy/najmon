@@ -19,6 +19,7 @@ body.rtl {
 //text-align: right;
  a[href^="http"] {
  direction: ltr;
+ text-align: left;
    // unicode-bidi: isolate;
 }
 a { text-align: right;}
