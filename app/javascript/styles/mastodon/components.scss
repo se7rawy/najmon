@@ -733,7 +733,7 @@ body > [data-popper-placement] {
     a {
       color: $secondary-text-color;
       text-decoration: none;
-   //   unicode-bidi: isolate;
+      unicode-bidi: isolate;
 
       &:hover {
         text-decoration: underline;
@@ -839,7 +839,7 @@ body > [data-popper-placement] {
   p {
     margin-bottom: 22px;
     white-space: pre-wrap;
-   // unicode-bidi: plaintext;
+    unicode-bidi: plaintext;
     
 
     &:last-child {
@@ -850,7 +850,7 @@ body > [data-popper-placement] {
   a {
     color: $secondary-text-color;
     text-decoration: none;
-   // unicode-bidi: isolate;
+    unicode-bidi: isolate;
     
 
     &:hover {
