@@ -16,11 +16,16 @@ direction: ltr;
 }
 
 .status__content {
-/*a[href^="http"] {
+ a[href^="http"] {
     direction: ltr;
     
     unicode-bidi: isolate;
-}*/
+}
+a[href^="@"] {
+    direction: ltr;
+    
+    unicode-bidi: isolate;
+}
 
     
    
