@@ -14,6 +14,7 @@ body.rtl {
 .status__content__text {
 //direction: ltr;
 //text-align: right;
+a { text-align: right;}
 }
 .status__content {
 //text-align: right;
@@ -22,7 +23,7 @@ body.rtl {
  text-align: left;
    // unicode-bidi: isolate;
 }
-a { text-align: right;}
+
 }
 
   .announcements__mastodon,
