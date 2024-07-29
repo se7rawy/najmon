@@ -153,7 +153,7 @@ class Account extends ImmutablePureComponent {
         <div className='account__wrapper'>
           <Link key={account.get('id')} className='account__display-name' title={account.get('acct')} to={`/settings/preferences`}>
             <div className='account__avatar-wrapper'>
-              <Avatar account={account} size={size} />
+           
             </div>
 
             <div className='account__contents'>
