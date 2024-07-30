@@ -2452,14 +2452,14 @@ direction: rtl;
   }
 
   .columns-area__panels {
-    min-height: calc(100vh - $ui-header-height);
+    /*min-height: calc(100vh - $ui-header-height);*/
  
   }
 
   .columns-area__panels__pane--navigational {
   
     width: $sidebar-width;
-min-height: 50px;
+height: 50px;
 
     .columns-area__panels__pane__inner {
       width: $sidebar-width;
@@ -2509,7 +2509,7 @@ min-height: 50px;
 
   .columns-area__panels__pane--navigational {
     width: $sidebar-width;
-min-height: 50px;
+height: 50px;
 
     .columns-area__panels__pane__inner {
       width: $sidebar-width;
