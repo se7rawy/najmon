@@ -1599,9 +1599,9 @@ ar:
       self_vote: لا يمكنك التصويت في استطلاعاتك الخاصة
       too_few_options: يجب أن يحتوي على أكثر من عنصر واحد
       too_many_options: لا يمكنه أن يحتوي أكثر مِن %{max} عناصر
-  preferences:
+ gsetting: معلومات الحساب
+ preferences:
     other: إعدادات أخرى
-    gsetting: معلومات الحساب
     posting_defaults: التفضيلات الافتراضية للنشر
     public_timelines: الخطوط الزمنية العامة
   privacy:
