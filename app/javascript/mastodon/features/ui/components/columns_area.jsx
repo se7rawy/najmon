@@ -150,7 +150,11 @@ export default class ColumnsArea extends ImmutablePureComponent {
             </div>
           </div>
 
-      
+          <div className='columns-area__panels__pane columns-area__panels__pane--start columns-area__panels__pane--navigational'>
+   <div className='columns-area__panels__pane__inner'>
+              <NavigationPanel />
+            </div>
+          </div>
 
           <div className='columns-area__panels__main'>
             <div className='tabs-bar__wrapper'>
@@ -166,11 +170,7 @@ export default class ColumnsArea extends ImmutablePureComponent {
     
         </div>
         
-            <div className='columns-area__panels__pane columns-area__panels__pane--start columns-area__panels__pane--navigational'>
-   <div className='columns-area__panels__pane__inner'>
-              <NavigationPanel />
-            </div>
-          </div>
+        
         
       );
     }
