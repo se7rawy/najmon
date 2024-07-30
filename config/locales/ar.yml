@@ -1601,6 +1601,7 @@ ar:
       too_many_options: لا يمكنه أن يحتوي أكثر مِن %{max} عناصر
   preferences:
     other: إعدادات أخرى
+    gsetting: معلومات الحسابات
     posting_defaults: التفضيلات الافتراضية للنشر
     public_timelines: الخطوط الزمنية العامة
   privacy:
