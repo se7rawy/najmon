@@ -170,7 +170,7 @@ export default class ColumnsArea extends ImmutablePureComponent {
               <NavigationPanel />
             </div>
           </div>
-    
+        </div>
       );
     }
 
