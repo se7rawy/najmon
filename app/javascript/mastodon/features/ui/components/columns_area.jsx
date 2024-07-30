@@ -159,7 +159,7 @@ export default class ColumnsArea extends ImmutablePureComponent {
             <div className='columns-area__panels__pane__inner'>
               <NavigationPanel />
             </div>
-          </div> 
+          </div>
           
             <div className='columns-area columns-area--mobile'>{children}</div>
           </div>
