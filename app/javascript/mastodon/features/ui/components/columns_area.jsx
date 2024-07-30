@@ -162,13 +162,13 @@ export default class ColumnsArea extends ImmutablePureComponent {
     
           
       
-            <div className='columns-area columns-area--mobile'>{children}    <div id='tabs-bar__portal' /></div></div>
-            
+            <div className='columns-area columns-area--mobile'>{children}</div>
+        
           
           </div>
         </div>
         
-        
+                <div id='tabs-bar__portal' /></div> 
         
       );
     }
