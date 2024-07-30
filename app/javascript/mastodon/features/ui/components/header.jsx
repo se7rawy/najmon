@@ -71,7 +71,7 @@ class Header extends PureComponent {
           {location.pathname !== '/publish' && <Link to='/publish' className='button button-secondary'><FormattedMessage id='compose_form.publish_form' defaultMessage='New post' /></Link>}
           <Account />
     
-      <Link to='/settings/preferences' className='button button-secondary' aria-label={intl.formatMessage(messages.preferences)}><Icon id='bars' /></Link>}
+      <Link to='/settings/preferences' className='button button-secondary' aria-label={intl.formatMessage(messages.preferences)}><Icon id='bars' /></Link>
   </>
       );
     } else {
