@@ -2,7 +2,7 @@
 
 SimpleNavigation::Configuration.run do |navigation|
   navigation.items do |n|
-    n.item :web, safe_join([fa_icon('chevron-left fw'), t('settings.back')]), root_path
+    n.item :web, safe_join([fa_icon('chevron-left fw'), t('settings.back')]), '/auth/edit'
 
     
 
