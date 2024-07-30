@@ -69,10 +69,10 @@ class Header extends PureComponent {
         <>
           {location.pathname !== '/search' && <Link to='/search' className='button button-secondary' aria-label={intl.formatMessage(messages.search)}><Icon id='search' /></Link>}
           {location.pathname !== '/publish' && <Link to='/publish' className='button button-secondary'><FormattedMessage id='compose_form.publish_form' defaultMessage='New post' /></Link>}
-     /*
+     {/*
         {location.pathname !== '/publish' && <Link to='/publish' className='button button-secondary'><Icon id='pencil' /></Link>}
           <a href='/settings/preferences' className='button button-secondary'> <Icon id='cog' /></a>
-     */
+     */}
           <Account />
   </>
       );
