@@ -13,7 +13,7 @@ import { Avatar } from 'mastodon/components/avatar';
 import { Icon } from 'mastodon/components/icon';
 import { WordmarkLogo, SymbolLogo } from 'mastodon/components/logo';
 import { registrationsOpen, me, sso_redirect } from 'mastodon/initial_state';
-import ColumnLink from './column_link';
+
 const Account = connect(state => ({
   account: state.getIn(['accounts', me]),
 }))(({ account }) => (
@@ -70,8 +70,10 @@ class Header extends PureComponent {
           {location.pathname !== '/search' && <Link to='/search' className='button button-secondary' aria-label={intl.formatMessage(messages.search)}><Icon id='search' /></Link>}
           {location.pathname !== '/publish' && <Link to='/publish' className='button button-secondary'><FormattedMessage id='compose_form.publish_form' defaultMessage='New post' /></Link>}
           <Account />
+    <a href='/settings/preferences'>
+    <Icon id='bars' />
+    </a>
     
-      <Link to='/settings/preferences' className='button button-secondary' aria-label={intl.formatMessage(messages.preferences)}><Icon id='bars' /></Link>
   </>
       );
     } else {
