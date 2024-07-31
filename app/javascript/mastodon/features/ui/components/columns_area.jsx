@@ -162,10 +162,8 @@ export default class ColumnsArea extends ImmutablePureComponent {
 */}
      
         <div className='columns-area__panels__main'>     
-            <div className='tabs-bar__wrapper'>  
-     <div className='columns-area__panels__pane__inner'>
-              <NavigationPanel />
-            </div>
+            <NavigationPanel />
+      
 <div id='tabs-bar__portal' /> </div>                  
             <div className='columns-area columns-area--mobile'>{children}</div>
           </div>
