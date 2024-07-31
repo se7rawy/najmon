@@ -162,7 +162,7 @@ export default class ColumnsArea extends ImmutablePureComponent {
             <div className='columns-area columns-area--mobile'>{children}</div>
           </div>
       
-  </div>
+         </div>
         
         
         
