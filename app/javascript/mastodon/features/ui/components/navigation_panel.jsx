@@ -105,7 +105,7 @@ class NavigationPanel extends Component {
         {signedIn && (
           <>
           
-           <ColumnLink transparent href='/settings/preferences' icon='cog' text={intl.formatMessage(messages.preferences)} />
+           <ColumnLink transparent to='/settings/preferences' icon='cog' text={intl.formatMessage(messages.preferences)} />
            <ColumnLink transparent to='/conversations' icon='envelope' text={intl.formatMessage(messages.direct)} />
             <ColumnLink transparent to='/bookmarks' icon='bookmark' text={intl.formatMessage(messages.bookmarks)} />
             <ColumnLink transparent to='/favourites' icon='heart' text={intl.formatMessage(messages.favourites)} />
