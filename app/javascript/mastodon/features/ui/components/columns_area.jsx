@@ -144,31 +144,25 @@ export default class ColumnsArea extends ImmutablePureComponent {
     if (singleColumn) {
       return (
         <div className='columns-area__panels'>
-          <div className='columns-area__panels__pane columns-area__panels__pane--compositional'>
+         
+           <div className='columns-area__panels__pane columns-area__panels__pane--compositional'>
             <div className='columns-area__panels__pane__inner'>
               {renderComposePanel && <ComposePanel />}
             </div>
-          </div>
+            </div>
 
             <div className='columns-area__panels__pane columns-area__panels__pane--start columns-area__panels__pane--navigational'>
-          <div className='columns-area__panels__pane__inner'>
+           <div className='columns-area__panels__pane__inner'>
               <NavigationPanel />
             </div>
-          </div> 
+            </div> 
 
-          <div className='columns-area__panels__main'>
-             
-            <div className='tabs-bar__wrapper'>
-           
-       
-          <div id='tabs-bar__portal' /> </div>
-          
-     
-          
-          
+          <div className='columns-area__panels__main'>           
+            <div className='tabs-bar__wrapper'><div id='tabs-bar__portal' /> </div>                  
             <div className='columns-area columns-area--mobile'>{children}</div>
           </div>
-        </div>
+      
+  </div>
         
         
         
