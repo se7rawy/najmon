@@ -2452,7 +2452,7 @@ direction: rtl;
   }
 
   .columns-area__panels {
-    /*min-height: calc(100vh - $ui-header-height);*/
+    min-height: calc(100vh - $ui-header-height);
  
   }
 
