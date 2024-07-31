@@ -161,7 +161,7 @@ export default class ColumnsArea extends ImmutablePureComponent {
           </div>
        
          </div>
-        
+         
         
         
       );
