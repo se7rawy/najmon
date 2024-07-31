@@ -14,7 +14,7 @@ export const Icon: React.FC<Props> = ({
   ...other
 }) => (
   <i
-    className={classNames('fa-regular fa', `fa-${id}`, className, { 'fa-fw': fixedWidth })}
+    className={classNames('fa', `fa-regular fa-${id}`, className, { 'fa-fw': fixedWidth })}
     {...other}
   />
 );
