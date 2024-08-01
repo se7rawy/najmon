@@ -585,7 +585,7 @@ class Status extends ImmutablePureComponent {
 
             {media}
 
-       {/*     {expanded && hashtagBar}*/}
+            {expanded && hashtagBar}
 
             <StatusActionBar scrollKey={scrollKey} status={status} account={account} onFilter={matchedFilters ? this.handleFilterClick : null} {...other} />
           </div>
