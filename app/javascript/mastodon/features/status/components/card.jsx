@@ -220,11 +220,11 @@ export default class Card extends PureComponent {
         </div>
       );
     } else {
-      {/*embed = (
+      embed = (
         <div className='status-card__image'>
-          <Icon id='file-text' />
+          <Icon id='link' />
         </div>
-      );*/}
+      );
     }
 
     return (
