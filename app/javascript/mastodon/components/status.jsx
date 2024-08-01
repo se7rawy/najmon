@@ -520,14 +520,14 @@ class Status extends ImmutablePureComponent {
         );
       }
     } else if (status.get('spoiler_text').length === 0 && status.get('card')) {
-     {/* media = (
+      media = (
         <Card
           onOpenMedia={this.handleOpenMedia}
           card={status.get('card')}
           compact
           sensitive={status.get('sensitive')}
         />
-      );*/}
+      );
     }
 
     if (account === undefined || account === null) {
