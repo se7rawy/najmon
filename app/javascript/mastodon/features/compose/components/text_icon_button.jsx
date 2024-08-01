@@ -21,7 +21,7 @@ export default class TextIconButton extends PureComponent {
     const { label, title, active, ariaControls } = this.props;
 
     return (
-      <button
+     {/* <button
         type='button'
         title={title}
         aria-label={title}
@@ -29,7 +29,8 @@ export default class TextIconButton extends PureComponent {
         aria-expanded={active}
         onClick={this.props.onClick}
         aria-controls={ariaControls} style={iconStyle}
-      >
+      >*/}
+        <IconButton icon='paperclip' title={message} disabled={disabled} onClick={this.handleClick} className='compose-form__upload-button-icon' size={18} inverted style={iconStyle} />
         {label}
       </button>
     );
