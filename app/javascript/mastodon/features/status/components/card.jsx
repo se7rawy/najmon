@@ -222,7 +222,7 @@ export default class Card extends PureComponent {
     } else {
       embed = (
         <div className='status-card__image'>
-          <Icon id='link' />
+          <Icon id='file-text' />
         </div>
       );
     }
