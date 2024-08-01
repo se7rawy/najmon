@@ -501,7 +501,7 @@ class Status extends ImmutablePureComponent {
           </Bundle>
         );
       } else {
-      {/*  media = (
+        media = (
           <Bundle fetchComponent={MediaGallery} loading={this.renderLoadingMediaGallery}>
             {Component => (
               <Component
@@ -517,17 +517,17 @@ class Status extends ImmutablePureComponent {
               />
             )}
           </Bundle>
-        );*/}
+        );
       }
     } else if (status.get('spoiler_text').length === 0 && status.get('card')) {
-      media = (
+     {/* media = (
         <Card
           onOpenMedia={this.handleOpenMedia}
           card={status.get('card')}
           compact
           sensitive={status.get('sensitive')}
         />
-      );
+      );*/}
     }
 
     if (account === undefined || account === null) {
