@@ -583,7 +583,7 @@ class Status extends ImmutablePureComponent {
               {...statusContentProps}
             />
 
-            {media}
+         {/*   {media} */}
 
             {expanded && hashtagBar}
 
