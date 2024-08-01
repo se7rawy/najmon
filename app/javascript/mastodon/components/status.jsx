@@ -444,7 +444,7 @@ class Status extends ImmutablePureComponent {
     }
 
     if (pictureInPicture.get('inUse')) {
-      media = <PictureInPicturePlaceholder aspectRatio={this.getAttachmentAspectRatio()} />;
+      {/*media = <PictureInPicturePlaceholder aspectRatio={this.getAttachmentAspectRatio()} />;*/}
     } else if (status.get('media_attachments').size > 0) {
       const language = status.getIn(['translation', 'language']) || status.get('language');
 
