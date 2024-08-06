@@ -19,7 +19,11 @@ body.rtl {
 
   }
   
-
+.reply-indicator__content {
+a {
+direction: ltr;
+}
+}
   
   .announcements__mastodon,
   .drawer__inner__mastodon > img {
