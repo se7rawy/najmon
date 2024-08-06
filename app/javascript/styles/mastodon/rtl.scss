@@ -1,6 +1,6 @@
 body.rtl {
   direction: rtl;
-  text-align: right;
+  
   .reactions-bar {
     direction: rtl;
   }
@@ -19,10 +19,7 @@ text-align: right;
 direction: rtl;
   }
   
-    .status__content {
-text-align: right;
-direction: rtl;
-  }
+
   
   .announcements__mastodon,
   .drawer__inner__mastodon > img {
