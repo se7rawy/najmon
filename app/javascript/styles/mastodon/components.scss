@@ -9376,12 +9376,12 @@ noscript {
   line-height: 18px;
   gap: 4px;
   color: $darker-text-color;
-unicode-bidi: plaintext;
+
   a {
     display: inline-flex;
     color: inherit;
     text-decoration: none;
-
+unicode-bidi: plaintext;
     &:hover span {
       text-decoration: underline;
     }
