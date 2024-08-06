@@ -850,7 +850,7 @@ body > [data-popper-placement] {
   a {
     color: $secondary-text-color;
     text-decoration: none;
-   unicode-bidi: embed;
+   unicode-bidi: normal;
     
 
     &:hover {
