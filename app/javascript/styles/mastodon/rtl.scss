@@ -18,6 +18,11 @@ text-align: right;
 direction: rtl;
   }
   
+    .status__content {
+text-align: right;
+direction: rtl;
+  }
+  
   .announcements__mastodon,
   .drawer__inner__mastodon > img {
     transform: scaleX(-1);
