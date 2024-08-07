@@ -58,9 +58,9 @@
       ·
     %span.detailed-status__link
       - if status.in_reply_to_id.nil?
-        = fa_icon('reply')
+        = fa_icon('comment')
       - else
-        = fa_icon('reply-all')
+        = fa_icon('comment')
       %span.detailed-status__reblogs>= friendly_number_to_human status.replies_count
       = ' '
     ·
@@ -71,7 +71,7 @@
         = ' '
       ·
     %span.detailed-status__link
-      = fa_icon('star')
+      = fa_icon('heart')
       %span.detailed-status__favorites>= friendly_number_to_human status.favourites_count
       = ' '
 
